@@ -1,39 +1,30 @@
 ---
-title: "HW: NSA Codebreaker 1-2"
-weight: 4
+title: "Homework : TODO"
+weight: 6
 ---
 
 ## Description
 
-For this homework assignment you will be working through the first two
-challenges of the [NSA Codebreaker Challenge](https://nsa-codebreaker.org). Once
-you've created an account make sure to follow the instructions below to add me
-as a follower so I can see your progress.
+TODO
 
-{{% steps %}}
-
-### Navigate to the `sharing` page under your user settings in the top right:
-
-![](codebreaker_shareing.png)
-
-### Enter `lmains@umd.edu` in the `Followers` box and click update:
-
-![](codebreaker_email_enter.png)
-
-{{% /steps %}}
+> [!TIP]
+>
+> - tip
+> - tip
+> - tip
 
 ## Submission
 
+### Rubric (`10 pts`)
+
+1. Task 1 (`3 pts`):
+   - Description
+1. Task 2 (`3 pts`):
+   - Description
+
 {{< callout emoji="📝" >}}
 
-For you submission please submit a screenshot of the codebreaker website or some
-text just so the grading tool is happy and I know you've at least signed in to
-the website.
-
-- Task 1 is 6 points
-- Task 2 is 6 points
-
-I will need to see your progress on the codebreaker site before I will give out
-full points. This means you need to add me (`lmains@umd.edu`) as a follower.
+Submit a write up with answers to questions and any code you wrote to
+[ELMS](https://umd.instructure.com/courses/1374508/assignments).
 
 {{< /callout >}}

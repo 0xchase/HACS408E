@@ -1,32 +1,26 @@
 ---
 title: Schedule
+toc: false
 ---
 
-|   Week |               Date | Topic                                      | Deliverable                                                                                                 |
-| -----: | -----------------: | :----------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
-|  **1** |    **03 Sep 2025** | **C Programming \+ Assembly**              | {{< badge "Labs" >}} {{< badge content="Homework" type="info" >}}                                           |
-|  **2** |    **10 Sep 2025** | **Triage \+ Static Analysis**              | {{< badge "Labs" >}} {{< badge content="Homework" type="info" >}}                                           |
-|  **3** |    **17 Sep 2025** | **Dynamic Analysis**                       | {{< badge "Labs" >}} {{< badge content="Homework" type="info" >}}                                           |
-|  **4** |    **24 Sep 2025** | **Ghidra**                                 | {{< badge "Labs" >}} {{< badge content="Homework" type="info" >}} {{< badge content="Quiz" type="error" >}} |
-|  **5** |    **01 Oct 2025** | **Protocols**                              | {{< badge "Labs" >}} {{< badge content="Homework" type="info" >}}                                           |
-|  **6** |    **08 Oct 2025** | **Vulnerability Analysis**                 | {{< badge "Labs" >}} {{< badge content="Homework" type="info" >}}                                           |
-|  **7** |    **15 Oct 2025** | **Malware**                                | {{< badge "Labs" >}} {{< badge content="Homework" type="info" >}} {{< badge content="Quiz" type="error" >}} |
-|  **8** |    **22 Oct 2025** | **Malware II**                             | {{< badge "Labs" >}}                                                                                        |
-|  **9** |    **29 Oct 2025** | **Group Presentation \+ Cryptanalysis**    | {{< badge "Labs" >}} {{< badge content="Midterm" type="warning" >}}                                         |
-| **10** |    **05 Nov 2025** | **Embedded Firmware Analysis**             | {{< badge "Labs" >}} {{< badge content="Homework" type="info" >}}                                           |
-| **11** |    **12 Nov 2025** | **Android App Reversing**                  | {{< badge "Labs" >}} {{< badge content="Homework" type="info" >}} {{< badge content="Quiz" type="error" >}} |
-| **12** |    **19 Nov 2025** | **Reversing Modern Languages (Go + Rust)** | {{< badge "Labs" >}} {{< badge content="Homework" type="info" >}}                                           |
-| **13** |    **26 Nov 2025** | — Thanksgiving —                           |                                                                                                             |
-| **14** |    **03 Dec 2025** | **TBD**                                    | {{< badge content="Quiz" type="error" >}}                                                                   |
-| **15** |    **10 Dec 2025** | **TBD**                                    | {{< badge content="Final" type="warning" >}}                                                                |
-| **16** | **16-20 Dec 2025** | — Finals Week —                            |                                                                                                             |
-
-### Modules
-
-Each week we will dive into a new topic.
-
-- [Week 1](week-01/): C Programming + Assembly Language
-- [Week 2](week-02/): Triage + Static Analysis
+|   Week |            Date | Topic                                           | In Class                                                       | Deliverable                                          |
+| -----: | --------------: | :---------------------------------------------- | :------------------------------------------------------------- | :--------------------------------------------------- |
+|  **1** | **03 Sep 2025** | **File Identification \+ Extraction \+ Triage** | {{< badge "Labs" >}}                                           |                                                      |
+|  **2** | **10 Sep 2025** | **Source Code Analysis**                        | {{< badge "Labs" >}}                                           |                                                      |
+|  **3** | **17 Sep 2025** | **Binary Analysis I**                           | {{< badge "Labs" >}}                                           | {{< badge content="HW 1/2" type="info" >}}           |
+|  **4** | **24 Sep 2025** | **Binary Analysis II**                          | {{< badge "Labs" >}} {{< badge content="Quiz" type="error" >}} |                                                      |
+|  **5** | **01 Oct 2025** | **Cryptanalysis + Network Protocols**           | {{< badge "Labs" >}}                                           | {{< badge content="HW 3/4" type="info" >}}           |
+|  **6** | **08 Oct 2025** | **Malware I**                                   | {{< badge "Labs" >}}                                           | {{< badge content="HW 5" type="info" >}}             |
+|  **7** | **15 Oct 2025** | **Malware II**                                  | {{< badge "Labs" >}} {{< badge content="Quiz" type="error" >}} |                                                      |
+|  **8** | **22 Oct 2025** | **Midterm Group Presentation**                  | {{< badge content="Presentation" type="warning" >}}            |                                                      |
+|  **9** | **29 Oct 2025** | **Vulnerability Analysis I**                    | {{< badge "Labs" >}}                                           |                                                      |
+| **10** | **05 Nov 2025** | **Vulnerability Analysis II**                   | {{< badge "Labs" >}} {{< badge content="Quiz" type="error" >}} |                                                      |
+| **11** | **12 Nov 2025** | **Kernel (Rootkits)**                           | {{< badge "Labs" >}}                                           | {{< badge content="HW 6/7" type="info" >}}           |
+| **12** | **19 Nov 2025** | **Firmware Analysis + Memory Forensics**        | {{< badge "Labs" >}}                                           | {{< badge content="HW 8" type="info" >}}             |
+|     -- |     26 Nov 2025 | — Thanksgiving (no class) —                     |                                                                |                                                      |
+| **13** | **03 Dec 2025** | **Android Applications / Modern Languages**     | {{< badge "Labs" >}} {{< badge content="Quiz" type="error" >}} |                                                      |
+| **14** | **10 Dec 2025** | **Capture The Flag**                            |                                                                | {{< badge content="HW 9/10" type="info" >}}          |
+|     -- |  16-20 Dec 2025 | — Finals Week (no class) —                      |                                                                | {{< badge content="Final Project" type="warning" >}} |
 
 ### Midterm Presentation
 

@@ -1,14 +1,12 @@
 ---
-title: "Week 12: Golang Reversing"
+title: "Week 12: Firmware Analysis + Memory Forensics"
 prev: schedule/week-11
-next: schedule/final-project
+next: schedule/week-13
 ---
 
 ### Slides
 
-<iframe src="https://slides.com/chasekanipe/week-11/embed" width="576" height="420" title="Week 9" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-[Golang Specifics Slides](/schedule/lectures/supplemental/reversing_tips/#/8)
+<iframe src="https://slides.com/chasekanipe/todo" width="576" height="420" title="Week 9" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ### Labs
 

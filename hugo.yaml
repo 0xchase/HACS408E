@@ -44,18 +44,21 @@ menu:
       params:
         type: separator
       weight: 1
-    - name: VM - SSH Setup
+    - name: Linux VM - SSH Setup
       pageRef: /schedule/lab-setup/ssh-connection
-      weight: 3
-    - name: VM - RDP Setup
+      weight: 2
+    - name: Windows VM - RDP Setup
       pageRef: /schedule/lab-setup/rdp-connection
       weight: 3
-    - name: Midterm Malware Samples
-      pageRef: /schedule/midterm-malware-samples
+    - name: Midterm Group Presentations
+      pageRef: /schedule/week-08/
       weight: 4
+    - name: Final Report
+      pageRef: /schedule/final-project/
+      weight: 5
     - name: Lectures Overview
       pageRef: /lectures
-      weight: 5
+      weight: 6
 
 params:
   navbar:
