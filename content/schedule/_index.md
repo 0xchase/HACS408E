@@ -3,7 +3,7 @@ title: Schedule
 toc: false
 ---
 
-|   Week |            Date | Topic                                           | In Class                                                       | Deliverable                                          |
+|   Week |            Date | Topic                                           | In Class                                                       | At Home                                              |
 | -----: | --------------: | :---------------------------------------------- | :------------------------------------------------------------- | :--------------------------------------------------- |
 |  **1** | **03 Sep 2025** | **File Identification \+ Extraction \+ Triage** | {{< badge "Labs" >}}                                           |                                                      |
 |  **2** | **10 Sep 2025** | **Source Code Analysis**                        | {{< badge "Labs" >}}                                           |                                                      |
