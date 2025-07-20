@@ -44,9 +44,9 @@ TODO
             height="43"
             viewBox="0 0 50 43"
         />
-        <p id="dropzone-label">Choose a file or drag and drop it here.</p>
+        <p id="dropzone-label">Choose or drag & drop some files.</p>
     </div>
-    <input type="file" id="fileInput" style="display: none" />
+    <input type="file" multiple name="files" id="fileInput" style="display: none" />
 </div>
 
 **Results:**

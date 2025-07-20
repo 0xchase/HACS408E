@@ -2,6 +2,9 @@
 const dropzone = document.getElementById("dropzone");
 const fileInput = document.getElementById("fileInput");
 
+// Table body for results
+const tbody = document.getElementsByTagName("tbody")[0];
+
 dropzone
     .addEventListener("dragover", (event) => {
         // Prevent default behavior (Prevent file from being opened)
@@ -38,7 +41,11 @@ dropzone
 
 // Event listener to handle file selection from the input dialog
 fileInput.addEventListener("change", (event) => {
-    processFile(event.target.files[0]);
+    console.log(event);
+
+    [...event.target.files].forEach((file, i) => {
+        processFile(file);
+    });
 });
 
 function processFile(file) {
@@ -48,5 +55,21 @@ function processFile(file) {
         return;
     }
 
-    console.log(file);
+    updateTableResults(file.name, "", "");
+}
+
+function updateTableResults(filename, mime_type, description) {
+    console.log("updateTable");
+
+    // Add a row to the end of the table
+    const row = tbody.insertRow(-1);
+
+    var cell = row.insertCell();
+    cell.textContent = filename;
+
+    cell = row.insertCell();
+    cell.textContent = mime_type;
+
+    cell = row.insertCell();
+    cell.textContent = description;
 }
