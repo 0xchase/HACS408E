@@ -51,8 +51,8 @@ TODO
 
 **Results:**
 
-| File | Mime Type | Description |
-| :--- | :-------- | :---------- |
+| File | Browser MIME | File MIME | Description |
+| :--- | :----------- | :-------- | :---------- |
 
 #### Sources:
 

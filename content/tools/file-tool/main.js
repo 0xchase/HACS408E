@@ -18,7 +18,7 @@ dropzone
 
         if (event.dataTransfer.items) {
             // Use DataTransferItemList interface to access the file(s)
-            [...event.dataTransfer.items].forEach((item, i) => {
+            [...event.dataTransfer.items].forEach((item, _i) => {
                 // If dropped items aren't files, reject them
                 if (item.kind === "file") {
                     processFile(item.getAsFile());
@@ -26,7 +26,7 @@ dropzone
             });
         } else {
             // Use DataTransfer interface to access the file(s)
-            [...event.dataTransfer.files].forEach((file, i) => {
+            [...event.dataTransfer.files].forEach((file, _i) => {
                 processFile(file);
             });
         }
@@ -41,9 +41,7 @@ dropzone
 
 // Event listener to handle file selection from the input dialog
 fileInput.addEventListener("change", (event) => {
-    console.log(event);
-
-    [...event.target.files].forEach((file, i) => {
+    [...event.target.files].forEach((file, _i) => {
         processFile(file);
     });
 });
@@ -51,25 +49,27 @@ fileInput.addEventListener("change", (event) => {
 function processFile(file) {
     // Validate file existence and type
     if (!file) {
-        console.log("No file selected. Please choose a file.");
         return;
     }
 
-    updateTableResults(file.name, "", "");
+    updateTableResults(file, "", "");
 }
 
-function updateTableResults(filename, mime_type, description) {
+function updateTableResults(file, mime_type, description) {
     console.log("updateTable");
 
     // Add a row to the end of the table
     const row = tbody.insertRow(-1);
 
     var cell = row.insertCell();
-    cell.textContent = filename;
+    cell.textContent = file.name || "-";
 
     cell = row.insertCell();
-    cell.textContent = mime_type;
+    cell.textContent = file.type || "-";
 
     cell = row.insertCell();
-    cell.textContent = description;
+    cell.textContent = mime_type || "-";
+
+    cell = row.insertCell();
+    cell.textContent = description || "-";
 }
