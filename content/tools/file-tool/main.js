@@ -1,19 +1,31 @@
 // Page Elements
 const dropzone = document.getElementById("dropzone");
 const fileInput = document.getElementById("fileInput");
+const progress = document.getElementById("progress-bar");
 
 // Table body for results
 const tbody = document.getElementsByTagName("tbody")[0];
 
+// Used for reading file contents
+const reader = new FileReader();
+reader.addEventListener("loadstart", onReaderEvent);
+reader.addEventListener("load", onReaderEvent);
+reader.addEventListener("loadend", onReaderEvent);
+reader.addEventListener("progress", onReaderEvent);
+reader.addEventListener("error", onReaderEvent);
+reader.addEventListener("abort", onReaderEvent);
+
 dropzone
     .addEventListener("dragover", (event) => {
         // Prevent default behavior (Prevent file from being opened)
+        event.stopPropagation();
         event.preventDefault();
     });
 
 dropzone
     .addEventListener("drop", (event) => {
         // Prevent default behavior (Prevent file from being opened)
+        event.stopPropagation();
         event.preventDefault();
 
         if (event.dataTransfer.items) {
@@ -52,7 +64,19 @@ function processFile(file) {
         return;
     }
 
-    updateTableResults(file, "", "");
+    const data = reader.readAsArrayBuffer(file);
+    updateTableResults(file, "");
+}
+
+// This function is responsible for updating the progress bar
+function onReaderEvent(event) {
+    console.log(event);
+
+    if (event.type === "progress") {
+        // TODO
+    } else if (event.type === "load") {
+        // TODO
+    }
 }
 
 function updateTableResults(file, mime_type, description) {
