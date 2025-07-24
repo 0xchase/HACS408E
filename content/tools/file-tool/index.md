@@ -1,5 +1,5 @@
 ---
-title: File Type Tool
+title: File Tool
 type: default
 sidebar:
   exclude: true
@@ -31,9 +31,15 @@ sidebar:
 
 ## Description
 
-TODO
+This is a tool to help you analyze the file type of unknown binary data using
+your browser. It uses the [Wasmagic](https://github.com/moshen/wasmagic) library
+which bundles the capabilities of the unix
+[file utility](https://www.darwinsys.com/file/) into a WASM plugin that runs in
+your browser. Due to limitations with the WASM runtime, this tool will only use
+the first gigabyte of data from any files you submit for processing. All
+processing is done in your browser, so no files are uploaded to our servers.
 
-#### Tool:
+<br />
 
 <div class="container">
     <div class="dropzone" id="dropzone">

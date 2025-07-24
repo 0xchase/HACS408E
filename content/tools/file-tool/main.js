@@ -1,3 +1,5 @@
+import getMagicResults from "./getMagicResults.js";
+
 // Page Elements
 const dropzone = document.getElementById("dropzone");
 const fileInput = document.getElementById("fileInput");
@@ -47,14 +49,13 @@ fileInput.addEventListener("change", (event) => {
     });
 });
 
-const MAX_SIZE = 3221225472;
+const MAX_SIZE = 1073741824;
 
 function processFile(file) {
     // Validate file existence and type
     if (!file) {
         return;
     }
-    console.log(file);
 
     // Set new value for progress calculations
     let data_size = Math.min(file.size, MAX_SIZE);
@@ -72,9 +73,15 @@ function processFile(file) {
             updateTableResults(file, "error", event.target.error.message);
         } else {
             const buffer = event.target.result;
-            const data = new Uint8Array(buffer.slice(0, 3000));
+            const data = new Uint8Array(buffer);
+            const results = getMagicResults(data);
+            console.log(results);
 
-            updateTableResults(file, "", data_size, data.size);
+            updateTableResults(
+                file,
+                results.mime_type,
+                results.description,
+            );
         }
     });
 
@@ -90,8 +97,6 @@ function processFile(file) {
 }
 
 function updateTableResults(file, mime_type, description) {
-    console.log("updateTable");
-
     // Add a row to the end of the table
     const row = tbody.insertRow(-1);
 
