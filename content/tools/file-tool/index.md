@@ -51,7 +51,7 @@ TODO
 
 **Results:**
 
-<progress id="progress-bar" max="" value="0"></progress>
+<progress id="progress-bar" max=100 value=0></progress>
 
 | File | Browser MIME | File MIME | Description |
 | :--- | :----------- | :-------- | :---------- |

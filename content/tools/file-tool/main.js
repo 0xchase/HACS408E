@@ -2,18 +2,7 @@
 const dropzone = document.getElementById("dropzone");
 const fileInput = document.getElementById("fileInput");
 const progress = document.getElementById("progress-bar");
-
-// Table body for results
 const tbody = document.getElementsByTagName("tbody")[0];
-
-// Used for reading file contents
-const reader = new FileReader();
-reader.addEventListener("loadstart", onReaderEvent);
-reader.addEventListener("load", onReaderEvent);
-reader.addEventListener("loadend", onReaderEvent);
-reader.addEventListener("progress", onReaderEvent);
-reader.addEventListener("error", onReaderEvent);
-reader.addEventListener("abort", onReaderEvent);
 
 dropzone
     .addEventListener("dragover", (event) => {
@@ -58,25 +47,46 @@ fileInput.addEventListener("change", (event) => {
     });
 });
 
+const MAX_SIZE = 3221225472;
+
 function processFile(file) {
     // Validate file existence and type
     if (!file) {
         return;
     }
+    console.log(file);
 
-    const data = reader.readAsArrayBuffer(file);
-    updateTableResults(file, "");
-}
+    // Set new value for progress calculations
+    let data_size = Math.min(file.size, MAX_SIZE);
+    progress.max = data_size;
 
-// This function is responsible for updating the progress bar
-function onReaderEvent(event) {
-    console.log(event);
+    // Used for reading file contents
+    const reader = new FileReader();
 
-    if (event.type === "progress") {
-        // TODO
-    } else if (event.type === "load") {
-        // TODO
-    }
+    // Error flag to be modified by the callbacks below
+    let error = false;
+
+    reader.addEventListener("loadend", (event) => {
+        if (error) {
+            console.log(event.target);
+            updateTableResults(file, "error", event.target.error.message);
+        } else {
+            const buffer = event.target.result;
+            const data = new Uint8Array(buffer.slice(0, 3000));
+
+            updateTableResults(file, "", data_size, data.size);
+        }
+    });
+
+    reader.addEventListener("progress", async (event) => {
+        progress.value = event.loaded;
+        await new Promise((r) => setTimeout(r, 500));
+    });
+
+    // Update error if necessary
+    reader.addEventListener("error", (_) => error = true);
+
+    reader.readAsArrayBuffer(file.slice(0, MAX_SIZE));
 }
 
 function updateTableResults(file, mime_type, description) {
@@ -96,4 +106,7 @@ function updateTableResults(file, mime_type, description) {
 
     cell = row.insertCell();
     cell.textContent = description || "-";
+
+    // Reset progress bar after updating results
+    progress.value = 0;
 }
