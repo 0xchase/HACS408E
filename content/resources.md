@@ -213,3 +213,7 @@ type: default
 
 - [AT&T vs. Intel Assembly](/lectures/supplemental/asm-syntax/)
 - [Reversing Tips + Golang](/lectures/supplemental/reversing_tips/)
+
+## Site Tools
+
+- [File Tool](/tools/file-tool)
