@@ -70,8 +70,10 @@ analysis.
 ### Using the `file` Command
 
 Use the Linux `file` command to get a basic understanding of your unknown file's
-type. Alternatively you can upload the file into
-[this website](https://eakondratiev.github.io/file.htm) to get similar results.
+type. Alternatively, you can upload the file into
+[a browser based version](https://eakondratiev.github.io/file.htm) to get
+similar results. For small files, you can use a version
+[without leaving this site](/tools/file-tool/)!
 
 **Command**:
 
