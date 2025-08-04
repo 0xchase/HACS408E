@@ -13,3 +13,5 @@
 *.so.* filter=lfs diff=lfs merge=lfs -text
 *.jar filter=lfs diff=lfs merge=lfs -text
 *.vsix filter=lfs diff=lfs merge=lfs -text
+content/schedule/week-03/lab-2/curl filter=lfs diff=lfs merge=lfs -text
+content/schedule/week-03/lab-2/curl-static filter=lfs diff=lfs merge=lfs -text
