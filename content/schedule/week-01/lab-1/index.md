@@ -15,7 +15,7 @@ information.
 **Goals:**
 
 - Understand magic bytes and their role in identifying file types.
-- Use Binary Ninja's hex editor and overview features to analyze file patterns.
+- Use `hexdump` and `xxd` to get an overview of patterns in binary files.
 - Employ the `file` command for initial file type analysis.
 - Utilize the `strings` utility to extract readable text from binaries.
 
@@ -40,32 +40,69 @@ work and their limitations.
 - Linux ELF Executables
 - Windows PE Executables
 
-### Analyzing with Binary Ninja's Hex Editor
+### Analyzing patterns with Hex Viewers
 
-Download and open an unknown binary file in Binary Ninja. Explore both the hex
-editor and binary overview features to identify any recognizable patterns or
-structures.
+Download the following files and use the `xxd` command to view a hex/ascii
+representation of each. Explore both the hex and binary overview displays to
+identify any recognizable patterns or structures.
 
 <!-- deno-fmt-ignore-start -->
-{{< downloadbutton file="/Maryland_Terrapins_logo.svg.png" text="File 1" >}}
+{{< downloadbutton file="/Maryland_Terrapins_logo.svg.png" text="PNG File" >}}
 <!-- deno-fmt-ignore-end -->
 
-{{< downloadbutton file="file-1.jar" text="File 2" >}}
+{{< downloadbutton file="file-1.jar" text="JAR File" >}}
 
-{{< downloadbutton file="file-2.vsix" text="File 3" >}}
+{{< downloadbutton file="file-2.vsix" text="VSIX File" >}}
 
-**Task**: Describe any structure that you see in the hex representaion of the
-bytes. Try using the binary summary view. Does anything pop out here?
+> [!TIP]
+>
+> Pipe the output to the `less` command to scroll and search in the terminal.
+>
+> ```
+> xxd <file> | less
+> ```
+>
+> Use `\/` to enter search mode while using `less`. Type something and press
+> enter. Then use `n` and `Shift+N` to find the next match or the previous one
+> respectively. <br/><br/>
+>
+> ---
+>
+> Or use your favorite editor:
+>
+> ```
+> xxd <file> > output.txt
+> emacs output.txt
+> ```
 
-### Extracting Strings with Binary Ninja
+{{< question >}}
 
-Use the `strings` command to find readable text within a binary, including ASCII
-and UTF16 encoded strings.
+Describe any structure that you see in the hex representaion of the bytes. What
+about the ascii representation?
 
-**Command**: `strings unknown_file.bin`
+{{< /question >}}
 
-**Task**: Note down any meaningful strings or patterns that emerge from this
-analysis.
+### Extracting plaintext Strings
+
+Use the `strings` command to find readable text within each binary. Experiment
+with the `-n` flag to look for strings of different lengths.
+
+```{filename="Bash"}
+strings unknown_file.bin
+```
+
+{{< question >}}
+
+Is it difficult to find interesting strings in from the default `strings`
+output? How does this change if you use the `-n` flag?
+
+{{< /question >}}
+
+> [!TIP]
+> The `strings` command also supports different
+> [string encodings](https://en.wikipedia.org/wiki/Character_encoding). Try
+> using some of the other `strings` command line flags to find UTF 16 LE (little
+> endian) strings in `TODO: filename`.
 
 ### Using the `file` Command
 
@@ -113,14 +150,19 @@ earlier and describe what kinds of files are contained within them.
 
 {{< callout emoji="📝" >}}
 
-Submit your findings in a markdown file, including screenshots and answers to
-the following questions:
+Submit your answers to the above questions to ELMS. A markdown file is
+preferred, but if you have screenshots please render your report as a `.pdf`
+file.
+
+{{< /callout >}}
+
+## Reflection Questions
 
 1. How reliable are magic bytes for identifying file types? Imagine an example
    where a signature may fail.
+
 1. Discuss any discrepancies between the `file` command output and your findings
    from other methods. Did anything suprise you?
+
 1. How effective was the `strings` utility in revealing useful information? What
    limitations did you encounter?
-
-{{< /callout >}}
