@@ -1,6 +1,6 @@
 ---
-title: "Homework : TODO"
-weight: 6
+title: "Homework 2: TODO"
+weight: 2
 ---
 
 ## Description
