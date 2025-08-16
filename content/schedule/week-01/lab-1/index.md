@@ -15,8 +15,8 @@ information.
 **Goals:**
 
 - Understand magic bytes and their role in identifying file types.
-- Use `hexdump` and `xxd` to get an overview of patterns in binary files.
-- Employ the `file` command for initial file type analysis.
+- Use `xxd` to get an overview of patterns in binary files.
+- Employ the `file` command for initial filetype analysis.
 - Utilize the `strings` utility to extract readable text from binaries.
 
 **Estimated Time:** `45 Minutes`
@@ -29,16 +29,21 @@ information.
 
 ### Understanding Magic Bytes
 
-Magic bytes are specific sequences at the beginning of a file that help identify
-its format. Use online resources or documentation to explore how magic bytes
-work and their limitations.
+[Magic Bytes](https://en.wikipedia.org/wiki/File_format#Magic_number) are
+specific sequences at the beginning of a file that help identify its format. Use
+online resources or documentation to explore how magic bytes work and their
+limitations.
 
-**Task**: Research and write down the magic byte patterns for the following:
+{{< question >}}
+
+Research and write down the magic byte patterns for the following:
 
 - PNG Image Files
 - Zip Compressed Files
 - Linux ELF Executables
 - Windows PE Executables
+
+{{< /question >}}
 
 ### Analyzing patterns with Hex Viewers
 
@@ -77,7 +82,7 @@ identify any recognizable patterns or structures.
 
 {{< question >}}
 
-Describe any structure that you see in the hex representaion of the bytes. What
+Describe any structure that you see in the hex representation of the bytes. What
 about the ascii representation?
 
 {{< /question >}}
@@ -93,56 +98,76 @@ strings unknown_file.bin
 
 {{< question >}}
 
-Is it difficult to find interesting strings in from the default `strings`
-output? How does this change if you use the `-n` flag?
+- Is it difficult to find interesting strings in from the default `strings`
+  output?
+- How does this change if you use the `-n` flag?
+- Do the strings give you any ideas about what this filetype is used for?
+
+<p></p> <!-- trick to make this block render correctly. -->
 
 {{< /question >}}
 
 > [!TIP]
 > The `strings` command also supports different
 > [string encodings](https://en.wikipedia.org/wiki/Character_encoding). Try
-> using some of the other `strings` command line flags to find UTF 16 LE (little
+> using some of the other `strings` command line flags to find UTF-16 LE (little
 > endian) strings in `TODO: filename`.
 
 ### Using the `file` Command
 
-Use the Linux `file` command to get a basic understanding of your unknown file's
-type. Alternatively, you can upload the file into
+Use the `file` command to get a description each file's type.
+
+```{filename=Bash}
+file [file-1 file-2 ...]
+```
+
+Alternatively, you can upload the file into
 [a browser based version](https://eakondratiev.github.io/file.htm) to get
 similar results. For small files, you can use a version
 [without leaving this site](/tools/file-tool/)!
 
-**Command**:
-
-```
-file [file-1 file-2 ...]
-```
-
-**Task**: Answer the following questions:
+{{< question >}}
 
 - What types of files are the above?
 - Does this match the results from your initial magic bytes analysis?
 
+<p></p>
+
+{{< /question >}}
+
 ### Recursive Analysis
 
-If you encounter a zipped file, list its contents without extracting them. Then
-decompress the files to a specific directory of your choice.
+At least one of the files you downloaded is a compressed archive containing
+other files. Use the `unzip` program to list its contents without extracting
+them. Then decompress the files to a specific directory of your choice.
 
-```
-unzip -l unknown.zip
+```{filename=Bash}
+# List the contents of a zip file
+unzip -l file.zip
+
+# Unzip to a directory
+unzip -d <DIR> file.whatever
 ```
 
-**Task**: Examine the contents found within the compressed files you downloaded
-earlier and describe what kinds of files are contained within them.
+{{< question >}}
+
+Examine the contents found within the compressed files you downloaded earlier
+and describe what kinds of files are contained within them.
+
+{{< /question >}}
 
 {{% /steps %}}
 
+## General Lab Tips
+
 > [!TIP]
 >
+> - Use the `man` command to learn about how to use various Linux command line
+>   utilities. This information also be browsed at [many]() [different]()
+>   [sites]()
+>   - When in doubt, google "man command" and read the result.
 > - When analyzing magic bytes, remember they are not foolproof. Files can be
 >   mislabeled.
-> - In Binary Ninja, explore the documentation for advanced features like
->   pattern matching.
 > - The `file` command is a quick way to get a general idea but might not always
 >   be accurate.
 
@@ -156,6 +181,11 @@ file.
 
 {{< /callout >}}
 
+<!--
+TODO: I like the idea of having reflection questions at the end but I feel like
+if they aren't worth points then the students won't think about them. Maybe
+these could be worked into discussion posts?
+
 ## Reflection Questions
 
 1. How reliable are magic bytes for identifying file types? Imagine an example
@@ -165,4 +195,4 @@ file.
    from other methods. Did anything suprise you?
 
 1. How effective was the `strings` utility in revealing useful information? What
-   limitations did you encounter?
+   limitations did you encounter? -->
