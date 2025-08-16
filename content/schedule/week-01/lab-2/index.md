@@ -29,7 +29,7 @@ device so we've limited the scope to a Linux based router.
 ### Open Source Research
 
 One of the first things you should do when doing firmware analysis is to see
-what you can find out about the divice you want to analyze. Depending on what
+what you can find out about the device you want to analyze. Depending on what
 your looking at there may already be tons of information and previous analysis
 work online.
 
@@ -37,12 +37,17 @@ We'll be looking at a relatively old router/firmware:
 
 <img src="https://static.tp-link.com/Archer-C7-01_1485312801057e.jpg" alt="AC1750 Wireless Dual Band Gigabit Router 1">
 
-> [!IMPORTANT] **What brand/company makes this router?**
-
 Find the product page for this router (version 4) and check the specifications
 tab.
 
-> [!IMPORTANT] **Does it tell you what kind of processor the router uses?**
+{{< question >}}
+
+- What brand/company makes this router?
+- Does it tell you what kind of processor the router uses?
+
+<p></p>
+
+{{< /question >}}
 
 ### Get / Download the Firmware
 
@@ -57,8 +62,11 @@ We'll be using `Archer C7(US)_V4_190411`:
 Unzip the firmware from the vendor and run `file` on each of the extracted
 items.
 
-> [!IMPORTANT] **Which file do you think is the firmware? What kind of file is
-> it?**
+{{< question >}}
+
+Which file do you think is the firmware? What kind of file is it?
+
+{{< /question >}}
 
 ### Walk the Binary
 
@@ -115,7 +123,7 @@ $ export BOOT_LENGTH=$((63976 - 23728))
 $ dd if=firmware.bin of=bootloader.bin bs=1 skip=$BOOT_OFFSET count=$BOOT_LENGTH
 ```
 
-> [!NOTE] What's happening here?
+> [!NOTE] **What's happening here?**
 >
 > - `dd` is a very powerful program and its **REALLY** old which is why it's
 >   argument syntax looks different from many of the other Linux commands you
@@ -134,14 +142,26 @@ $ dd if=firmware.bin of=bootloader.bin bs=1 skip=$BOOT_OFFSET count=$BOOT_LENGTH
 Finally run `file` on the extracted `bootloader.bin` and examine the output. Is
 it similar to what `binwalk` reports?
 
-> [!IMPORTANT] When was this u-boot image created?
+{{< question >}}
 
-> [!IMPORTANT] What architecture was it compiled for?
->
-> - [List of Instruction Set Architecture](https://en.wikipedia.org/wiki/Comparison_of_instruction_set_architectures#Instruction_sets)
-> - HINT: Some common ones are Arm, RiscV, Mips, PowerPC, and x86
+- When was this u-boot image created?
 
-> [!IMPORTANT] Is it a 32 or 64 bit architecture?
+<p></p>
+{{< /question >}}
+
+> [!TIP]
+> You can find a
+> [list of instruction sets](https://en.wikipedia.org/wiki/Comparison_of_instruction_set_architectures#Instruction_sets)
+> on Wikipedia.
+
+{{< question >}}
+
+- What architecture was it compiled for?
+  - HINT: Some common ones are Arm, RiscV, Mips, PowerPC, and x86
+- Is it a 32 or 64 bit architecture?
+
+<p></p>
+{{< /question >}}
 
 Repeat the process above to extract the next recognized chunk of data. Once
 extracted, run `file` on the contents to find out how to continue extracting the
@@ -159,7 +179,11 @@ $ 7z e kernel.lzma -so > kernel.bin
 $ file kernel.bin
 ```
 
-> [!IMPORTANT] Does the `file` command recognize the file format?
+{{< question >}}
+
+Does the `file` command recognize the file format?
+
+{{< /question >}}
 
 If you were trying to learn more about how this device works, you can use
 `binwalk` or `strings` to start the normal reversing process. We won't dive into
@@ -170,9 +194,13 @@ the kernel so in this class so you can leave it for now.
 Finally we can move on the meat of the embedded device to get at the actual
 files.
 
-> [!IMPORTANT] What is [SquashFS](https://en.wikipedia.org/wiki/SquashFS)?
+{{< question >}}
 
-> [!IMPORTANT] How many bytes does the filesystem take up in the firmware blob?
+- What is [SquashFS](https://en.wikipedia.org/wiki/SquashFS)?
+- How many bytes does the filesystem take up in the firmware blob?
+
+<p></p>
+{{< /question >}}
 
 Using `dd`, extract the filesystem:
 `dd if=firmware.bin of=filesystem.sqfs skip=1148290 bs=1 count=<SIZE>`
@@ -191,8 +219,8 @@ directory of your machine's filesystem.
 
 ## Tips
 
-- Analyzing firmware often relies on your ability to navigate linux systems.
-  Knowing how to use essential linux commands like `find`, `file`, `dd`,
+- Analyzing firmware often relies on your ability to navigate Linux systems.
+  Knowing how to use essential Linux commands like `find`, `file`, `dd`,
   `strings`, `grep`, etc. will make you a better reverse engineer!
 - Don't forget to skim
   [the `manpage`](https://man7.org/linux/man-pages/index.html) for commands you
