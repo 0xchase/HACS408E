@@ -1,3 +1,12 @@
+Fi
+MacOS
+OS
 OpenWRT
+SquashFS
+UMD's
+VMs
+Wi
+X11
 callout
 downloadbutton
+ip
