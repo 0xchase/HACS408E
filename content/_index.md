@@ -15,19 +15,22 @@ the security properties of various systems. Topics covered include assembly
 language, executable file formats, operating system internals, and the
 static/dynamic analysis of compiled binaries. Students will apply these concepts
 to real-world scenarios like malware analysis and vulnerability analysis with
-interactive labs, at-home assignments, and a final project.
+interactive labs, at-home assignments, a midterm presentation, and a final
+challenge.
 
 ## Explore
 
 {{< cards >}}
 
-{{< card link="syllabus/" title="Syllabus" icon="book-open" >}}
+{{< card link="schedule/" title="Schedule" icon="book-open" >}}
 
-{{< card link="schedule/" title="Schedule" icon="user" >}}
+{{< card link="assignments/" title="Assignments" icon="book-open" >}}
 
-{{< card link="lectures/" title="Lectures" icon="book-open" >}}
+{{< card link="lectures/" title="Lectures" icon="presentation-chart-line" >}}
 
-{{< card link="resources/" title="Resources" icon="book-open" >}}
+{{< card link="resources/" title="Resources" icon="search" >}}
+
+{{< card link="syllabus/" title="Syllabus" icon="document-text" >}}
 
 {{< /cards >}}
 
@@ -36,4 +39,4 @@ interactive labs, at-home assignments, and a final project.
 | Name         | Contact Info                                | Office Hours                                                                                             |
 | :----------- | :------------------------------------------ | :------------------------------------------------------------------------------------------------------- |
 | Chase Kanipe | [ckanipe@umd.edu](mailto://ckanipe@umd.edu) | Mondays 6:00-7:00 PM, on [Discord](https://discord.com/channels/1271844535538024489/1271844535781031989) |
-| Luke Mains   | [lmains@umd.edu](mailto://lmains@umd.edu)   | Fridays 6:00-8:00 PM, on [Discord](https://discord.com/channels/1271844535538024489/1271844535781031989) |
+| Luke Mains   | [lmains@umd.edu](mailto://lmains@umd.edu)   | Fridays 5:00-7:30 PM, PHY-4311B                                                                          |

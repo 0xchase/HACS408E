@@ -1,17 +1,15 @@
 ---
-title: "Windows: Setting Up RDP"
+title: "Windows VM: Setting Up RDP"
 ---
 
-{{% callout type=warning %}}
-
-If you are opening up the `rdp` port, then it is recommended that you change the
-password of the `ACES` user to somthing other than the default!
-
-1. Open the settings application.
-1. Go to Accounts settings.
-1. Under `Sign-In Options`, change the password.
-
-{{% /callout %}}
+> [!WARNING]
+>
+> If you are opening up the `rdp` port, then it is recommended that you change
+> the password of the `ACES` user to something other than the default!
+>
+> 1. Open the settings application.
+> 1. Go to Accounts settings.
+> 1. Under `Sign-In Options`, change the password.
 
 {{% steps %}}
 
@@ -19,9 +17,9 @@ password of the `ACES` user to somthing other than the default!
 
 ### Enable remote desktop settings.
 
-### Open the powershell application and run `ipconfig` to get your IP address.
+### Open PowerShell or Cmd.exe from the start menu and run `ipconfig` to get your IP address.
 
-```{filename=Powershell}
+```{filename=PowerShell}
 > ifconfig
 ```
 

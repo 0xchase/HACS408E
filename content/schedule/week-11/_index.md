@@ -2,6 +2,7 @@
 title: "Week 11: Kernel (Rootkits)"
 prev: schedule/week-10
 next: schedule/week-12
+draft: true
 ---
 
 ### Slides
@@ -12,7 +13,3 @@ next: schedule/week-12
 
 - [Lab 1](lab-1/)
 - [Lab 2](lab-2/)
-
-### Homework
-
-- [Homework](hw/)

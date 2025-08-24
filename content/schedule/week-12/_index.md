@@ -2,6 +2,7 @@
 title: "Week 12: Firmware Analysis + Memory Forensics"
 prev: schedule/week-11
 next: schedule/week-13
+draft: true
 ---
 
 ### Slides
@@ -12,7 +13,3 @@ next: schedule/week-13
 
 - [Lab 1](lab-1/)
 - [Lab 2](lab-2/)
-
-### Homework
-
-- [Homework](hw/)

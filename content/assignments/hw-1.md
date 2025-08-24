@@ -1,6 +1,7 @@
 ---
 title: "Homework 1: TODO"
 weight: 1
+draft: true
 ---
 
 ## Description

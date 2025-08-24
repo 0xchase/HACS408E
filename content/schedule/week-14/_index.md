@@ -2,6 +2,7 @@
 title: "Week 14: Capture The Flag"
 prev: schedule/week-13
 next: schedule/final-project
+draft: true
 ---
 
 ### Description
@@ -9,9 +10,5 @@ next: schedule/final-project
 TODO
 
 ### Labs
-
-N/A
-
-### Homework
 
 N/A

@@ -2,6 +2,7 @@
 title: "Week 05: Cryptanalysis + Network Protocols"
 prev: schedule/week-04
 next: schedule/week-06
+draft: true
 ---
 
 ### Slides
@@ -12,7 +13,3 @@ next: schedule/week-06
 
 - [Lab 1](lab-1/)
 - [Lab 2](lab-2/)
-
-### Homework
-
-- [Homework](hw/)

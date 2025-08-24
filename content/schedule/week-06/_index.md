@@ -2,6 +2,7 @@
 title: "Week 06: Malware I"
 prev: schedule/week-05
 next: schedule/week-07
+draft: true
 ---
 
 ### Slides
@@ -13,7 +14,3 @@ next: schedule/week-07
 - [Lab 1](lab-1/)
 - [Lab 2](lab-2/)
 - [Demo Pcap](http_with_jpeg.pcap)
-
-### Homework
-
-- [Homework](hw/)

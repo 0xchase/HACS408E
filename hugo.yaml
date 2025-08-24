@@ -18,20 +18,20 @@ markup:
 
 menu:
   main:
-    - name: Syllabus
-      pageRef: /syllabus/
-      weight: 1
     - name: Schedule
       pageRef: /schedule/
-      weight: 2
+      weight: 1
     - name: Assignments
       pageRef: /assignments/
-      weight: 3
+      weight: 2
     - name: Lectures
       pageRef: /lectures/
-      weight: 4
+      weight: 3
     - name: Resources
       pageRef: /resources/
+      weight: 4
+    - name: Syllabus
+      pageRef: /syllabus/
       weight: 5
     - name: Search
       weight: 6
@@ -56,12 +56,15 @@ menu:
     - name: Midterm Group Presentations
       pageRef: /schedule/week-08/
       weight: 4
-    - name: Final Report
-      pageRef: /schedule/final-project/
-      weight: 5
+    # - name: Final
+    #   pageRef: /schedule/final-project/
+    #   weight: 5
     - name: Lectures Overview
       pageRef: /lectures
       weight: 6
+    - name: Syllabus
+      pageRef: /syllabus/
+      weight: 7
 
 params:
   navbar:

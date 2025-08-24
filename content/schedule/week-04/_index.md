@@ -2,6 +2,7 @@
 title: "Week 04: Binary Analysis II"
 prev: schedule/week-03
 next: schedule/week-05
+draft: true
 ---
 
 ### Slides
@@ -12,7 +13,3 @@ next: schedule/week-05
 
 - [Lab 1](lab-1/)
 - [Lab 2](lab-2/)
-
-### Homework
-
-- [Homework](hw/)

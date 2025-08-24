@@ -2,6 +2,7 @@
 title: "Week 13: Android Applications / Modern Languages"
 prev: schedule/week-12
 next: schedule/week-14
+draft: true
 ---
 
 ### Slides
@@ -12,7 +13,3 @@ next: schedule/week-14
 
 - [Lab 1](lab-1/)
 - [Lab 2](lab-2/)
-
-### Homework
-
-- [Homework](hw/)

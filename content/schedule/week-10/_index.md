@@ -2,6 +2,7 @@
 title: "Week 10: Vulnerability Analysis II"
 prev: schedule/week-09
 next: schedule/week-11
+draft: true
 ---
 
 ### Slides
@@ -12,7 +13,3 @@ next: schedule/week-11
 
 - [Lab 1](lab-1/)
 - [Lab 2](lab-2/)
-
-### Homework
-
-- [Homework](hw/)

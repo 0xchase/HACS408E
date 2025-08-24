@@ -2,7 +2,8 @@
 title: "Final Project"
 prev: schedule/week-14
 sidebar:
-  exclude: true
+   exclude: true
+draft: true
 ---
 
 ## Description
