@@ -1,6 +1,7 @@
 ---
 title: "Lab 1: Firmware Startup Analysis"
 weight: 1
+draft: true
 ---
 
 ## Overview

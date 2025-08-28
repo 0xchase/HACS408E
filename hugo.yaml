@@ -42,16 +42,20 @@ menu:
       url: "https://github.com/0xchase/HACS408E"
       params:
         icon: github
+  
+  # !!! NOTE !!!
+  # The links below MUST end with a '/' or the link will break on
+  # the production server!
   sidebar:
     - name: More
       params:
         type: separator
       weight: 1
     - name: Linux VM - SSH Setup
-      pageRef: /schedule/lab-setup/ssh-connection
+      pageRef: /schedule/lab-setup/ssh-connection/
       weight: 2
     - name: Windows VM - RDP Setup
-      pageRef: /schedule/lab-setup/rdp-connection
+      pageRef: /schedule/lab-setup/rdp-connection/
       weight: 3
     - name: Midterm Group Presentations
       pageRef: /schedule/week-08/
@@ -60,7 +64,7 @@ menu:
     #   pageRef: /schedule/final-project/
     #   weight: 5
     - name: Lectures Overview
-      pageRef: /lectures
+      pageRef: /lectures/
       weight: 6
     - name: Syllabus
       pageRef: /syllabus/

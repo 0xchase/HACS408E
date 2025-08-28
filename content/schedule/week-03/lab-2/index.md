@@ -1,6 +1,7 @@
 ---
 title: "Lab 2: Understanding Executable File Formats"
 weight: 2
+draft: true
 ---
 
 ## Overview

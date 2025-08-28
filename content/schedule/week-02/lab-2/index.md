@@ -1,6 +1,7 @@
 ---
 title: "Lab 2: System Analysis"
 weight: 2
+draft: true
 ---
 
 ## Overview

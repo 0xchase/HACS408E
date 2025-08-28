@@ -1,6 +1,7 @@
 ---
 title: "Lab 2: TODO"
 weight: 2
+draft: true
 ---
 
 ## Overview
