@@ -237,8 +237,8 @@ discussion has been in some way hindered by the learning environment.
   of class. If you miss class, you can still complete the labs and submit them
   after. Please let both of the instructors know if you will not be able to make
   it to class.
-- Labs are graded for completeness only. As long as you try to answer the
-  questions, and submit, you’ll get full points.
+- Labs are graded but not harshly. As long as you try to answer the questions as
+  best you can, you’ll get full points.
 
 ### **Team Presentation**
 
@@ -253,19 +253,21 @@ discussion has been in some way hindered by the learning environment.
 
 ### **Final Project**
 
-- In lieu of a final exam students will be given an executable to reverse
-  engineer. A final report of your findings must be submitted by 11:59 pm the
+- In lieu of a final exam students will be given a final project to complete.
+  Previously this has been a challenging executable to reverse engineer but it
+  may not be the same year to year. A final report will be due by 11:59 pm the
   Sunday before finals week.
 
 ## **Grading Structure**
 
-| Assignment            | Percentage %                 |
-| :-------------------- | :--------------------------- |
-| **Homework**          | **50% (Distributed Evenly)** |
-| **Quizzes**           | **10%**                      |
-| **Team Presentation** | **20%**                      |
-| **Final Project**     | **20%**                      |
-| **Total**             | **100%**                     |
+| Assignment                        | Percentage % (Distributed evenly across assignments) |
+| :-------------------------------- | :--------------------------------------------------- |
+| **Homework**                      | **40%**                                              |
+| **In-class Participation (Labs)** | **10%**                                              |
+| **Quizzes**                       | **10%**                                              |
+| **Team Presentation**             | **20%**                                              |
+| **Final Project**                 | **20%**                                              |
+| **Total**                         | **100%**                                             |
 
 ## 
 
