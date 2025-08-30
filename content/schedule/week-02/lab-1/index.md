@@ -1,23 +1,23 @@
 ---
 title: "Lab 1: Firmware Startup Analysis"
 weight: 1
-draft: true
+draft: false
 ---
 
 ## Overview
 
 {{< callout emoji="💡" >}}
 
-The goal of this lab is to get you familliar with some new tools for analyzing
+The goal of this lab is to get you familiar with some new tools for analyzing
 extracted filesystems from embedded devices. Also this should hopefully serve as
 an initial guide for how to start looking for vulnerabilities in embedded
 systems.
 
 **Goals:**
 
-- Practice linux file searching commands
-- Learn how to use `chroot`
-- (Indirectly) work with `qemu` user-mode emulation
+- Use the `binwalk` firmware reversing tool.
+- Practice common Linux commands and get more practice working in a terminal.
+- Understand how to analyze the boot process of embedded Linux devices.
 
 **Estimated Time:** `45 Minutes`
 
@@ -35,90 +35,116 @@ ReFirmLabs, it uses
 other signatures to figure out what files are contained in any blob of data
 (like firmware for example).
 
-Create a copy of the firmware file and call it `firmware.bin`. Then run binwalk
-on it:
+Create a copy of the firmware file you downloaded from last weeks lab and call
+it `firmware.bin`. It is always good practice to save a backup in case your
+analysis changes the firmware. Then run `binwalk` on it:
 
 ```bash {filename=Bash}
-$ binwalk firmware.bin | tee output.log | less -S
+$ binwalk firmware.bin | tee output.log | less -SR
 ```
 
-What `binwalk` tells you is for every result:
-
-- the offset into the file (both in base 10 and base 16)
-- a description of the embedded data
+> [!TIP]
+> If you see some junk output like `ESC[1;35m` while viewing the output with
+> less, then you forgot the `-R` flag. You can set this option while `less` is
+> running by just typing `-R`.
+>
+> This option tells `less` to interpret ascii color code sequences and show the
+> colored output to your terminal.
 
 {{< question >}}
 
-How many results do you see?
+How many results do you see? Does this match what you expected from the previous
+week?
 
 {{< /question >}}
 
 Try again with the `-Me` flags:
 
 ```bash {filename=Bash}
-$ binwalk -Me | tee output_full.log | less -S
+$ binwalk -Me | tee output_full.log
 ```
 
 {{< question >}}
 
-Explain how the results differ.
+Explain how the results differ, or explain what the `-M` and `-e` options for
+binwalk do.
 
 {{< /question >}}
 
-### Extract the Filesystem
+### Excavating the Filesystem
 
-Finally we can move on the meat of the embedded device to get at the actual
-files.
+Binwalk knows how to handle SquashFS data and it was nice enough to extract all
+the files for us. To start getting a sense of what files are on the device, use
+the `fd` and `wc` commands.
 
-{{< question >}}
+- The `fd` utility is a rewrite of the `find` program which is used to 'find'
+  files in a directory that match some pattern.
+- The `wc` command is short for 'word count' and will tell you how many lines
+  are in a file.
 
-- Explain what [SquashFS](https://en.wikipedia.org/wiki/SquashFS) is used for in
-  embedded systems.
+```bash {filename=Bash}
+fd '.' extractions | wc -l
+```
 
-- How many bytes does the filesystem take up in your firmware blob?
+The '.' is a
+[regular expression](https://en.wikipedia.org/wiki/Regular_expression) that
+matches any character.
 
-{{< /question >}}
-
----
+Change directories into the root of the SquashFS file system. When you `ls` in
+this directory, you should see a list of files that looks similar to the root
+(`/`) directory of your Linux VM. This is where we left off at the end of last
+week.
 
 ### Finding the Root Password
 
-Linux systems store the user password in the `/etc/shadow` file. Find this file
-in the extracted filesystem and compare it to the one on your Linux VM.
+When assessing the security of embedded devices, a common first step is to see
+if you can find any hard coded passwords or hashes. Linux systems store the user
+password in the `/etc/shadow` file. Find this file in the extracted filesystem
+and compare it to the one on your Linux VM.
 
 {{< question >}}
 
-Does the root user have a password set?
+<!-- deno-fmt-ignore-start -->
+- How do you tell if a Linux user has a password set? Does the root user have a
+  password set? 
+- What other users are part of this system?
+<!--deno-fmt-ignore-end -->
+
+<p></p>
 
 {{< /question >}}
 
 ### Examine the Init Process
 
 The next step in firmware analysis is to reverse engineer the initialization
-process to see what a "normal" running system might look like. This is too much
-to work though in the short ammount of time you have for a lab but we can start
-on the process.
+process to see what a "normal" running system might look like. Getting into full
+embedded device [re-hosting](https://dl.acm.org/doi/10.1145/3423167) is out of
+scope for this class but we will learn some of the process.
 
-This router runs a version of [OpenWRT](https://openwrt.org/) which you may have
-seen references to earlier on. Your goal is to find the program responsible for
-hosting the HTTP web interface that a user would normally interact with when
-configuring the router. Feel free to use any means you like but `grep`-ing for
-strings will definitely be useful. Start with the `/etc/inittab` script which is
-one of
-[the first things run on a Unix system](https://en.wikipedia.org/wiki/Init).
+Review the [Unix `init` process](https://en.wikipedia.org/wiki/Init) and use
+that to start searching for the start up files on this system.
 
 {{< question >}}
 
-What web server does this firmware use? Please describe how you found it.
+Explain three things that the `boot` script does when the system is `start`ed.
+
+{{< /question >}}
+
+### Finding the Web Server
+
+This router runs a version of [OpenWRT](https://openwrt.org/) which you may have
+seen references to. `OpenWRT`, like other router operating systems, provides a
+web interface for configuring settings on the router. Find the program
+responsible for hosting the HTTP web interface by searching through the init
+scripts.
+
+{{< question >}}
+
+What web server does this firmware use?
 
 {{< /question >}}
 
 {{% /steps %}}
-
-## Tips
-
-- [`man chroot`](https://man7.org/linux/man-pages/man2/chroot.2.html)
-- [OpenWRT Init Scripts](https://openwrt.org/docs/techref/initscripts)
 
 ## Submission
 
