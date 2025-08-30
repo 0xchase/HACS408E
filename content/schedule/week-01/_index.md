@@ -6,7 +6,7 @@ next: /schedule/week-02/
 
 ### Slides
 
-<iframe src="/todo" width="576" height="420" title="Week 1" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="/404.html" width="576" height="420" title="Week 1" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ### Labs
 

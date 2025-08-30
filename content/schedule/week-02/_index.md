@@ -2,12 +2,12 @@
 title: "Week 02: Source Code Analysis"
 prev: /schedule/week-01/
 next: /schedule/week-03/
-draft: true
+draft: false
 ---
 
 ### Slides
 
-<iframe src="/todo" width="576" height="420" title="Week 2" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="/404.html" width="576" height="420" title="Week 2" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ### Labs
 
