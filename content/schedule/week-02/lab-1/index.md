@@ -8,10 +8,11 @@ draft: false
 
 {{< callout emoji="💡" >}}
 
-The goal of this lab is to get you familiar with some new tools for analyzing
-extracted filesystems from embedded devices. Also this should hopefully serve as
-an initial guide for how to start looking for vulnerabilities in embedded
-systems.
+The goal of this lab is to immerse you in the practical aspects of reverse
+engineering a Linux-based embedded device. You will gain hands-on experience by
+traversing the Linux filesystem and understanding the init process for the
+operating system. Also this weeks labs should hopefully serve as an initial
+guide for how to start looking for vulnerabilities in embedded systems.
 
 **Goals:**
 

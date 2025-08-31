@@ -8,12 +8,19 @@ draft: false
 
 {{< callout emoji="💡" >}}
 
-TODO
+The goal of this lab is to practice core reversing skills by exploring the code
+that comprises the web interface utilized for router configuration.
+Additionally, you will learn to leverage a Common Vulnerabilities and Exposures
+(CVE) database as a tool to identify vulnerabilities specific to the router
+firmware analyzed in previous labs. This lab aims to not only bolster your
+technical skills but also to enhance your ability to methodically approach
+system analysis.
 
 **Goals:**
 
 - Review Javascript/HTML source code
-- Learn about HTTP requests and how web servers work
+- Learn a little about HTTP requests and web servers
+- Use a CVE database to look up vulnerabilities
 
 **Estimated Time:** `45 Minutes`
 
@@ -119,17 +126,54 @@ What happens when you complete the form for the first time login page?
 
 What types of
 [HTTP Requests](https://en.wikipedia.org/wiki/HTTP#HTTP/1.1_request_messages)
-are made when you first open the site and click the login button? <br></br>
-HINT: Check the terminal where you ran the python HTTP server.
+are made when you first open the site and click the login button?
+
+- HINT: Check the terminal where you ran the python HTTP server.
 
 {{< /question >}}
 
 ### Exploring the Lua Side of Things
 
-### Finding Vulnerabilities
+You may notice from the console errors in the developer tools that the `POST`
+requests are failing. Specifically they return a `500`
+[response status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#server_error_responses)
+which means there was an error on the server hosting the web page.
 
-You've explored many parts of the firmware for the `ARCHER C7` Router. Your last
-task is to look into other reported vulnerabilities for our version of the
+Open the script that the site is making a post request to. Remember that when
+you browse to `/foo/bar`, that translates to `<web_root>/foo/bar` on the server.
+This file is a script that starts with the characters `#!` which is a Unix
+convention called
+[shebang (or hashbang)](https://en.wikipedia.org/wiki/Shebang_(Unix)). It tells
+the operating system to use the program following the `#!` to interpret the
+contents of the script.
+
+{{< question >}}
+
+What is the interpreter used for this script?
+
+{{< /question >}}
+
+Based on the contents of the failed post request, can you find the Lua file that
+is responsible for handling the login procedure? Practice using tools like `fd`
+and `rg` to search for relevant files on disk.
+
+{{< question >}}
+
+What is the full path from the `squashfs_root` to the Lua script responsible for
+handling the login code? <br></br> Using the `file` command, what type of file
+is this?
+
+{{< /question >}}
+
+At this point we can spend hours continuing down this path of analyzing and
+reversing the Lua bytecode or looking at other parts of the system. However, the
+goal of this exercise was to get you familiar with exploring an unknown
+filesystem and using references and links between files to guide your reversing.
+
+### Checking for Reported Vulnerabilities
+
+You've explored a few parts of the firmware for the `ARCHER C7` Router. Your
+last task is to look into other reported vulnerabilities for our version of the
 firmware. There are a few different
 [CVE](https://www.redhat.com/en/topics/security/what-is-cve) databases security
 researchers to report and identify vulnerabilities in programs. You can search
@@ -137,12 +181,14 @@ for issues related to our device using the following link:
 
 - [`https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=AC1750`](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=AC1750)
 
-Find `CVE-2020-10886`.
+First notice that vulnerability reports are coming out all the time. The
+firmware at image we've been looking at is pretty old so search for
+`CVE-2020-10886`.
 
 {{< question >}}
 
-Is the vulnerable program in our firmware dump? (I.e can you find it in the
-extracted filesystem?)
+Read the vulnerability description and try to find the referenced file in the
+filesystem. Does this mean that the router firmware is vulnerable to this CVE?
 
 {{< /question >}}
 
