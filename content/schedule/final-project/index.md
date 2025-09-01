@@ -35,6 +35,6 @@ any information you learned while researching any of the technologies used by
 the challenge programs.
 
 As always, the write-up and any code you wrote should be submitted to
-[ELMS](https://umd.instructure.com/courses/1374508/assignments).
+[ELMS](https://umd.instructure.com/courses/1390353/assignments).
 
 {{< /callout >}}

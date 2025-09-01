@@ -152,6 +152,6 @@ What web server does this firmware use?
 {{< callout emoji="📝" >}}
 
 Submit a report with answers to questions to
-[ELMS](https://umd.instructure.com/courses/1374508/assignments).
+[ELMS](https://umd.instructure.com/courses/1390353/assignments).
 
 {{< /callout >}}

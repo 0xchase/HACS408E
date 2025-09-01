@@ -16,8 +16,8 @@ of your group members. We will respond with a sample for your group to analyze.
 
 {{< callout type=info >}}
 
-You can add yourself to a group in the `People` secion of our
-[ELMS Class](https://umd.instructure.com/courses/1374508/groups#tab-106948)
+You can add yourself to a group in the `People` section of our
+[ELMS Class](https://umd.instructure.com/courses/1390353/groups#tab-112702)
 
 {{< /callout >}}
 
@@ -55,26 +55,37 @@ summarize your analysis, with any background information necessary to help the
 class understand your analysis. At a minimum, it should answer the following
 questions.
 
-## Rubric (20 pts)
+## Rubric (`20 pts`)
 
-1. Conduct Research (5 pts)
+1. Conduct Research (`5 pts`)
    - What type of malware is it and what family does it belong to?
    - Look for information about this malware type from other researchers and
      give a summary in your presentation.
    - What indicators of compromise (IOCs) are there for this sample?
 
-2. Initial Triage (3 pts)
+2. Initial Triage (`3 pts`)
    - What kind of file is the malware?
    - What interest imports, exports, and strings does the malware contain?
-3. Demonstrate Reversing Skills (7 pts)
+
+3. Demonstrate Reversing Skills (`7 pts`)
    - Demonstrate use of reversing tools learned in class (such as binaryninja)
      to understand what this binary does.
    - Does it match what you found in your initial research? If not show how it
      is different.
-   - Show both static and dynamic analysis. If you encountered any challenges
-     explain how you addressed (successfully or not) them.
-4. Network & System Analysis (5 pts)
+   - Show both static and dynamic analysis workflows. If you encountered any
+     challenges explain how you addressed (successfully or not) them.
+
+4. Network & System Analysis (`5 pts`)
    - Does it interact with the network?
    - Does the behavior include file modifications, additional payloads, process
      injection, registry modifications, or persistence mechanisms?
    - What is the overall purpose of this sample?
+
+## Submission
+
+{{< callout emoji="📝" >}}
+
+Please submit your presentation as a PDF to
+[ELMS](https://umd.instructure.com/courses/1390353/assignments).
+
+{{< /callout >}}
