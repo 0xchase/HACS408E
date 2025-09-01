@@ -42,10 +42,8 @@ tab.
 
 {{< question >}}
 
-- What brand/company makes this router?
-- Does it tell you what kind of processor the router uses?
-
-<p></p>
+What brand/company makes this router?<br></br> Does it tell you what kind of
+processor the router uses?
 
 {{< /question >}}
 
@@ -64,7 +62,8 @@ items.
 
 {{< question >}}
 
-Which file do you think is the firmware? What kind of file is it?
+Which file do you think is the firmware? <br></br> What kind of file does the
+`file` command say it is?
 
 {{< /question >}}
 
@@ -117,9 +116,9 @@ data using the `dd` command.
 
 First we'll extract the bootloader (`u-boot image`):
 
-```bash {filename=Bash}
+```bash {filename=Fish}
 $ export BOOT_OFFSET=23728
-$ export BOOT_LENGTH=$((63976 - 23728))
+$ export BOOT_LENGTH=$(math "63976 - 23728")
 $ dd if=firmware.bin of=bootloader.bin bs=1 skip=$BOOT_OFFSET count=$BOOT_LENGTH
 ```
 
@@ -144,9 +143,8 @@ it similar to what `binwalk` reports?
 
 {{< question >}}
 
-- When was this u-boot image created?
+When was this u-boot image created?
 
-<p></p>
 {{< /question >}}
 
 > [!TIP]
@@ -156,11 +154,10 @@ it similar to what `binwalk` reports?
 
 {{< question >}}
 
-- What architecture was it compiled for?
-  - HINT: Some common ones are Arm, RiscV, Mips, PowerPC, and x86
-- Is it a 32 or 64 bit architecture?
+What architecture was it compiled for? Is it a 32 or 64 bit architecture?
 
-<p></p>
+- HINT: Some common ones are Arm, RiscV, Mips, PowerPC, and x86
+
 {{< /question >}}
 
 Repeat the process above to extract the next recognized chunk of data. Once
@@ -196,10 +193,9 @@ files.
 
 {{< question >}}
 
-- What is [SquashFS](https://en.wikipedia.org/wiki/SquashFS)?
-- How many bytes does the filesystem take up in the firmware blob?
+What is [SquashFS](https://en.wikipedia.org/wiki/SquashFS)? <br></br> How many
+bytes does the filesystem take up in the firmware blob?
 
-<p></p>
 {{< /question >}}
 
 Using `dd`, extract the filesystem:
@@ -211,9 +207,10 @@ contents.
 At this point you should see a folder structure similar to the root (`/`)
 directory of your machine's filesystem.
 
-<!-- deno-fmt-ignore-start -->
-> [!IMPORTANT] Are there any items in your machine's root folder that are missing from the routers file system?
-<!-- deno-fmt-ignore-end -->
+> [!IMPORTANT] **`INFO`**
+>
+> Are there any items in your machine's root folder that are missing from the
+> routers file system?
 
 {{% /steps %}}
 

@@ -98,12 +98,10 @@ strings unknown_file.bin
 
 {{< question >}}
 
-- Is it difficult to find interesting strings in from the default `strings`
-  output?
-- How does this change if you use the `-n` flag?
-- Do the strings give you any ideas about what this filetype is used for?
-
-<p></p> <!-- trick to make this block render correctly. -->
+Is it difficult to find interesting strings in from the default `strings`
+output? <br></br> How does this change if you use the `-n` flag?
+<br></br> Do the strings give you any ideas about what this filetype is used
+for?
 
 {{< /question >}}
 
@@ -128,10 +126,8 @@ similar results. For small files, you can use a version
 
 {{< question >}}
 
-- What types of files are the above?
-- Does this match the results from your initial magic bytes analysis?
-
-<p></p>
+What types of files are the above?<br></br> Does this match the results from
+your initial magic bytes analysis?
 
 {{< /question >}}
 
