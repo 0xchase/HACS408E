@@ -67,7 +67,7 @@ identify any recognizable patterns or structures.
 > xxd <file> | less
 > ```
 >
-> Use `\/` to enter search mode while using `less`. Type something and press
+> Use `/` to enter search mode while using `less`. Type something and press
 > enter. Then use `n` and `Shift+N` to find the next match or the previous one
 > respectively. <br/><br/>
 >
