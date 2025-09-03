@@ -36,7 +36,7 @@ challenge.
 
 ## Instructors
 
-| Name         | Contact Info                                | Office Hours                                                                                             |
-| :----------- | :------------------------------------------ | :------------------------------------------------------------------------------------------------------- |
-| Chase Kanipe | [ckanipe@umd.edu](mailto://ckanipe@umd.edu) | Mondays 6:00-7:00 PM, on [Discord](https://discord.com/channels/1271844535538024489/1271844535781031989) |
-| Luke Mains   | [lmains@umd.edu](mailto://lmains@umd.edu)   | Fridays 5:00-7:30 PM, PHY-4311B                                                                          |
+| Name         | Contact Info                                | Office Hours                                                      |
+| :----------- | :------------------------------------------ | :---------------------------------------------------------------- |
+| Chase Kanipe | [ckanipe@umd.edu](mailto://ckanipe@umd.edu) | Mondays 6:00-7:00 PM, on [Discord](https://discord.com/channels/) |
+| Luke Mains   | [lmains@umd.edu](mailto://lmains@umd.edu)   | Fridays 5:00-7:30 PM, PHY-4311B                                   |
