@@ -7,4 +7,4 @@ toc: false
 
 ### Assignment Descriptions
 
-TODO
+- Homework 1: [Firmware Analysis](hw-1/)
