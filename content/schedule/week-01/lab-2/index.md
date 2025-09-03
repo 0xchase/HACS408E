@@ -35,7 +35,9 @@ work online.
 
 We'll be looking at a relatively old router/firmware:
 
-<img src="https://static.tp-link.com/Archer-C7-01_1485312801057e.jpg" alt="AC1750 Wireless Dual Band Gigabit Router 1">
+<!-- <img src="https://static.tp-link.com/Archer-C7-01_1485312801057e.jpg" alt="AC1750 Wireless Dual Band Gigabit Router 1"> -->
+
+![](./Archer-C7-01_1485312801057e.jpg "AC1750 Wireless Dual Band Gigabit Router 1")
 
 Find the product page for this router (version 4) and check the specifications
 tab.
