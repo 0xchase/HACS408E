@@ -90,13 +90,21 @@ jobs:
         with:
           pattern: slides-*
           path: ./slides-artifacts
-      - name: Copy slides to public directory
+      - name: Copy slides and PDFs to public directory
         run: |
           mkdir -p ./public/slides
+          # Copy HTML slides
           for artifact_dir in ./slides-artifacts/slides-*/; do
             week_name=$(basename "$artifact_dir" | sed 's/slides-//')
             mkdir -p "./public/slides/$week_name"
             cp -r "$artifact_dir"* "./public/slides/$week_name/"
+          done
+          # Copy PDFs
+          for pdf_file in ./slides-artifacts/slides-*-pdf/*.pdf; do
+            if [ -f "$pdf_file" ]; then
+              week_name=$(basename "$pdf_file" .pdf)
+              cp "$pdf_file" "./public/slides/$week_name.pdf"
+            fi
           done
       - name: Cache save
         id: cache-save
