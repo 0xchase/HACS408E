@@ -4,16 +4,20 @@ build:
   mkdir -p public
   rm -rf public/*
   hugo
+  just build_slides
 
 [working-directory: 'slides']
-@build_slides:
+build_slides:
+  #!/usr/bin/env sh
+  set -eu
   mkdir -p ../public/slides
   deno install
-  # for week in .md; do
-  deno task build --base /slides/week-01/ week-01.md
-  deno task export week-01.md --output ../public/slides/week-01.pdf
-  rsync -aiz dist/ ../public/slides/week-01
-  # end
+  for file in week*.md; do \
+    week="${file%.*}"; \
+    deno task build --base /slides/$week/ $file; \
+    deno task export $file --output ../public/slides/$week.pdf; \
+    rsync -aiz dist/ ../public/slides/$week; \
+  done
   rsync -aiz public/images/ ../public/images
 
 dev:
