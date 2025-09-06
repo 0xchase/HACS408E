@@ -16,8 +16,8 @@ type: default
 [lmains@umd.edu](mailto:lmains@umd.edu)\
 **Office Hours:**
 
-- Chase: Monday Evenings 6:00-7:00
-- Luke: Friday Evenings 6:00-7:30
+- Chase: TBD, on [Discord](https://discord.com/channels/)
+- Luke: Fridays 5:00-6:30 PM, PHY-4311B
 
 **Credits:** 3\
 **Course Dates:** Sep 03, 2025 \- Dec 17, 2025\
