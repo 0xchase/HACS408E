@@ -105,9 +105,11 @@ jobs:
           node-version: 'lts/*'
 
       - name: Setup @antfu/ni
+        working-directory: slides
         run: npm i -g @antfu/ni
 
       - name: Install dependencies
+        working-directory: slides
         run: nci
 
       - name: Build
