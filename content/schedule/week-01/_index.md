@@ -4,9 +4,13 @@ prev: /schedule/
 next: /schedule/week-02/
 ---
 
+This week we'll be covering file triage and extraction.
+
 ### Slides
 
-<iframe src="/slides/week-01" width="100%" height="400" title="Week 1" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{{< downloadbutton file="/slides/week-01.pdf" text="Download PDF" >}}
+
+{{< slides-preview week="week-01" >}}
 
 ### Labs
 
