@@ -85,15 +85,19 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
-      - name: Download slides artifact
+      - name: Download all slides artifacts
         uses: actions/download-artifact@v4
         with:
-          name: slides-dist
-          path: ./slides-dist
+          pattern: slides-*
+          path: ./slides-artifacts
       - name: Copy slides to public directory
         run: |
           mkdir -p ./public/slides
-          cp -r ./slides-dist/* ./public/slides/
+          for artifact_dir in ./slides-artifacts/slides-*/; do
+            week_name=$(basename "$artifact_dir" | sed 's/slides-//')
+            mkdir -p "./public/slides/$week_name"
+            cp -r "$artifact_dir"* "./public/slides/$week_name/"
+          done
       - name: Cache save
         id: cache-save
         uses: actions/cache/save@v4
@@ -106,6 +110,9 @@ jobs:
           path: ./public
   build-slides:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        week: [week-01, week-02, week-03, week-04]
 
     steps:
       - uses: actions/checkout@v4
@@ -122,14 +129,14 @@ jobs:
         working-directory: slides
         run: nci
 
-      - name: Build slides
+      - name: Build slides for ${{ matrix.week }}
         working-directory: slides
-        run: nr build --base /slides/
+        run: nr build weeks/${{ matrix.week }}.md --base /slides/${{ matrix.week }}/
       
-      - name: Upload slides artifact
+      - name: Upload slides artifact for ${{ matrix.week }}
         uses: actions/upload-artifact@v4
         with:
-          name: slides-dist
+          name: slides-${{ matrix.week }}
           path: slides/dist
 
   deploy:
