@@ -18,17 +18,17 @@ markup:
 
 menu:
   main:
-    - name: Schedule
-      pageRef: /schedule/
-      weight: 1
-    - name: Assignments
-      pageRef: /assignments/
-      weight: 2
-    - name: Resources
-      pageRef: /resources/
-      weight: 3
     - name: Syllabus
       pageRef: /syllabus/
+      weight: 1
+    - name: Labs
+      pageRef: /labs/
+      weight: 2
+    - name: Assignments
+      pageRef: /assignments/
+      weight: 3
+    - name: Resources
+      pageRef: /resources/
       weight: 4
     - name: Search
       weight: 5
@@ -60,12 +60,6 @@ menu:
     # - name: Final
     #   pageRef: /schedule/final-project/
     #   weight: 5
-    - name: Lectures Overview
-      pageRef: /lectures/
-      weight: 6
-    - name: Syllabus
-      pageRef: /syllabus/
-      weight: 7
 
 params:
   navbar:

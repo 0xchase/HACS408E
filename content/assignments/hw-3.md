@@ -1,5 +1,5 @@
 ---
-title: "Homework 3: TODO"
+title: "HW 3: TODO"
 weight: 3
 draft: true
 ---
