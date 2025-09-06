@@ -116,11 +116,10 @@ jobs:
         working-directory: slides
         run: nr build --base /${{github.event.repository.name}}/
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - uses: actions/upload-pages-artifact@v3
+      - name: Upload slides artifact
+        uses: actions/upload-artifact@v4
         with:
+          name: slides-dist
           path: slides/dist
 
   deploy:
