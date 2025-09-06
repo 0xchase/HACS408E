@@ -131,7 +131,7 @@ jobs:
 
       - name: Build slides for ${{ matrix.week }}
         working-directory: slides
-        run: nr build weeks/${{ matrix.week }}.md --base /slides/${{ matrix.week }}/
+        run: nr build ${{ matrix.week }}.md --base /slides/${{ matrix.week }}/
       
       - name: Upload slides artifact for ${{ matrix.week }}
         uses: actions/upload-artifact@v4
