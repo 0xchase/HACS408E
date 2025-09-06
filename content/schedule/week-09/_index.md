@@ -1,5 +1,5 @@
 ---
-title: "Week 09: Vulnerability Analysis I"
+title: "09: Vulnerability Analysis I"
 prev: schedule/week-08
 next: schedule/week-10
 draft: true

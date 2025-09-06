@@ -1,5 +1,5 @@
 ---
-title: "Week 06: Malware I"
+title: "06: Malware I"
 prev: schedule/week-05
 next: schedule/week-07
 draft: true

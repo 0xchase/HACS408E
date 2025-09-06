@@ -1,5 +1,5 @@
 ---
-title: "Week 03: Binary Analysis I"
+title: "03: Binary Analysis I"
 prev: schedule/week-02
 next: schedule/week-04
 draft: true

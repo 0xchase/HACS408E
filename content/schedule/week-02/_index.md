@@ -1,5 +1,5 @@
 ---
-title: "Week 02: Source Code Analysis"
+title: "02: Source Analysis"
 prev: /schedule/week-01/
 next: /schedule/week-03/
 draft: false

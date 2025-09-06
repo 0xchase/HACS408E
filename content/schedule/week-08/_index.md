@@ -1,5 +1,5 @@
 ---
-title: "Week 08: Midterm Group Presentation"
+title: "08: Group Presentation"
 prev: schedule/week-07
 next: schedule/week-09
 ---

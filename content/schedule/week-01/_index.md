@@ -1,5 +1,5 @@
 ---
-title: "Week 01: File Identification + Extraction + Triage"
+title: "01: File Triage"
 prev: /schedule/
 next: /schedule/week-02/
 ---

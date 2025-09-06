@@ -1,5 +1,5 @@
 ---
-title: "Week 12: Firmware Analysis + Memory Forensics"
+title: "12: Firmware Analysis"
 prev: schedule/week-11
 next: schedule/week-13
 draft: true

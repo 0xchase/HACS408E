@@ -24,21 +24,18 @@ menu:
     - name: Assignments
       pageRef: /assignments/
       weight: 2
-    - name: Lectures
-      pageRef: /lectures/
-      weight: 3
     - name: Resources
       pageRef: /resources/
-      weight: 4
+      weight: 3
     - name: Syllabus
       pageRef: /syllabus/
-      weight: 5
+      weight: 4
     - name: Search
-      weight: 6
+      weight: 5
       params:
         type: search
     - name: GitHub
-      weight: 7
+      weight: 6
       url: "https://github.com/0xchase/HACS408E"
       params:
         icon: github

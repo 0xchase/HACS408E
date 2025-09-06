@@ -1,5 +1,5 @@
 ---
-title: "Week 05: Cryptanalysis + Network Protocols"
+title: "05: Network Protocols"
 prev: schedule/week-04
 next: schedule/week-06
 draft: true

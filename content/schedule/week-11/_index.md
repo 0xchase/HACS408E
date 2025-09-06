@@ -1,5 +1,5 @@
 ---
-title: "Week 11: Kernel (Rootkits)"
+title: "11: Kernel"
 prev: schedule/week-10
 next: schedule/week-12
 draft: true
