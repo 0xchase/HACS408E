@@ -2,12 +2,12 @@
 title: "03: Binary Analysis I"
 prev: schedule/week-02
 next: schedule/week-04
-draft: true
+draft: false
 ---
 
 ### Slides
 
-<iframe src="https://slides.com/chasekanipe/todo" width="576" height="420" title="Week 3" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{{< slides-preview week="week-03" >}}
 
 ### Labs
 
