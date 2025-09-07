@@ -184,6 +184,138 @@ Should have a custom Q/A component.
 - Security relevant (passwords, users, ssh keys, etc)
 
 ---
+currentNav: "Linux"
+---
+
+# Common Directories
+
+Here's the standard directory structure of a linux distribution.
+
+<ScrollableView height="400px">
+  <DirectoryEntry name="/" description="Root directory" :expanded="true">
+    <DirectoryEntry name="bin" description="Essential binaries" :expanded="false">
+      <FileEntry name="bash" description="Bourne Again Shell" />
+      <FileEntry name="ls" description="List directory contents" />
+      <FileEntry name="cp" description="Copy files" />
+      <FileEntry name="mv" description="Move/rename files" />
+      <FileEntry name="rm" description="Remove files" />
+    </DirectoryEntry>
+    <DirectoryEntry name="sbin" description="System binaries" :expanded="false">
+      <FileEntry name="init" description="System initialization" />
+      <FileEntry name="mount" description="Mount filesystems" />
+      <FileEntry name="umount" description="Unmount filesystems" />
+      <FileEntry name="ifconfig" description="Network interface config" />
+    </DirectoryEntry>
+    <DirectoryEntry name="etc" description="Configuration files" :expanded="false">
+      <FileEntry name="passwd" description="User accounts" />
+      <FileEntry name="shadow" description="Encrypted passwords" />
+      <FileEntry name="hosts" description="Hostname resolution" />
+      <FileEntry name="fstab" description="Filesystem table" />
+      <DirectoryEntry name="systemd" description="System service configs">
+        <FileEntry name="system.conf" description="System configuration" />
+        <FileEntry name="user.conf" description="User configuration" />
+      </DirectoryEntry>
+    </DirectoryEntry>
+    <DirectoryEntry name="home" description="User directories" :expanded="false">
+      <DirectoryEntry name="alice" description="Alice's home directory">
+        <FileEntry name=".bashrc" description="Bash configuration" />
+        <FileEntry name=".profile" description="User profile" />
+        <DirectoryEntry name="Documents" description="User documents" />
+        <DirectoryEntry name="Downloads" description="Downloaded files" />
+      </DirectoryEntry>
+      <DirectoryEntry name="bob" description="Bob's home directory" />
+    </DirectoryEntry>
+    <DirectoryEntry name="usr" description="User programs" :expanded="false">
+      <DirectoryEntry name="bin" description="User binaries" :expanded="false">
+        <FileEntry name="gcc" description="GNU Compiler Collection" />
+        <FileEntry name="python3" description="Python interpreter" />
+        <FileEntry name="git" description="Version control" />
+        <FileEntry name="vim" description="Text editor" />
+      </DirectoryEntry>
+      <DirectoryEntry name="lib" description="Libraries" :expanded="false">
+        <FileEntry name="libc.so.6" description="C standard library" />
+        <FileEntry name="libssl.so.1.1" description="SSL library" />
+        <DirectoryEntry name="python3.8" description="Python libraries">
+          <FileEntry name="os.py" description="Operating system interface" />
+          <FileEntry name="sys.py" description="System parameters" />
+        </DirectoryEntry>
+      </DirectoryEntry>
+      <DirectoryEntry name="include" description="Header files" :expanded="false">
+        <FileEntry name="stdio.h" description="Standard I/O" />
+        <FileEntry name="stdlib.h" description="Standard library" />
+        <FileEntry name="string.h" description="String functions" />
+      </DirectoryEntry>
+      <DirectoryEntry name="share" description="Shared data" :expanded="false">
+        <DirectoryEntry name="man" description="Manual pages">
+          <FileEntry name="man1" description="User commands" />
+          <FileEntry name="man2" description="System calls" />
+          <FileEntry name="man3" description="Library functions" />
+        </DirectoryEntry>
+      </DirectoryEntry>
+    </DirectoryEntry>
+    <DirectoryEntry name="var" description="Variable data" :expanded="false">
+      <DirectoryEntry name="log" description="Log files" :expanded="false">
+        <FileEntry name="syslog" description="System log" />
+        <FileEntry name="auth.log" description="Authentication log" />
+        <FileEntry name="kern.log" description="Kernel log" />
+      </DirectoryEntry>
+      <DirectoryEntry name="cache" description="Cache files" />
+      <DirectoryEntry name="tmp" description="Temporary files" />
+      <DirectoryEntry name="spool" description="Spool directories" />
+    </DirectoryEntry>
+    <DirectoryEntry name="tmp" description="Temporary files" />
+    <DirectoryEntry name="opt" description="Optional software" :expanded="false">
+      <DirectoryEntry name="google" description="Google software">
+        <DirectoryEntry name="chrome" description="Chrome browser" />
+      </DirectoryEntry>
+      <DirectoryEntry name="microsoft" description="Microsoft software">
+        <DirectoryEntry name="vscode" description="Visual Studio Code" />
+      </DirectoryEntry>
+    </DirectoryEntry>
+    <DirectoryEntry name="proc" description="Process information" :expanded="false">
+      <FileEntry name="cpuinfo" description="CPU information" />
+      <FileEntry name="meminfo" description="Memory information" />
+      <FileEntry name="version" description="Kernel version" />
+      <DirectoryEntry name="1" description="Process 1 (init)">
+        <FileEntry name="cmdline" description="Command line" />
+        <FileEntry name="status" description="Process status" />
+        <FileEntry name="fd" description="File descriptors" />
+      </DirectoryEntry>
+    </DirectoryEntry>
+    <DirectoryEntry name="sys" description="System information" :expanded="false">
+      <DirectoryEntry name="kernel" description="Kernel parameters">
+        <FileEntry name="version" description="Kernel version" />
+        <FileEntry name="hostname" description="System hostname" />
+      </DirectoryEntry>
+      <DirectoryEntry name="devices" description="Device information" />
+      <DirectoryEntry name="fs" description="Filesystem information" />
+    </DirectoryEntry>
+    <DirectoryEntry name="dev" description="Device files" :expanded="false">
+      <FileEntry name="null" description="Null device" />
+      <FileEntry name="zero" description="Zero device" />
+      <FileEntry name="random" description="Random number generator" />
+      <FileEntry name="urandom" description="Non-blocking random" />
+      <FileEntry name="tty" description="Terminal device" />
+      <FileEntry name="sda" description="First SATA disk" />
+      <FileEntry name="sda1" description="First partition" />
+    </DirectoryEntry>
+    <DirectoryEntry name="boot" description="Boot files" :expanded="false">
+      <FileEntry name="vmlinuz" description="Kernel image" />
+      <FileEntry name="initrd.img" description="Initial RAM disk" />
+      <FileEntry name="grub" description="GRUB bootloader" />
+    </DirectoryEntry>
+    <DirectoryEntry name="lib" description="Essential libraries" :expanded="false">
+      <FileEntry name="ld-linux-x86-64.so.2" description="Dynamic linker" />
+      <FileEntry name="libc.so.6" description="C standard library" />
+      <FileEntry name="libm.so.6" description="Math library" />
+    </DirectoryEntry>
+    <DirectoryEntry name="mnt" description="Mount points" />
+    <DirectoryEntry name="media" description="Removable media" />
+    <DirectoryEntry name="run" description="Runtime data" />
+  </DirectoryEntry>
+</ScrollableView>
+
+---
 currentNav: "Reverse Engineering"
 layout: image-right
 image: /images/marcus-wired.png
