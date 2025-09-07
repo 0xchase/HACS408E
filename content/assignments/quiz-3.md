@@ -5,3 +5,5 @@ draft: true
 ---
 
 ## Description
+
+Exploitation pre-requisites

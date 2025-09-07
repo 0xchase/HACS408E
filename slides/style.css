@@ -1,3 +1,16 @@
+/* CSS Custom Properties for theme colors */
+:root {
+  --slidev-theme-secondary-bg: 248 250 252; /* Light gray for light mode */
+  --slidev-theme-secondary-bg-light: 230 230 230;
+  --slidev-theme-secondary-bg-light-outline: 226 232 240; /* Light outline for light mode */
+}
+
+.dark {
+  --slidev-theme-secondary-bg: 30 30 30; /* Dark gray for dark mode */
+  --slidev-theme-secondary-bg-light: 30 30 30; /* Lighter dark gray for dark mode */
+  --slidev-theme-secondary-bg-light-outline: 40 40 40; /* Light outline for dark mode */
+}
+
 /* Add top margin to slide content to account for breadcrumb */
 .slidev-layout {
   padding-top: 25px;
