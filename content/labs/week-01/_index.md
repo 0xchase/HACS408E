@@ -8,8 +8,6 @@ This week we'll be covering file triage and extraction.
 
 ### Slides
 
-{{< downloadbutton file="/slides/week-01.pdf" text="Download PDF" >}}
-
 {{< slides-preview week="week-01" >}}
 
 ### Labs
