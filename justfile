@@ -1,10 +1,16 @@
 build:
   just install_deps
+  just_build_base_site
+  just build_slides
+
+install_deps:
   git pull
+  git submodule init && git submodule update
+
+build_base_site:
   mkdir -p public
   rm -rf public/*
   hugo
-  just build_slides
 
 [working-directory: 'slides']
 build_slides:
@@ -22,9 +28,6 @@ build_slides:
 
 dev:
   hugo serve -D --bind 0.0.0.0
-
-install_deps:
-  git submodule init && git submodule update
 
 format:
   deno fmt --ext md $(fd --exclude assets/ '\.md$')
