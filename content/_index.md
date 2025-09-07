@@ -26,8 +26,6 @@ challenge.
 
 {{< card link="assignments/" title="Assignments" icon="book-open" >}}
 
-{{< card link="lectures/" title="Lectures" icon="presentation-chart-line" >}}
-
 {{< card link="resources/" title="Resources" icon="search" >}}
 
 {{< card link="syllabus/" title="Syllabus" icon="document-text" >}}

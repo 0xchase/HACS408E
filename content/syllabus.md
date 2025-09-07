@@ -1,30 +1,14 @@
 ---
-title: Applied Reverse Engineering (HACS408E)
+title: Syllabus
 toc: false
 sidebar:
   exclude: true
 type: default
 ---
 
-> See [syllabus_2025.pdf](/syllabus_2025.pdf) for a PDF copy of the following
-> syllabus.
+> See [syllabus_2025.pdf](/syllabus_2025.pdf) for a full documentation of course policies.
 
-**Term:** Fall 2025\
-**Instructors:** Chase Kanipe, Luke Mains\
-**Pronouns:** he/him, he/him\
-**Email:** [ckanipe@umd.edu](mailto:ckanipe@umd.edu),
-[lmains@umd.edu](mailto:lmains@umd.edu)\
-**Office Hours:**
-
-- Chase: TBD, on [Discord](https://discord.com/channels/)
-- Luke: Fridays 5:00-6:30 PM, PHY-4311B
-
-**Credits:** 3\
-**Course Dates:** Sep 03, 2025 \- Dec 17, 2025\
-**Course Times:** Wednesday 5:00 pm \- 7:45 pm\
-**Classroom:** PHY 4311B
-
-## **Course Description**
+## Overview
 
 This course will introduce students to the tools and techniques required to
 analyze the security properties of various systems. Topics covered will include
@@ -32,6 +16,13 @@ assembly language, executable file formats, operating system internals, and the
 static/dynamic analysis of compiled binaries. Students will apply these concepts
 to real-world scenarios like malware analysis and vulnerability analysis with
 interactive labs, at-home assignments, and a final project.
+
+### Instructors
+
+| Name         | Contact Info                                | Office Hours                                     |
+| :----------- | :------------------------------------------ | :----------------------------------------------- |
+| Chase Kanipe | [ckanipe@umd.edu](mailto://ckanipe@umd.edu) | TBD, on [Discord](https://discord.com/channels/) |
+| Luke Mains   | [lmains@umd.edu](mailto://lmains@umd.edu)   | Fridays 5:00-6:30 PM, PHY-4311B                  |
 
 ## **Learning Outcomes**
 
@@ -348,24 +339,7 @@ category is worth 50 percent of your total grade.
 
 ## **Course Outline**
 
-|            Date | Week \# | Topic                                  | In Class           | At Home     |
-| --------------: | ------: | :------------------------------------- | :----------------- | :---------- |
-| **03 Sep 2025** |   **1** | **File Identification and Extraction** | Labs               | HW 1        |
-| **10 Sep 2025** |   **2** | **Code Analysis**                      | Labs               |             |
-| **17 Sep 2025** |   **3** | **Binary Analysis I**                  | Labs               | HW 2        |
-| **24 Sep 2025** |   **4** | **Binary Analysis II**                 | Labs, Quiz         |             |
-| **01 Oct 2025** |   **5** | **Cryptography, Protocols**            | Labs               | HW 3        |
-| **08 Oct 2025** |   **6** | **Malware I**                          | Labs               |             |
-| **15 Oct 2025** |   **7** | **Malware II**                         | Labs, Quiz         |             |
-| **22 Oct 2025** |   **8** | **Group Presentation**                 | Group Presentation |             |
-| **29 Oct 2025** |   **9** | **Vulnerability Analysis I**           | Labs               | HW 4        |
-| **05 Nov 2025** |  **10** | **Vulnerability Analysis II**          | Labs, Quiz         |             |
-| **12 Nov 2025** |  **11** | **Kernel, Rootkits**                   | Labs               | HW 5        |
-| **19 Nov 2025** |  **12** | **Firmware, Memory Forensics**         | Labs               |             |
-| **26 Nov 2025** |         | — Fall Break (no class) —              | **—**              |             |
-| **03 Dec 2025** |  **13** | **Mobile**                             | Labs               |             |
-| **10 Dec 2025** |  **14** | **CTF**                                |                    | CTF Writeup |
-| **17 Dec 2025** |         | — Finals Week (no class) —             |                    |             |
+{{< schedule "schedule.md" >}}
 
 **Note:** This is a tentative schedule, and subject to change as necessary –
 monitor the course ELMS page for current deadlines. In the unlikely event of a
