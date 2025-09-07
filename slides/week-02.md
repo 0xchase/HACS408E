@@ -73,7 +73,7 @@ Put a row of pictures of different IOT devices.
 </v-clicks>
 
 ---
-currentNav: "Linux"
+currentNav: "Platforms"
 ---
 
 # Operating System Architecture
@@ -153,6 +153,35 @@ Most operating systems follow this general architecture.
 }
 </style>
 
+
+---
+currentNav: "Platforms"
+---
+
+# Test Your Comprehension
+
+Should have a custom Q/A component.
+
+<v-clicks depth="2">
+
+- What's the interface between user and kernel mode?
+- Some other question?
+- Some other question?
+- Some other question?
+
+</v-clicks>
+
+---
+currentNav: "Linux"
+---
+
+# We'll Cover
+
+Should have a custom Q/A component.
+
+- Applications and kernel
+- File system (interesting directories)
+- Security relevant (passwords, users, ssh keys, etc)
 
 ---
 currentNav: "Reverse Engineering"
