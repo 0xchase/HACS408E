@@ -94,18 +94,20 @@ jobs:
         run: |
           mkdir -p ./public/slides
           # Copy HTML slides
-          for artifact_dir in ./slides-artifacts/slides-*/; do
+          for artifact_dir in ./slides-artifacts/slides-week*/; do
             week_name=$(basename "$artifact_dir" | sed 's/slides-//')
             mkdir -p "./public/slides/$week_name"
             cp -r "$artifact_dir"* "./public/slides/$week_name/"
           done
           # Copy PDFs
-          for pdf_file in ./slides-artifacts/slides-*-pdf/*.pdf; do
+          for pdf_file in ./slides-artifacts/slides-week*-pdf/*.pdf; do
             if [ -f "$pdf_file" ]; then
               week_name=$(basename "$pdf_file" .pdf)
               cp "$pdf_file" "./public/slides/$week_name.pdf"
             fi
           done
+          # Copy Images
+          cp -r "./slides-artifacts/slides-images" "./public/images"
       - name: Cache save
         id: cache-save
         uses: actions/cache/save@v4
@@ -160,6 +162,13 @@ jobs:
         with:
           name: slides-${{ matrix.week }}-pdf
           path: slides/${{ matrix.week }}.pdf
+
+      - name: Upload image assets as artifact
+        working-directory: slides
+        uses: actions/upload-artifact@v4
+        with:
+          name: slides-images
+          path: slides/images
 
   deploy:
     environment:
