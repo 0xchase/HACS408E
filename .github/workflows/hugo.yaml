@@ -106,8 +106,9 @@ jobs:
               cp "$pdf_file" "./public/slides/$week_name.pdf"
             fi
           done
-          # Copy Images
-          cp -r "./slides-artifacts/slides-images" "./public/images"
+      - name: Copy slides images to dist/ folder
+        run: |
+          cp -r "./slides/public/images" "./public/images"
       - name: Cache save
         id: cache-save
         uses: actions/cache/save@v4
@@ -162,12 +163,6 @@ jobs:
         with:
           name: slides-${{ matrix.week }}-pdf
           path: slides/${{ matrix.week }}.pdf
-
-      - name: Upload image assets as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: slides-images
-          path: slides/public/images
 
   deploy:
     environment:
