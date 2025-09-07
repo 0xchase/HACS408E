@@ -1,6 +1,6 @@
 build:
   just install_deps
-  just_build_base_site
+  just build_base_site
   just build_slides
 
 install_deps:
