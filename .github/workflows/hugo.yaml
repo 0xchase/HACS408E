@@ -167,7 +167,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: slides-images
-          path: slides/images
+          path: slides/public/images
 
   deploy:
     environment:
