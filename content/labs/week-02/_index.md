@@ -7,7 +7,7 @@ draft: false
 
 ### Slides
 
-<iframe src="/404.html" width="576" height="420" title="Week 2" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{{< slides-preview week="week-02" >}}
 
 ### Labs
 
