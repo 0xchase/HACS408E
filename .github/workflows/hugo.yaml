@@ -108,7 +108,7 @@ jobs:
           done
       - name: Copy slides images to dist/ folder
         run: |
-          cp -r "./slides/public/images" "./public/images"
+          cp -rv "./slides/public/images" "./public/"
       - name: Cache save
         id: cache-save
         uses: actions/cache/save@v4
