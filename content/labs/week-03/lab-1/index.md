@@ -63,7 +63,8 @@ to the specified length.
 
 {{< question >}}
 
-Make a hypothesis about what this program does based on the strings that you see.
+Make a hypothesis about what this program does based on the strings that you
+see.
 
 {{< /question >}}
 
@@ -72,11 +73,10 @@ Make a hypothesis about what this program does based on the strings that you see
 Ignore the `Symbols` and `Cross References` view on the left side of binaryninja
 for now. Looking at the first couple of sections
 
-Because BinaryNinja understands the ELF file format, it has helpfully pulled out some information
-and displayed it in the main window. Notice how the entropy bar shows where different parts of the program
-have higher (yellow) and lower (dark blue) values of entropy.
-
-
+Because BinaryNinja understands the ELF file format, it has helpfully pulled out
+some information and displayed it in the main window. Notice how the entropy bar
+shows where different parts of the program have higher (yellow) and lower (dark
+blue) values of entropy.
 
 ### Analyzing shared libraries
 
