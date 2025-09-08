@@ -49,16 +49,16 @@ menu:
         type: separator
       weight: 1
     - name: Linux VM - SSH Setup
-      pageRef: /schedule/lab-setup/ssh-connection/
+      pageRef: /labs/lab-setup/ssh-connection/
       weight: 2
     - name: Windows VM - RDP Setup
-      pageRef: /schedule/lab-setup/rdp-connection/
+      pageRef: /labs/lab-setup/rdp-connection/
       weight: 3
     - name: Midterm Group Presentations
-      pageRef: /schedule/week-08/
+      pageRef: /labs/week-08/
       weight: 4
     # - name: Final
-    #   pageRef: /schedule/final-project/
+    #   pageRef: /labs/final-project/
     #   weight: 5
 
 params:
