@@ -118,24 +118,73 @@ Based on your search what do you think the curl binary uses `libcurl` for?
 
 ### Examine Segments and Sections
 
-TODO:
+Next lets look at the difference between `sections` and `segments` of an ELF
+binary. [Do](https://man7.org/linux/man-pages/man5/elf.5.html)
+[some](https://refspecs.linuxfoundation.org/LSB_3.0.0/LSB-Core-generic/LSB-Core-generic/specialsections.html)
+[research](https://www.sco.com/developers/devspecs/gabi41.pdf) to figure out
+what the requested sections are used for.
 
-- Research common sections `.text`, `.data`, `.bss`
-- Click an imported function
-  - What section does this take you to?
-  - Use the hover feature to figure out what the bytes are at this address.
-    - Notice the endianess
-  - Click again What does this take you to now? is this a real section?
-- Use the memory map view to see how each section of the ELF file maps to a
-  segment in memory.
-  - what segment does each section you looked up earlier correspond to?
+{{< question >}}
 
-- Finally, open curl2.bin for triage. What do you notice that is different about
-  it?
-  - Compare the outputs of the `file` command for each binary as well as the
-    imports section.
+Describe the following sections: `.text`, `.data`, `.bss`, `.got`, and `.plt`
 
-### Compare Windows vs. Linux Binaries
+{{< /question >}}
+
+Next lets try to map some data that binaryninja shows us to the different
+sections of the binary. Double click on one of the imported functions to see
+what section it takes you to. Then hover your mouse over the memory address to
+see what bytes are listed there.
+
+![](./binja_hover_memory.png "Show binaryninja's raw memory view by hovering over some code with your mouse")
+
+Then compare that to the address of the function name on the right hand side of
+the equals sign.
+
+![](./binja_hover_memory_2.png "Show binaryninja's memory view of the function on the right hand side of the equals sign")
+
+{{< question >}}
+
+Based on these two values is this a little-endian or a big-endian binary?
+
+{{< /question >}}
+
+### Using the Memory Map view
+
+Use the memory map view to see how each section of the ELF file maps to a
+segment in memory. Switch to the new view using the drop down menu in the top
+left of the main view window.
+
+![](./switch_to_mem_map_view.png "Use the dropdown menu to switch views in binaryninja")
+
+{{< question >}}
+
+For each section you looked up earlier, what is the starting address of the
+segment that contains it?
+
+{{< /question >}}
+
+### Make comparisons with a different version of the curl binary
+
+Download the second version of the curl binary and open it for triage in
+binaryninja. Compare triage views and note any differences between `curl1.bin`
+and `curl2.bin`.
+
+{{< downloadbutton file="curl2.bin" text="curl 2" >}}
+
+{{< question >}}
+
+What is the reason for the differences in `curl2.bin`? <br></br> HINT: Compare
+the output of the `file` command on the two binaries.
+
+{{< /question >}}
+
+{{% /steps %}}
+
+## Part 2: Compare Windows vs. Linux Binaries
+
+{{% steps %}}
+
+### Conduct a similar analysis as above
 
 For part two, download or locate a small program compiled for both Windows and
 Linux.
@@ -144,11 +193,28 @@ Linux.
 
 {{< downloadbutton file="hashcat.exe" text="hashcat.exe" >}}
 
-- Open each binary in Binary Ninja.
-- Examine their library dependencies – are there any notable differences?
-- Look for platform-specific symbols or strings (for example, DLL imports on
-  Windows versus system calls on Linux).
-- Compare the segmentation/section layout between the two binaries.
+Open each binary for triage in BinaryNinja, then answer the following questions:
+
+{{< question >}}
+
+Note any differences in the `Triage Summarey` for the two programs. Do they use
+the same shared libraries?
+
+{{< /question >}}
+
+{{< question >}}
+
+Compare the segmentation/section layout between the two binaries in the
+`Memory Map` view. Are there more or less sections/segments in one program?
+
+{{< /question >}}
+
+{{< question >}}
+
+Use the `Strings` view to find long string then double-click it to see what
+section it resides in. What section is this for each program?
+
+{{< /question >}}
 
 {{% /steps %}}
 
@@ -162,20 +228,12 @@ Linux.
 
 {{< callout emoji="📝" >}}
 
-Submit a markdown file containing:
-
-- Your observations and notes from comparing the static vs. dynamic Linux
-  binaries.
-- A detailed comparison of segments and sections for both binaries.
-- An analysis of the Windows and Linux versions, highlighting any
-  platform-specific differences (such as library dependencies and symbols).
-- Answers to the reflection questions at the end.
-
-You can submit this assignment via
+Submit a report with answers to questions to
 [ELMS](https://umd.instructure.com/courses/1390353/assignments).
 
 {{< /callout >}}
 
+<!--
 ## Reflection Questions
 
 After completing the lab, answer the following reflective questions:
@@ -193,3 +251,4 @@ After completing the lab, answer the following reflective questions:
 
 Feel free to add any additional thoughts or insights that emerged during this
 exercise.
+-->
