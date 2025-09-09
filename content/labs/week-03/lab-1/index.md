@@ -1,5 +1,5 @@
 ---
-title: "Lab 1: TODO"
+title: "Lab 1: Initial Binary Analysis - Triage"
 weight: 1
 draft: false
 ---
@@ -34,6 +34,25 @@ platform-specific differences.
 
 {{% steps %}}
 
+### First Steps
+
+Download the program to analyze:
+
+{{< downloadbutton file="curl1.bin" text="curl 1" >}}
+
+The first thing you can do to get a limited understanding of a program is just
+to look for strings! Developers leave log messages and print strings all over
+the place and so this can be very fruitful when your first trying to figure out
+what some random binary does. Use the strings command to view strings that are
+present inside the binary. Remember to use the `-n` flag to filter results to
+strings greater than or equal to the specified length.
+
+{{< question >}}
+
+Based on some of the strings that you see, what is this program used for?
+
+{{< /question >}}
+
 ### Using BinaryNinja
 
 For the labs this week we will be using [binaryninja](https://binary.ninja)'s
@@ -45,33 +64,28 @@ the `Tools` folder on your desktop. You can run it from the terminal with:
 ```
 
 Once you get it open, select `File > Open for Triage` from the menu to open
-binarie files for triage.
-
-### Looking at the first binary: `curl1`
-
-Download the program to analyze:
-
-{{< downloadbutton file="curl1.bin" text="curl 1" >}}
-
-Inside of the BinaryNinja "Open for Triage" tab, navigate to the file you just
-downloaded and open it. Alternatively you can drag and drop the file into
+binary files for triage. Navigate to the file you downloaded earlier and double
+click to open it. Alternatively, you can drag and drop the file into
 binaryninja.
 
-Use the strings command to view strings that are present inside the binary.
-Remember to use the `-n` flag to filter results to strings greater than or equal
-to the specified length.
+![](./binja_open_for_triage.png "Selecting the 'Open for Triage' option from the binaryninja menu")
 
-{{< question >}}
-
-Make a hypothesis about what this program does based on the strings that you
-see.
-
-{{< /question >}}
-
-### Open and Analyze in Binary Ninja
+### Explore the Triage window in `binaryninja`
 
 Ignore the `Symbols` and `Cross References` view on the left side of binaryninja
-for now. Looking at the first couple of sections
+for now.
+
+![](./triage-view.png "Binaryninja Triage View")
+
+Reverse engineering tools do A LOT of things! But this means that the view can
+be a little overwhelming. Ignore the `Symbols` and `Cross References` panes on
+the left side of the screen. The three indicators in the above screenshot are:
+
+1. View selection dropdowns. Use these to get back to the `Triage` view if you
+   ever click something and it takes you to a different view.
+2. This is the main triage window. Scroll down to see more stuff!
+3. The far right side shows an overview of the whole binary. You can also use
+   this to navigate to other sections of the binary.
 
 Because BinaryNinja understands the ELF file format, it has helpfully pulled out
 some information and displayed it in the main window. Notice how the entropy bar
@@ -82,14 +96,13 @@ blue) values of entropy.
 
 Review the loaded libraries. Compare this to the list when you run the `ldd`
 program on the curl1.bin binary from the terminal. A quick glance at the
-[`ldd` man page](TODO) shows that it "prints the shared object dependencies" of
-the specified program.
+[`ldd` man page](https://man7.org/linux/man-pages/man1/ldd.1.html) shows that it
+"prints the shared object dependencies" of the specified program.
 
 {{< question >}}
 
 Why do you think the list from `ldd` is different from what binaryninja reports?
-
-HINT: Try running `ldd` on the `libcurl.so.4` binary.
+<br></br> HINT: Try running `ldd` on the `libcurl.so.4` binary.
 
 {{< /question >}}
 
@@ -98,18 +111,29 @@ functionality it provides.
 
 {{< question >}}
 
-Based on your search what do you think the curl binary does?
+Based on your search what do you think the curl binary uses `libcurl` for?
+<br></br> What functions in the imports table come from `libcurl`?
 
 {{< /question >}}
 
 ### Examine Segments and Sections
 
-Using Binary Ninja, inspect the segments and sections of each binary.
+TODO:
 
-- Identify common sections like .text (executable code), .rodata (read-only
-  data), and .bss (uninitialized data).
-- Note differences in how these sections are organized between the static and
-  dynamic versions.
+- Research common sections `.text`, `.data`, `.bss`
+- Click an imported function
+  - What section does this take you to?
+  - Use the hover feature to figure out what the bytes are at this address.
+    - Notice the endianess
+  - Click again What does this take you to now? is this a real section?
+- Use the memory map view to see how each section of the ELF file maps to a
+  segment in memory.
+  - what segment does each section you looked up earlier correspond to?
+
+- Finally, open curl2.bin for triage. What do you notice that is different about
+  it?
+  - Compare the outputs of the `file` command for each binary as well as the
+    imports section.
 
 ### Compare Windows vs. Linux Binaries
 
