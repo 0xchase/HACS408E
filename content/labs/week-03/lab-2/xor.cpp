@@ -12,22 +12,48 @@ private:
   std::vector<char> data;
 
   void xor_data() {
-      // Your code here
+    for (size_t i = 0; i < data.size(); ++i) {
+      data[i] ^= KEY[i % sizeof(KEY)];
+    }
   }
 
   std::streamsize get_file_size(std::ifstream &handle) {
-      // Your code here
+    auto current_pos = handle.tellg();
+    handle.seekg(0, std::ios::end);
+    auto size = handle.tellg();
+    handle.seekg(current_pos, std::ios::beg);
+    return size;
   }
 
 public:
   Ciphertext() {}
 
   bool read_data_from_file_and_encrypt(std::ifstream &handle) {
-      // Your code here
+    auto size = get_file_size(handle);
+    if (size > MAX_INPUT_SIZE) {
+      error_msg = "Input file is too large.";
+      return false;
+    }
+
+    data.resize(size);
+    handle.read(data.data(), size);
+    if (!handle) {
+      error_msg = "Failed to read input file.";
+      return false;
+    }
+
+    xor_data();
+    return true;
   }
 
   bool write_data_and_cleanup_struct(std::ofstream &handle) {
-      // Your code here
+    handle.write(data.data(), data.size());
+    if (!handle) {
+      error_msg = "Failed to write output file.";
+      return false;
+    }
+
+    return true;
   }
 
   const size_t get_size() const { return this->data.size(); }
