@@ -8,6 +8,8 @@ VMs
 Wi
 X11
 binaryninja
+binja
 callout
 downloadbutton
+entrypoint
 ip
