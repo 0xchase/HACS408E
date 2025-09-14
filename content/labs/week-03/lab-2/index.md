@@ -8,13 +8,16 @@ draft: false
 
 {{< callout emoji="💡" >}}
 
-explaination
+The goal of this lab is to get you familiar with x86 and x86_64 assembly
+language. You will learn how to learn about various instructions in Intel's
+Software Developer's manuals. You will also use binaryninja to reverse engineer
+some small C and C++ programs.
 
 **Goals:**
 
-- goal
-- goal
-- goal
+- Learn how to read the Intel Software Developer's Manuals.
+- Learn how to use Binaryninja to reverse engineer Linux programs.
+- Start to understand the difference between C and C++ programs.
 
 **Estimated Time:** `45 Minutes`
 
@@ -82,6 +85,15 @@ assembly instructions operate on. You can learn more about this from
 - What are the two types of instructions to transfer memory between memory and registers.
 - What are the four instructions used for "Unconditional Transfer"?
 -->
+
+Review `section 3.2` of Vol. 1 of the intel manuals.
+
+{{< question >}}
+
+What is the size of the virtual address space in the "64-Bit Mode Execution
+Environment"? <br></br> Home many general purpose registers are available?
+
+{{< /question >}}
 
 ### Intro Assembly with Hello World
 
@@ -155,6 +167,12 @@ Which two registers are used for the calculation and where is the result stored?
 Analyze the assembly code in:
 [Min Value Calculation on Godbolt](https://godbolt.org/z/5G5WTxvcj)
 
+<!-- Alt Versions:
+- https://godbolt.org/z/EhW58M8q4
+- https://godbolt.org/z/Whh1q7G8c
+- https://godbolt.org/z/fPT45dfWo (64-bit version)
+-->
+
 Try to trace the control flow (which branches the code takes or doesn't take) by
 walking through the instructions.
 
@@ -176,28 +194,153 @@ access to them.
 
 {{< /question >}}
 
-### Step3
+### Analyze a small C program with binaryninja
 
-- Binaryninja Usage
-  - Open the xor_c.bin program in binaryninja.
-  - What are the named functions that you see in the left window?
-  - What is the entrypoint? What does this function do? What is
-    `__libc_start_main`?
-  - Split the overview and disassembly window views.
-    - What `c library` functions are used to read data from the file?
-    - What is the address of the instruction where the data is encrypted
-      `xor-ed`
-    - What is the key that is used?
-  - Answer the same questions about `xor_cpp.bin`. What do you notice that is
-    different about the c++ version?
+Start by downloading the first program we'll be looking at:
 
-{{% /steps %}}
+{{< downloadbutton file="./xor_c.bin" text="xor_c.bin" >}}
+
+Open the file using the default open option for binary ninja and click the
+dropdown to take you to the `Triage Summary`. Note in the `Symbols` pane on the
+left-hand side there are only a few functions in the `.text` section which is
+where the executable code for this binary is.
+
+{{< question >}}
+
+Which of these functions do you think is the entry point of the program? Give a
+reason why.
+
+{{< /question >}}
+
+Next double-click on the `Entry Point` address in the `Triage Summary` pane.
+This will take you to the first function of the program.
+
+![](./entrypoint.png "The entrypoint of the program in binaryninja's triage
+view)
+
+This will take you to binaryninja's code view which by default starts off with
+their high-level level IL (intermediate language) view. This is the code that
+has been processed and analyzed by the tool so that it looks closer to a high
+level language like C or C++.
+
+![](./_start_func_binja.png "A high level language overview of the _start function")
+
+1. Binaryninja displays code in the lighter gray boxes.
+2. The black bars in between the functions are areas of the `.text` section that
+   were not picked up by the auto analysis as assembly code.
+
+Switch to the `ELF Disassembly` view in binary ninja:
+
+![](./_start_func_asm_binja.png)
+
+{{< question >}}
+
+What function is called inside of the code for the `_start()` function?
+<br></br> Google this function and explain what it is used for.
+
+{{< /question >}}
 
 > [!TIP]
 >
-> - tip
-> - tip
-> - tip
+> <div style="display: flex" >
+>
+> - Click the split view icon in the top-right to show both the HLIL version and
+>   the disassembly.
+> - Click the chain icon to toggle whether the two views are synchronized by
+>   address.
+>
+> <img style="justify-content: space-between; margin: 0;" src="./split_view_binja.png" />
+>
+> </div>
+
+### Analyzing the `main` function
+
+Next use `ctrl+p` to open the command menu and type `goto` to open the
+`Goto Address` pop up window in binaryninja. Alternatively, you can the `g` or
+`alt+g` keyboard shortcuts. Once the popup is up navigate to the `main`
+function.
+
+![](./ctrl_p_command_popup.png "Binaryninja's command popup which can be accessed with 'ctrl+p'")
+
+![](./goto_main.png "The 'Go to Address' popup which will show an address in green above the search bar if you enter a valid symbol name")
+
+In the `Linear` disassembly view, it can be difficult to follow the control flow
+of the program, so you can use the `spacebar` keyboard shortcut to switch back
+and forth between the `Linear` and `Graph` views. You can also select this in
+the top left drop down menu.
+
+![](./graph_view.png "Binaryninja's graph view which shows the start of the main function")
+
+Focus on the first comparison statement highlighted by the red box. Use the
+strings in following blocks of code to help you figure out what the comparison
+is doing. The green (left) arrows in the graph view correspond to when the jump
+instruction is taken. The red (right) arrows correspond to the jump not being
+taken.
+
+{{< question >}}
+
+What is this comparison checking? Why is the number 3 important?
+
+{{< /question >}}
+
+### Rename variables and functions for better understanding
+
+Switch back to the `High Level IL` (HLIL) view and clean up the code by renaming
+functions and variable based on what they look like they are being used for.
+
+You can rename a variable by right clicking on it or by pressing the `N`
+keyboard shortcut. Work through each of the `sub_40####` functions to figure out
+what they do.
+
+{{< question >}}
+
+What is the address of the function that `xors` the file data? <br></br> What is
+the address of the assembly instruction that `xors` the data? <br></br> What is
+the key used to encrypt the data?
+
+{{< /question >}}
+
+### Learn how binaryninja is not a perfect tool
+
+> [!WARNING]
+>
+> This is an important lesson to never blindly trust the decompiler output of a
+> reverse engineering tool! It is not an exact science since we are working with
+> missing information. Always check the disassembly for the ground source of
+> truth!
+
+![](./binja_decomp_error.png "")
+
+Here we can see that binja thinks the program is trying to compare a variable to
+the address of the very start of our ELF file (a.k.a the `__elf__header`). This
+seems kind of weird, especially given that we can see the an error string that
+doesn't seem to be related. Let's verify what the assembly is doing.
+
+![](./binja_decomp_error_asm.png "")
+
+In the above screenshot, we can see that `0x400000` is being moved into `EAX`
+and then if the comparison passes, then we skip the block printing the error
+message. `0x400000` is the default base address that binaryninja assigns to our
+program but in this case the code is probably just referring to the actual
+number `0x400000`. To fix it you need to right click on the `__elf_header`
+pointer and `Undefine` the data variable.
+
+![](./binja_decomp_error_fix.png "")
+
+### **Bonus:** Repeat the process with a C++ version of the same code
+
+Analyze the C++ version of the XOR encryption program following the same process
+as above.
+
+{{< downloadbutton file="./xor_cpp.bin" text="xor_cpp.bin" >}}
+
+{{< question >}}
+
+What do you notice that is different about the c++ version?
+
+{{< /question >}}
+
+{{% /steps %}}
 
 ## Submission
 
