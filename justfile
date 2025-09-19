@@ -1,5 +1,7 @@
 build:
   just install_deps
+  mkdir -p public
+  rm -rf public/*
   just build_base_site
   just build_slides
 
@@ -8,9 +10,7 @@ install_deps:
   git submodule init && git submodule update
 
 build_base_site:
-  mkdir -p public
-  rm -rf public/*
-  hugo
+  hugo build
 
 [working-directory: 'slides']
 build_slides:
@@ -18,6 +18,7 @@ build_slides:
   set -eu
   mkdir -p ../public/slides
   deno install
+  deno install --allow-scripts=npm:playwright-chromium
   for file in week*.md; do \
     week="${file%.*}"; \
     deno task build --base /slides/$week/ $file; \
