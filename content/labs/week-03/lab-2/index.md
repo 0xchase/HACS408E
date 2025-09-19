@@ -215,8 +215,7 @@ reason why.
 Next double-click on the `Entry Point` address in the `Triage Summary` pane.
 This will take you to the first function of the program.
 
-![](./entrypoint.png "The entrypoint of the program in binaryninja's triage
-view)
+![](./entrypoint.png "The entrypoint of the program in binaryninja's triage view")
 
 This will take you to binaryninja's code view which by default starts off with
 their high-level level IL (intermediate language) view. This is the code that
