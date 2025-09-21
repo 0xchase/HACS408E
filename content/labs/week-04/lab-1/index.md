@@ -158,12 +158,12 @@ the `env` program in another terminal window.
 
 #### Getting Program Information
 
-Set another breakpoint at the `printf` function and use the `cont` command to
-continue execution until the program enters that function.
+Set another breakpoint at the `printf` function and use the `continue` command
+to continue execution until the program enters that function.
 
 ```
 (gdb) break printf
-(gdb) cont
+(gdb) continue
 ```
 
 Once there, let's use the `info` command to learn a bunch of stuff about the
@@ -256,146 +256,186 @@ in the program. Your screen may be cut off if your window isn't big enough.
 
 ![](./gef_context.png "A screenshot of the `gef` context output.")
 
-> [!CAUTION]
-> TODO: Descript `gef` view
+In the above screenshot, you can see the five main sections of the `gef`
+context:
 
-<br></br>
+1. The `registers` section shows the value of each register and attempts to
+   dereference the value if it is a memory address.
+1. The `stack` section shows the bytes of memory starting from the lowest point
+   of the stack. Notice that the first address listed is the same as the value
+   in `$rsp`.
+1. The next region (`code`) shows the current instruction and the instructions
+   around it.
+1. The `threads` region shows the current thread executing. This matters more
+   when looking at multi-threaded programs.
+1. Final we have the `trace` section which shows you a backtrace of all the
+   functions called that have led to the current point of execution.
 
----
+### Analyzing functions
 
-#### Finishing Up
-
-Use the `finish` command to continue executing until you return from the
-function you're currently in.
-
-Once you have returned from `fopen` you should have a local variable with your
-file handle. Use `info locals` to see what the address is.
-
-```
-(gdb) info locals
-...
-```
-
-If the function succeeded, what is the address of the `FILE` object?
-
-Because `gdb` understands types, you can use the `print` command to inspect
-variables. You can also dereference pointer types!
+Use the `disas` function to disassemble the code for `main()`. Then scroll back
+up and find the addresses for each call to `fopen()` in the main function and
+set breakpoints there:
 
 ```
-(gdb) print infile
-...
-(gdb) print *infile
-...
+gef➤  disas main
+gef➤  break <address>
+gef➤  break <address_2>
 ```
 
-Use `help print` to find out how to pretty print structures.
+![](./break_fopen.png "A screenshot of the assembly instructions for main with the calls to fopen oulined by a red box")
 
-{{% callout type="warning" %}} Beware, sometimes gdb doesn't have all the
-information about the type you want to dereference. You can use the `cast`
-syntax to tell gdb what type the variable should be. <br>
-`(gdb) print *(FILE *)infile` <br> Use `info types` to see the types that gdb
-currently aware of.
+Then once you have those set, run the program with the two input files it is
+expecting:
 
-{{% /callout %}}
+```
+gef➤  run input.txt output.bin
+```
+
+When you get to the call instruction you will see `gef`'s context change. It
+should show the next instructions as the `fopen` code in the `code` section.
+Also it tries to help your analysis by guessing the function arguments for you.
+
+{{< question >}}
+
+Based on what you think the arguments to the xor program are and what you know
+about `fopen()`, what is the calling convention for this function? HINT:
+Remember this is a 64-bit program.
+
+- [Documentation for the `fopen()` function](https://en.cppreference.com/w/c/io/fopen.html)
+- [x86 calling convention Wikipedia page](https://en.wikipedia.org/w/index.php?title=X86_calling_conventions)
+
+{{< /question >}}
+
+Next lets look at the return value of this function. Use the `stepi` command to
+"step instructions" into the fopen() function and then use the `finish` command
+to have gdb run the code until the function returns. Alternatively, you can use
+the `stepover` command provided by `gef`.
+
+If the function succeeds, it returns a pointer to a `FILE` object according to
+the docs.
+
+{{< question >}}
+
+What register is the return value stored in? What is the address of the `FILE`
+object?
+
+{{< /question >}}
+
+> [!TIP]
+> Sometimes gdb doesn't have all the information about the type you want to
+> dereference. You can use the `cast` syntax to tell gdb what type the variable
+> should be.
+>
+> For example, to look at the FILE object pointed at by `$rax` we can cast it to
+> a FILE pointer (`FILE *`) and then dereference it with an asterisk so that gdb
+> prints the correct fields:
+>
+> ```
+> gef➤  print *(FILE *)($rax)
+> ```
 
 Use the `continue` command to run the program until the next breakpoint is hit,
 or the end of the program. Whichever comes first.
 
-#### Practice
+Practice the above again by continuing past the second call to `fopen` and step
+forward a few more instructions. Use the `info locals` command to learn what gdb
+knows about local variables. Then use the `vmmap` command provided by GEF to
+figure out where the `FILE` structures are stored.
 
-Spend some time practicing what you've learned. Run the program again. Practice
-setting breakpoints, and using the `help` command to learn about other commands.
+If you go too far or need to restart just use the `run` command with the input
+files again and it gdb will start the program over. (`run input.txt output.bin`)
 
-### Using `gdb` without source code:
-
-Compile the `xor` program without debugging info.
-
-```bash {filename="Bash"}
-$ gcc -Wall -Werror -O2 -o xor.bin ./xor_main.c
-$ file ./xor.bin
-# <... lots of info ...>, not stripped
+```sh
+gef➤  c
+#
+# Continuing.
+# 
+# Breakpoint 3, 0x0000000000401408 in main (argc=<optimized out>, argv=0x7fffffffe208) at main.c:120
+gef➤  stepover
+gef➤  si
+gef➤  si
+gef➤  info locals
+# ...
+gef➤  vmmap
+# ...
 ```
 
-#### Time to look at assembly
+{{< question >}}
 
-Set a breakpoint at `main` and run the program until the breakpoint is hit. Type
-`list` and you should get an error saying no such file found.
+What area of virtual memory contains the addresses of the file structs stored in
+the `input_file` and `output_file` variables?
 
-Instead what you can look at is the assembly code using the `disassemble`
-command.
+{{< /question >}}
 
-```
-(gdb) disassemble
-```
+### Learn some more helpful `GEF` commands
 
-What is the address of the first call to `fopen`?
+GEF provides a bunch of [helpful commands](https://hugsy.github.io/gef/commands)
+that make debugging much easier. Here are a few that are worth trying yourself:
 
-Set a breakpoint at this address using the `break` command. Then use
-`step instruction` to call the function.
+The `ctx` or `context` command will print all the information `gef` knows about
+the current state of execution.
 
-```
-(break) *0x<addresss>
-(gdb) step instruction
-(gdb) si
-```
-
-Use the `display` command to print something every time gdb stops. For example,
-print the next `3 instructions (/3i)` starting from the value of the program
-counter `$pc`.
+There is also the `deref` command which is what GEF uses to pretty-print memory
+regions in the context output with the strings and stuff nicely printed. You can
+use this command to look a larger portion of the stack frame (for example).
 
 ```
-(gdb) display /3i $pc
-(gdb) si
-(gdb) si
-(gdb) si
+gef➤  deref -l 20 $rsp
 ```
 
-#### Inspecting registers and variables
-
-Use `finish` to return until you get back to the `main` function. Once you're
-back in main lets look at the registers to find the return value from the
-function. We learned that `RAX` is the return value of the function, and we just
-returned from `fopen` so...
+You can also search for patterns in memory with the `search-pattern` or `grep`
+command. This can be very helpful if your trying to figure out where some data
+is that you've entered in the program. It understands the various sections
+referenced in the `vmmap` command, but see the documentation for more details
+about how to use it.
 
 ```
-(gdb) info regs
+gef➤  help search-pattern
+gef➤  grep student stack
 ```
 
-What is the address of the `FILE` object returned from `fopen`?
+Finally, to reinforce the linking/loading concepts learned in class, we'll look
+at the `got` command. This will tell you the current state of the global offset
+table, which is where the addresses of external functions are stored. Normally
+when you call an external function, execution jumps to the `.plt` section which
+points to the offset in the `.got` section with the address of the function we
+want to store. From there execution will continue at the start of the external
+function.
 
-Use the `print` command to show the `FILE` structure that `$rax` currently
+<figure>
+    <img
+      src="https://eli.thegreenplace.net/images/2011/plt_before.png"
+      title="PLT and GOT Example"
+      alt="Diagram showing how the PLT and the GOT interact in practice."
+      loading="lazy"
+      style="padding: 10px; border-radius: 10px; background: #fff;"
+    >
+    <figcaption>Image Source: https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries/</figcaption>
+</figure>
+
+If this is the first time the function is executed, the offset in the `.got`
+will point back to the `.plt` stub which has some code to tell the dynamic
+linker to resolve the address of the target function. Then the `.got` is updated
+and the code continues in the external function like normal. Please see
+[this video](https://www.youtube.com/watch?v=RtAYxBtpO20) for reference.
+
+Use GEF's `got` command to look at the external functions and see which one is
+resolved. Then use the `info symbol <addr>` command to see where the address
 points to.
 
-{{% callout type=info %}}
-
-When you want to specify a specific gdb variable (like the value of a register)
-you will need to put a `$` infront of it.
-
-{{% /callout %}}
-
-```
-(gdb) print *(FILE *)$rax
-commands covered:
+```sh
+gef➤  got
+# ...
+gef➤  info symbol 0x########
 ```
 
-#### E<u> `x`</u>amining memory
+{{< question >}}
 
-Disassemble the main function but only show the first 8 bytes.
+Which function has been resolved by the loader so that it's address has been
+updated in the global offset table?
 
-```
-disassemble /r main, main+8
-```
-
-Now use the `x` command to examine memory at the same address. We want
-`8 bytes in hexadecimal (\8bx)`. Use `help x` to learn more about the `/FMT`
-string.
-
-```
-(gdb) x /8xb main
-(gdb) x /4xh *0x<address-of-main>
-```
-
-Do the bytes match the bytes from the disassembly?
+{{< /question >}}
 
 {{% /steps %}}
 
