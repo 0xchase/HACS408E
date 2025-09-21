@@ -3,10 +3,27 @@ title: Assignments
 toc: false
 ---
 
-There will be a homework assignment associated with almost every topic covered in class. Assignments will be grouped together and due approximately every two weeks. Please see the schedule below (and on the class webpage) for exact due dates. Every assignment will require understanding the tools and techniques described in the associated week’s lecture. Students must complete a write-up of their results, explaining their analysis methods and possibly answering some questions. You must submit a pdf copy of the report to ELMS with working images.
+There will be a homework assignment associated with almost every topic covered
+in class so make sure to complete all the labs. Assignments will be due
+approximately every two weeks. Please see the schedule below (and on the class
+webpage) for exact due dates. Every assignment will require understanding the
+tools and techniques described in the associated week’s lecture. Students must
+complete a write-up of their results, explaining their analysis methods and
+possibly answering some questions.
 
-### Assignment Descriptions
+Please submit a PDF copy of your write-up to ELMS and ensure that any
+screenshots or images you use are rendered properly.
+
+### Class Schedule
+
+<p></p>
+{{< schedule "schedule.md" >}}
+
+### Assignment Links
 
 - Homework 1: [Firmware Analysis](hw-1/)
+- Homework 2: [Binary Bomb](hw-2/)
 
-{{< schedule "schedule.md" >}}
+<!-- - Homework 3: [](hw-3/) -->
+<!-- - Homework 4: [](hw-4/) -->
+<!-- - Homework 5: [](hw-5/) -->
