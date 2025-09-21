@@ -18,7 +18,7 @@ build_slides:
   set -eu
   mkdir -p ../public/slides
   deno install
-  deno install --allow-scripts=npm:playwright-chromium
+  deno install --allow-scripts=npm:playwright-chromium@1.55.0
   for file in week*.md; do \
     week="${file%.*}"; \
     deno task build --base /slides/$week/ $file; \
