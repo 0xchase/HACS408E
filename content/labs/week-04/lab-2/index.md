@@ -8,16 +8,18 @@ draft: false
 
 {{< callout emoji="💡" >}}
 
-In this lab you will use `strace` and `ltrace` to analyze a the openssh server
-(`sshd`). You will also use `LD_PRELOAD` to exploit features of dynamically
-linked programs.
+In this lab you will use `strace` and `ltrace` tools to further your
+understanding of dynamic analysis. Each tool lets you monitor the system calls
+and library calls, respectively, that a program makes while it runs. This can be
+very insightful when trying to learn at a high-level what a program does.
 
 **Goals:**
 
-- Become familiar with how a program interacts with the linux operating system.
-- Practice using well know dynamic analysis tools.
-- Understand how to hijack functions from dynamically loaded libraries using
-  `LD_PRELOAD`.
+- Practice filtering and manipulating text with Linux utilities like `grep` and
+  `less`.
+- Become familiar with how a program interacts with the operating system (in
+  this case, Linux).
+- Practice using well known dynamic analysis tools.
 
 **Estimated Time:** `45 Minutes`
 
@@ -27,95 +29,51 @@ linked programs.
 
 {{% steps %}}
 
-### Install `openssh-server`
+### Outline
+
+Learn to use the `ltrace` and `strace` tools.
+
+- read the man pages
+- View the output of both on the simple xor binary
+- use ltrace to compare the c and c++ versions?
+  - The `ltraces` will look very different, make sure to use `-C` to demangle
+    c++ symbols
+  - The straces are also quite different but try again with the last 15 lines
+
+Practice on the `dropbear` ssh server:
+
+- What files does it read?
+  - what syscall did you look for?
+- Why does it seem to fail?
+- Try running with sudo
+  - Did it fail?
+  - Check for listening ports 2222, Check for dropbear in process list
+  - Review the last few calls
+    - What does the clone syscall do?
+
+Try the challenge program:
+
+Figure out the password and explain what you think the algorithm does.
 
 ```sh
-$ sudo apt install openssh-server
+dropbear setup script:
+sudo apt install zlib1g-dev
+curl -OL "https://matt.ucc.asn.au/dropbear/dropbear-2025.88.tar.bz2"
+tar xf dropbear-2025.88.tar.bz2
+cd dropbear-2025.88
+./configure
+make PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"
+make install DESTDIR=./temp
+cp ./temp/usr/local/sbin/dropbear ../
+cd ..
 ```
 
-Do some initial analysis of the `sshd` binary:
-
-- What type of file is it?
-- What shared libraries (if any) does it use?
-- Are there symbols? Interesting strings?
-
-### `strace`
-
-Next install [`strace`](https://strace.io/) if you don't already have it.
-
-```bash
-$ man strace
-```
+### TODO
 
 #### Questions
 
 1. What do the `openat`, and `execve`, syscalls do? Cite your sources (HINT:
    Google/Type in a terminal `man <syscall-name>`.
-
-2. What is the command line flag for following child processes?
-
-3. What do the `-s`, `-v`, `-x`, and `-y|-yy` command line flags do?
-
-```bash
-$ strace -qq -o sshd.strace $(which sshd)
-$ less ./sshd.strace
-```
-
-Note, strace is kind of a mess to look at, use the filter mentioned below to
-just look at "interesting" syscalls. Also see the tips section for syntax
-highlighting.
-
-4. Use the `-e` flag to filter only on syscalls relate to file operations. What
-   files does `sshd` try to open?
-
-   1. Do any succeed?
-   1. Does this give you any insight into what the program does?
-
-   {{% callout type="info" %}} HINT: Syscalls return a negative number when they
-   fail. {{% /callout %}}
-
-### `ltrace`
-
-Install [`ltrace`](https://ltrace.org/) if you don't already have it.
-
-```bash
-$ ltrace -o sshd.ltrace $(which sshd)
-```
-
-#### Questions
-
-1. Explain at a high level what you see.
-   - What functions stand out to you?
-   - What does this tell you about the functionality of `sshd`?
-
-### Bonus/Optional: `LD_PRELOAD`
-
-Choose two `str*` functions in the ltrace and write your own version of them in
-C, but print out the string parameters while also performing the regular
-functionality.
-
-{{% callout type="info" %}} I recommend `strlen` and
-[`strcasecmp`](https://sourceware.org/git/?p=glibc.git;a=blob;f=string/strcasecmp.c;h=ab75f22adc76f4ba28c48577678ffbb88495effb;hb=HEAD).
-{{% /callout %}}
-
-```bash
-$ gcc -shared -fPIC -o my_string_lib.so ./<your-code>.c
-```
-
-#### Questions
-
-Run openssh-server with your strings library loaded, and examine the strings
-that your functions print.
-
-```bash
-$ LD_PRELOAD='./my_string_lib.so' $(which sshd)
-```
-
-1. What other functions might you want to replace in this way? How does this
-   help with reverse engineering?
-
-1. Check out the `LD_PRELOAD` links in the [resources section](/resources/) and
-   explain why you can't simply include the
 
 {{% /steps %}}
 
