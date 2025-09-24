@@ -29,32 +29,6 @@ very insightful when trying to learn at a high-level what a program does.
 
 {{% steps %}}
 
-### Outline
-
-Learn to use the `ltrace` and `strace` tools.
-
-- read the man pages
-- View the output of both on the simple xor binary
-- use ltrace to compare the c and c++ versions?
-  - The `ltraces` will look very different, make sure to use `-C` to demangle
-    c++ symbols
-  - The straces are also quite different but try again with the last 15 lines
-
-Practice on the `dropbear` ssh server:
-
-- What files does it read?
-  - what syscall did you look for?
-- Why does it seem to fail?
-- Try running with sudo
-  - Did it fail?
-  - Check for listening ports 2222, Check for dropbear in process list
-  - Review the last few calls
-    - What does the clone syscall do?
-
-Try the challenge program:
-
-Figure out the password and explain what you think the algorithm does.
-
 ### Program downloads and other setup
 
 First you'll need the `xor_c` and `xor_cpp` binaries that we've looked at in
@@ -237,7 +211,40 @@ calls used by the program?
 
 ### Tracing a more complex program: `dropbear`
 
-TODO
+Run the `dropbear` SSH server and use `strace` and `ltrace` to help you debug
+why it isn't working. Use the `-p` flag to tell `dropbear` to listen on a port
+other than the default (22) because that port is already in use by the default
+`openssh` server.
+
+Hints:
+
+- Try looking for errors near the end of the logs. Presumably, the program will
+  exit almost immediately if something is wrong.
+- You don't need to know what every syscall does, but knowing the ones we've
+  looked at this lab will be helpful.
+- You can try to read logs that dropbear uses but it will use the `sendto`
+  syscall instead of `write`. You can increase the size of strings that `strace`
+  records with the `-s` flag. For example, `-s 100` will increase the string
+  size to 100 characters.
+
+```sh {filename=Shell}
+ltrace dropbear -p 2222
+```
+
+If you get it working you should see `dropbear` in the process list:
+
+```sh {filename=Shell}
+ps aux | rg dropbear
+# USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+#     ...      ...  0.0  0.0    ...   ... ?        Ss   ...     0:00 dropbear -p 2222
+# student   671158  0.0  0.1   8896  5924 pts/3    S+   ...     0:00 rg dropbear
+```
+
+{{< question >}}
+
+What was the reason that `dropbear` was failing to run?
+
+{{< /question >}}
 
 {{% /steps %}}
 
@@ -255,16 +262,6 @@ what algorithm was used to encrypt it. Good luck!
 {{< downloadbutton file="./challenge.bin" text="./challenge.bin" >}}
 
 {{% /steps %}}
-
-> [!TIP]
->
-> - You can get syntax highlighting with
->   [`bat`](https://github.com/sharkdp/bat), to make reading `strace` and
->   `ltrace` a lot nicer.
->   ```sh
->   $ bat -l strace --color=always --paging=never <ltrace_or_strace_file> | less -SR
->   # NOTE: The -R flag for less
->   ```
 
 ## Submission
 
