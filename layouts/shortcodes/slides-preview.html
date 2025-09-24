@@ -1,11 +1,28 @@
 {{- $week := .Get "week" -}}
-{{- $height := .Get "height" | default "400" -}}
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+>
 <a href="/slides/{{ $week }}.pdf" class="download-button">
     <i class="fas fa-download"></i> Download PDF
 </a>
+<p style="padding-bottom: 10px">Click to expand:</p>
+<a href="/slides/{{ $week }}/" target="_blank">
+    <iframe
+        src="/slides/{{ $week }}/"
+        width="705"
+        height="396.5"
+        title="Week {{ $week }}"
+        scrolling="no"
+        frameborder="0"
+        webkitallowfullscreen
+        mozallowfullscreen
+        allowfullscreen
+        style="pointer-events: none"
+    ></iframe>
+</a>
+
 <style>
     .download-button {
         display: inline-block;
@@ -27,8 +44,3 @@
         margin-right: 8px;
     }
 </style>
-
-<div style="position: relative; width: 100%; height: {{ $height }}px; margin: 1rem 0;">
-  <iframe name="_blank" src="/slides/{{ $week }}/" width="100%" height="100%" title="Week {{ $week }}" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="pointer-events: none;"></iframe>
-  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; z-index: 10;" onclick="window.open('/slides/{{ $week }}/', '_blank')"></div>
-</div>

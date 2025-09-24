@@ -5,7 +5,7 @@
 #include <stdlib.h>  /* EXIT_SUCCESS, EXIT_FAILURE, exit */
 
 static const long MAX_INPUT_SIZE = 4 * 1024 * 1024; // 4 Megabytes
-static const uint8_t KEY[] = "hacs480e";
+static const uint8_t KEY[] = "hacs408e";
 static char *error_msg;
 
 typedef enum RESULT_enum {

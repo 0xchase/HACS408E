@@ -84,7 +84,7 @@ the left side of the screen. The three indicators in the above screenshot are:
 1. View selection dropdowns. Use these to get back to the `Triage` view if you
    ever click something and it takes you to a different view.
 2. This is the main triage window. Scroll down to see more stuff!
-3. The far right side shows an overview of the whole binary. You can also use
+3. The far right-side shows an overview of the whole binary. You can also use
    this to navigate to other sections of the binary.
 
 Because BinaryNinja understands the ELF file format, it has helpfully pulled out
@@ -197,7 +197,7 @@ Open each binary for triage in BinaryNinja, then answer the following questions:
 
 {{< question >}}
 
-Note any differences in the `Triage Summarey` for the two programs. Do they use
+Note any differences in the `Triage Summary` for the two programs. Do they use
 the same shared libraries?
 
 {{< /question >}}
