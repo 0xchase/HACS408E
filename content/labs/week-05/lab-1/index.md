@@ -24,7 +24,16 @@ explaination
 
 {{% steps %}}
 
-### Step1
+### Outline
+
+- Wireshark walkthrough
+  - todo
+  - Explain columns
+  - explain filters
+  - capture http traffic
+  - show encryption with https
+- Malware Traffic Analysis Lab
+  - same as last year?
 
 ### Step2
 
