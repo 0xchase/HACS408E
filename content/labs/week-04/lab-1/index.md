@@ -87,6 +87,38 @@ execute instructions until the breakpoint you previously set is hit.
 # ...
 ```
 
+{{% details title="If `run` Doesn't Work:" closed="true" %}}
+
+> [!IMPORTANT]
+> You may get an error like the following:
+>
+> ```{filename=GDB}
+> Starting program: /home/student/Downloads/xor_c_debug.bin
+> fish: Unknown command. '/home/student/Downloads/xor_c_debug.bin' exists but is not an executable file.
+> -- or -- 
+> Starting program: /home/student/Downloads/xor_c_debug.bin
+> /bin/sh: 1: exec: /home/student/Downloads/xor_c_debug.bin: Permission denied
+> ```
+>
+> This means that `gdb` is not able to execute the program because the file
+> doesn't have execute permissions.
+>
+> ```sh {filename=Shell}
+> ls -l xor_c_debug.bin
+> # .rw-rw-r-- 23k student 27 Sep 10:45 xor_c_debug.bin
+> #    ^  ^  ^
+> #    ------------ Note how there are no 'x's in these positions. Run 'ls -l /bin/ls' to compare
+> ```
+>
+> To fix this you need to add execute permissions to the file with the `chmod`
+> command.
+>
+> ```sh {filename=Shell}
+> chmod u+x xor_c_debug.bin
+> ```
+
+{{% /details %}}
+
 This will run the program until it hits a breakpoint or exits. In our case it
 stopped at main because that's where we set our breakpoint. You might notice
 that because we have debugging information, `gdb` is able to display the values

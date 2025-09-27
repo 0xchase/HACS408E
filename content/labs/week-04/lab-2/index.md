@@ -32,9 +32,7 @@ very insightful when trying to learn at a high-level what a program does.
 ### Program downloads and other setup
 
 First you'll need the `xor_c` and `xor_cpp` binaries that we've looked at in
-previous labs if you don't have them already. You may use the debug version of
-`xor_c.bin` from the last lab if you want, but you will also need the c++
-(`cpp`) version for later.
+last week's [lab-2](../../week-03/lab-2/) if you don't have them already.
 
 {{< downloadbutton file="../../week-03/lab-2/xor_c.bin" text="xor_c.bin" >}}
 
@@ -98,9 +96,9 @@ Then use the `bat` command to print the trace logs you saved earlier with pretty
 colors:
 
 ```sh {filename=Shell}
-bat ./ltrace_xor_c.bin
+bat ./ltrace_xor_c.log
 # ...
-bat ./strace_xor_c.bin
+bat ./strace_xor_c.log
 # ...
 ```
 
@@ -144,16 +142,31 @@ What is the first argument to this call? <br></br> What kind of file is it?
 {{< /question >}}
 
 Use the file descriptor number to find the relevant `openat` call that generated
-it.
+it. Make sure you review the man page so you know what the return value is used
+for!
 
 ```sh {filename=Shell}
-bat strace_xor_c.log | rg read
+bat strace_xor_c.log | rg openat
+#...
+man 2 openat
+#...
 ```
 
 {{< question >}}
 
 Are file descriptor numbers unique? Review the full log to figure out which file
-corresponds to the file descriptor in the first `read` syscall.
+corresponds to the file descriptor in the first `read` syscall. <br></br> This
+might not be totally clear unless you look at the whole picture. Try using the
+regex pattern below to search for all lines with the words `open`, `read` or
+`close` in them:
+
+```sh {filename=Shell}
+# NOTE:
+# In the default shell on your machine, the '()' characters are a special syntax
+# for running sub-commands. It's alwasy good practice to wrap your regex patterns
+# in single quotes to avoid a conflict.
+bat strace_xor_c.log | rg '(open|read|close)'
+```
 
 {{< /question >}}
 
