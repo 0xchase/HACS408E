@@ -2,12 +2,12 @@
 title: "05: Network Protocols"
 prev: schedule/week-04
 next: schedule/week-06
-draft: true
+draft: false
 ---
 
 ### Slides
 
-<iframe src="https://slides.com/chasekanipe/todo" width="576" height="420" title="Week 5" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{{< slides-preview week="week-05" >}}
 
 ### Labs
 
