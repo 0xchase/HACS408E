@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<a href="{{ .Get "file" }}" class="danger-button">
+    <i class="left fa-solid fa-radiation"></i> {{ .Get "text" }} <i class="right fa-solid fa-radiation"></i>
+</a>
+<style>
+    .danger-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #c52929;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        margin-top: 20px;
+        font-family: monospace
+    }
+    .danger-button:hover {
+        background-color: #af2323;
+    }
+    .danger-button i.left {
+        margin-right: 8px;
+    }
+    .danger-button i.right {
+        margin-left: 8px;
+    }
+</style>
