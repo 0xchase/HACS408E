@@ -1,7 +1,7 @@
 ---
 title: "01: File Triage"
 prev: /schedule/
-next: /schedule/week-02/
+next: /labs/week-02/
 ---
 
 This week we'll be covering file triage and extraction.

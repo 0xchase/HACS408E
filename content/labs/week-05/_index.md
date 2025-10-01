@@ -1,7 +1,7 @@
 ---
 title: "05: Network Protocols"
-prev: schedule/week-04
-next: schedule/week-06
+prev: labs/week-04
+next: labs/week-06
 draft: false
 ---
 

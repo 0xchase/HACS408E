@@ -1,7 +1,7 @@
 ---
 title: "03: Binary Analysis I"
-prev: schedule/week-02
-next: schedule/week-04
+prev: labs/week-02
+next: labs/week-04
 draft: false
 ---
 

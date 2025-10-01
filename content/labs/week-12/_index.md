@@ -1,7 +1,7 @@
 ---
 title: "12: Firmware Analysis"
-prev: schedule/week-11
-next: schedule/week-13
+prev: labs/week-11
+next: labs/week-13
 draft: true
 ---
 

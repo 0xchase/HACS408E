@@ -1,7 +1,7 @@
 ---
 title: "04: Binary Analysis II"
-prev: schedule/week-03
-next: schedule/week-05
+prev: labs/week-03
+next: labs/week-05
 ---
 
 ### Slides

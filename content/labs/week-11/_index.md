@@ -1,7 +1,7 @@
 ---
 title: "11: Kernel"
-prev: schedule/week-10
-next: schedule/week-12
+prev: labs/week-10
+next: labs/week-12
 draft: true
 ---
 

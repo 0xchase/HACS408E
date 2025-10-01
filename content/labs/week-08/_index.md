@@ -1,7 +1,7 @@
 ---
 title: "08: Group Presentation"
-prev: schedule/week-07
-next: schedule/week-09
+prev: labs/week-07
+next: labs/week-09
 ---
 
 ## Description

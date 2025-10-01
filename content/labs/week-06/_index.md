@@ -1,7 +1,7 @@
 ---
 title: "06: Malware I"
-prev: schedule/week-05
-next: schedule/week-07
+prev: labs/week-05
+next: labs/week-07
 draft: true
 ---
 

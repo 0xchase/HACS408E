@@ -1,7 +1,7 @@
 ---
 title: "09: Vulnerability Analysis I"
-prev: schedule/week-08
-next: schedule/week-10
+prev: labs/week-08
+next: labs/week-10
 draft: true
 ---
 

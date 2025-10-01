@@ -1,7 +1,7 @@
 ---
 title: "13: Modern Applications"
-prev: schedule/week-12
-next: schedule/week-14
+prev: labs/week-12
+next: labs/week-14
 draft: true
 ---
 

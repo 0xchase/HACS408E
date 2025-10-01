@@ -1,7 +1,7 @@
 ---
 title: "02: Platform Analysis"
-prev: /schedule/week-01/
-next: /schedule/week-03/
+prev: /labs/week-01/
+next: /labs/week-03/
 draft: false
 ---
 
