@@ -87,8 +87,8 @@ draft: false
           pop     rbp
           ret
   ```
-- Assume the value of `RDI` is 4. What is the value of `RAX` after this code
-  finishes?
+- Assume the value of `RDI` is 4 and the value of `RDX` is 0. What is the value
+  of `RAX` after this code finishes?
   ```NASM
   func:
           test    rdi, rdi
