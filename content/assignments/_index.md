@@ -6,7 +6,7 @@ toc: false
 There will be a homework assignment associated with almost every topic covered
 in class so make sure to complete all the labs. Assignments will be due
 approximately every two weeks. Please see the schedule below (and on the class
-webpage) for exact due dates. Every assignment will require understanding the
+web page) for exact due dates. Every assignment will require understanding the
 tools and techniques described in the associated week’s lecture. Students must
 complete a write-up of their results, explaining their analysis methods and
 possibly answering some questions.
@@ -23,7 +23,7 @@ screenshots or images you use are rendered properly.
 
 - Homework 1: [Firmware Analysis](hw-1/)
 - Homework 2: [Binary Bomb](hw-2/)
+- Homework 3: [Analyze Packet Capture + Artifacts](hw-3/)
 
-<!-- - Homework 3: [](hw-3/) -->
 <!-- - Homework 4: [](hw-4/) -->
 <!-- - Homework 5: [](hw-5/) -->
