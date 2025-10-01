@@ -121,7 +121,7 @@ label to filter for web traffic.
 
 {{< question >}}
 
-What domains do you see this time?
+List a couple of domains that you see this time. Are any strange?
 
 {{< /question >}}
 
@@ -136,8 +136,9 @@ Are there any other files downloaded from this site?
 
 {{< /question >}}
 
-Look for other HTTP requests to this malicious domain. Look for another file
-download.
+Look for other HTTP requests to this malicious domain. Find another GET request
+which downloads a file. Presumably, this is a second stage payload for this
+malware.
 
 {{< question >}}
 
@@ -146,7 +147,7 @@ filetype?
 
 {{< /question >}}
 
-### Exporting Artifact from Wireshark
+#### Exporting Artifact from Wireshark
 
 Use the Wireshark menu to navigate to `File > Export Objects > HTTP` to see the
 various files that Wireshark can extract from this PCAP.
@@ -159,16 +160,95 @@ What are the `SHA256` hashes of each of the files.
 
 ### Inspecting HTTPS Certificates
 
-Find packet for `evento.peugeot-anzures.com` look for cert name?
+By default if you're capturing TLS (HTTPS) traffic, it is encrypted so you won't
+be able to decrypt it and see the contents unless you have the private key. This
+is possible to intercept if you set up a
+[Man-in-the-Middle proxy](https://www.mitmproxy.org/) or if you control the
+server that serves HTTPS connections.
 
-Use url_haus to check malicious domain.
+In this case thought, we're going to analyze the packets to look for malicious
+traffic by finding non-standard looking TLS certificates.
 
-What are the IP address without a domain using https? Are any of them using a
+Open up `workshop-part-05-04.pcap` from the unzipped files you extracted earlier
+and use the `basic` filter to see the various hostnames present in the capture.
+
+{{< question >}}
+
+What are the IP address without a domain using HTTPS? Are any of them using a
 non-standard port?
 
-Look at RDN sequence
+{{< /question >}}
+
+Next lets find out what packet(s) contain the certificates. Most major web
+protocols are documented in
+"[Request for Comments](https://www.ietf.org/process/rfcs/)" (RFCs).
+
+Search through the table of contents in the TLS specification and find the
+`Handshake Protocol` section of the appendix on
+`Protocol Data Structures and Constant Values`:
+
+- [RFC8446](https://datatracker.ietf.org/doc/html/rfc8446)
+
+{{< question >}}
+
+In the `HandshakeType` enum, what number denotes the `certificate` handshake
+type?
+
+{{< /question >}}
+
+Use this number as a filter in Wireshark for the `tls.handshake.type` field.
+Then look for a packet where the `src` address is `204.79.197.200` which is the
+ip address for `www.bing.com` from this recording.
+
+```{filename="Wireshark Filter"}
+ip.addr == 204.79.197.200 and tls.handshake.type == <ANSWER_TO_PREVIOUS_QUESTION>
+```
+
+Expand the dropdowns in the frame details pane until you see the
+[`RDNSequence`](https://datatracker.ietf.org/doc/html/rfc4514#section-2).
+
+- `Transport Layer Security`
+  - `TLSv1.2 Record Layer: Handshake Protocol: Certificate`
+    - `Handshake Protocol: Certificate`
+      - `Certificates (### bytes)`
+        - `Certificate`
+          - `signedCertificate`
+            - `issuer: rdnSecquence (0)`
+              - `rdnSequence: # items (...)`
+
+Compare this to the RDNSequence for one of the TLS packets coming from a
+malicious address you found above (such as `178.33.183.53`).
+
+{{< question >}}
+
+Describe how the values for a RDNSequence look for a normal certificate compared
+to a malicious one.
+
+{{< /question >}}
 
 {{% /steps %}}
+
+## Solutions
+
+{{% details title="Click to reveal..." closed="true" %}}
+
+#### Victim Machine Info
+
+![](./victim_machine_info_1.png "")
+
+![](./victim_machine_info_2.png "")
+
+#### Export Objects Hashes
+
+![](./file_hashes_answer.png "")
+
+#### Malicious Certificates RDNSequence
+
+![](./find_valid_certificate_answer.png "")
+
+![](./find_invalid_certificate_answer.png "")
+
+{{% /details %}}
 
 ## Submission
 
