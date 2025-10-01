@@ -39,7 +39,7 @@ the firmware, older versions of binwalk should be fine.
 
 Here is what the binwalk results for the encrypted firmware should be:
 
-![](./hw-1/hacs408e-assignment-1-binwalk.png "Picture of terminal commands showing that binwalk version 3 recognizes the firmware file type while binwalk version 2.3.3 does not.")
+![](./hacs408e-assignment-1-binwalk.png "Picture of terminal commands showing that binwalk version 3 recognizes the firmware file type while binwalk version 2.3.3 does not.")
 
 ### Extract Contents with Binwalk
 
