@@ -12,6 +12,9 @@ malicious domains. Extract any binary artifacts you can find and provide a brief
 initial triage of each malicious program with VirusTotal. Finally you will
 choose **exactly one** of the artifacts and look at it in Binaryninja.
 
+Please cite any sources used during your research by including the website link
+in a "Sources" section at the end of your report.
+
 {{< dangerbutton file="homework-3.zip" text="Zipped PCAP" >}}
 
 > [!CAUTION]
