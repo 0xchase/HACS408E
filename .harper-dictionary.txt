@@ -1,13 +1,17 @@
+DHCP
 Decrpyt
 Fi
 GEF
 MacOS
 OS
 OpenWRT
+PCAP
+RDNSequence
 SquashFS
 UMD's
 VMs
 Wi
+Wireshark
 X11
 binaryninja
 binja
