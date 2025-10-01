@@ -1,12 +1,45 @@
 ---
 title: "Quiz 2"
 weight: 2
-draft: true
+draft: false
 ---
 
-## Description
+## Topics Covered
 
-TODO
+### Wireshark
+
+Understand the basic syntax of Wireshark filters.
+
+### The OSI Model
+
+Understand what each layer is responsible for:
+
+- https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/
+
+### TCP + UDP
+
+Understand the differences between each protocol.
+
+- Structure of packets
+- Pros and Cons of each
+- Know the three-way handshake for TCP connections
+
+### Specific Protocols
+
+- Be able to match application level protocols to their port numbers and whether
+  they use TCP or UDP.
+- Understand what various 'Utility' protocols are used for.
+  - Address Resolution Protocol
+    - Maps a device's logical IP address to its physical MAC (Media Access
+      Control) address.
+  - Internet Control Message Protocol
+    - Sends error and control messages between hosts and routers.
+  - Dynamic Host Configuration Protocol
+    - Automates the assignment of IP addresses and other network configuration
+      information to devices on a network.
+  - Domain Name Service
+    - Translates human-readable domain names (`example.com`) into
+      machine-readable IP addresses (`192.168.0.1`).
 
 ## Example Questions
 
@@ -14,7 +47,7 @@ TODO
   to the IP address 192.168.0.1?
 - Which Wireshark filter would you use to display only incoming HTTP requests?
 
-- Which OSI layer is responsible for
+- Which OSI layer is responsible for:
   - converting data into electrical signals or bits for transmission?
   - data segmentation and reassembly?
   - error detection and correction?
@@ -34,8 +67,7 @@ TODO
 - Which of the following best describes the three-way handshake used in TCP
   connections?
 
-- What is the primary purpose of ARP (Address Resolution Protocol)?
-- Which of the following statements is true about the QUIC protocol?
+- What is the primary purpose of `ARP|DNS|DHCP|ICMP` (`<Full Protocol Name>`)?
 
 Please match the protocols with their associated port numbers:
 
