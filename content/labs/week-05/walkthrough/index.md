@@ -24,6 +24,38 @@ some familiarity with how to navigate the user interface of Wireshark.
 
 ## Instructions
 
+<!-- deno-fmt-ignore-start -->
+
+> [!NOTE] Wireshark Profile
+>
+> The screenshots in this walkthrough show a slightly modified version of
+> Wireshark based on the setup from
+> [Part 2](https://www.youtube.com/watch?v=xYzBFZDm6Ds&list=PLaKGTLgARHpNPf_SzebsyKWIzAHjCnwLT&index=2)
+> of Unit42's
+> [Wireshark Workshop](https://unit42.paloaltonetworks.com/wireshark-workshop-videos/).
+> If you aren't using the class VMs and want the same Wireshark profile, you can
+> download and set it up like so:
+>
+> 
+> {{< downloadbutton file="./Unit42_Wireshark_Profile.zip" text="Wireshark Profile" >}}
+> 
+> <details class="last-of-type:hx-mb-0 hx-rounded-lg hx-bg-neutral-50 dark:hx-bg-neutral-800 hx-p-2 hx-mt-4 hx-group">
+> <summary class="hx-flex hx-items-center hx-cursor-pointer hx-select-none hx-list-none hx-p-1 hx-rounded hx-transition-colors hover:hx-bg-gray-100 dark:hover:hx-bg-neutral-800 before:hx-mr-1 before:hx-inline-block before:hx-transition-transform before:hx-content-[''] dark:before:hx-invert rtl:before:hx-rotate-180 group-open:before:hx-rotate-90">
+>    <strong class="hx-text-lg">How to Import Profile to Wireshark</strong>
+> </summary>
+> 
+> ![](./edit_config_profile.png "")
+> 
+> ![](./import_from_zip.png "")
+> 
+> ![](./select_profile.png "")
+> 
+> ![](./profile_updated.png "")
+> 
+> </details>
+
+<!-- deno-fmt-ignore-end -->
+
 {{% steps %}}
 
 ### Take your first capture
