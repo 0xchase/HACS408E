@@ -148,6 +148,3 @@ Submit a markdown file with any code you wrote and the answers to questions to
 [ELMS](https://umd.instructure.com/courses/1390353/assignments).
 
 {{< /callout >}}
-
-```
-```
