@@ -74,7 +74,15 @@ You can add yourself to a group in the `People` tab when viewing
 <td>
 {{< dangerbutton file="group_7.zip" text="Sample 7" >}}
 </td>
+<!-- Extra sample if necessary.
 </tr>
+<tr>
+<th scope="row">Group 8</th>
+<td>
+{{< dangerbutton file="group_8.zip" text="Sample 8" >}}
+</td>
+</tr>
+-->
 </tbody>
 </table>
 
@@ -119,21 +127,26 @@ following questions (does not need to be in this order):
 
 - Demonstrate use of reversing tools learned in class (such as `binaryninja` and
   `windbg`) to understand what this sample does.
-- Does it match what you found in your initial research? If not show how it is
-  different.
+  - We do not expect you to completely reverse the entire program. Try to focus
+    on an interesting function or two and explain why you chose them in your
+    presentation.
+- Do you see evidence of any indicators you found in your initial research?
+  - If not explain how your sample is different or what you might have expected
+    to see.
 - Show static and dynamic analysis workflows for understanding your sample's
   behavior.
-  - If you encountered any challenges explain how you addressed them
-    (successfully or not).
+  - If you encountered any challenges explain how you addressed them or how you
+    might overcome them with more time/resources.
 
 ## Rubric (`20 pts`)
 
-| Item                         | Points  | Description |
-| :--------------------------- | :------ | :---------- |
-| Research Previous Work       | `3 pts` |             |
-| Initial Triage               | `3 pts` |             |
-| Network & System Analysis    | `7 pts` |             |
-| Demonstrate Reversing Skills | `7 pts` |             |
+| Item                         | Points  | Percentage | Description                                                                                    |
+| :--------------------------- | :------ | :--------: | :--------------------------------------------------------------------------------------------- |
+| Research Previous Work       | `2 pts` |   `10 %`   | Research information about your sample online.                                                 |
+| Initial Triage               | `3 pts` |   `15 %`   | Provide an overview of your malware sample and indicators of compromise (IOCs).                |
+| Network & System Analysis    | `6 pts` |   `30 %`   | Show a high level understanding of this sample and how it interacts with the operating system. |
+| Demonstrate Reversing Skills | `6 pts` |   `30 %`   | Show a deeper analysis of your sample by reverse engineering it.                               |
+| Presentation Quality         | `3 pts` |   `15 %`   | Clarity and comprehensiveness of your presentation.                                            |
 
 ## Submission
 
