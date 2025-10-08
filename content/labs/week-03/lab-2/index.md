@@ -165,22 +165,10 @@ Which two registers are used for the calculation and where is the result stored?
 ### Understanding control flow (first steps)
 
 Analyze the assembly code in:
-[Min Value Calculation on Godbolt](https://godbolt.org/z/5G5WTxvcj)
-
-<!-- Alt Versions:
-- https://godbolt.org/z/EhW58M8q4
-- https://godbolt.org/z/Whh1q7G8c
-- https://godbolt.org/z/fPT45dfWo (64-bit version)
--->
+[Min Value Calculation on Godbolt](https://godbolt.org/z/Gsh5PqW57)
 
 Try to trace the control flow (which branches the code takes or doesn't take) by
 walking through the instructions.
-
-{{< question >}}
-
-How many times does the loop run?
-
-{{< /question >}}
 
 Try to note how memory and registers are used in combination to keep track of
 the values of variables in the code. Assuming there is an address in the
@@ -191,6 +179,12 @@ register `RSP` (lets say `0x7fff8000`) answer the following questions:
 Explain how the values of the array are saved so that the `min()` function has
 access to them.
 <br></br> What register is used to keep track of the `min` variable?
+
+{{< /question >}}
+
+{{< question >}}
+
+Explain what the `cmova eax, edx` instruction does.
 
 {{< /question >}}
 

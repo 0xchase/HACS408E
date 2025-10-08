@@ -7,79 +7,146 @@ next: labs/week-09
 ## Description
 
 This week you will form groups to reverse engineer real-world malware samples.
-Your group will be expected to prepare a short (~10 minute) presentation to be
+Your group will be expected to prepare a short (10-15 minute) presentation to be
 given in two weeks during class (next week we'll be covering more malware
 topics). The presentation will be your midterm. To be assigned your sample,
-first form a group of 3-5 students. Feel free to use the Discord to find group
+first form a group of 3-4 students. Feel free to use the Discord to find group
 members. Then send a Discord message or email to the instructors with the names
 of your group members. We will respond with a sample for your group to analyze.
 
 {{< callout type=info >}}
 
-You can add yourself to a group in the `People` section of our
-[ELMS Class](https://umd.instructure.com/courses/1390353/groups#tab-112702)
+You can add yourself to a group in the `People` tab when viewing
+[this class on ELMS](https://umd.instructure.com/courses/1390353/groups#tab-112702).
 
 {{< /callout >}}
 
-> [!TIP]
->
-> - TODO
-
 ## Samples
 
-{{< downloadbutton file="group_1.zip" text="Group 1" >}}
-
-{{< downloadbutton file="group_2.zip" text="Group 2" >}}
-
-{{< downloadbutton file="group_3.zip" text="Group 3" >}}
-
-{{< downloadbutton file="group_4.zip" text="Group 4" >}}
-
-{{< downloadbutton file="group_5.zip" text="Group 5" >}}
-
-{{< downloadbutton file="group_6.zip" text="Group 6" >}}
-
-{{< downloadbutton file="group_6.zip" text="Group 7" >}}
-
-These are live malware samples for the midterm report. **PLEASE BE CAREFUL WITH
-THEM!**
-
 > [!WARNING]
+> These are real, potentially live malware samples for your midterm report.
+>
+> **PLEASE BE CAREFUL WITH THEM!**
+>
 > All zip files are password protected. Reach out to the instructors for the
 > password.
 
+<table>
+<tbody>
+<tr>
+<th scope="row">Group 1</th>
+<td>
+{{< dangerbutton file="group_1.zip" text="Sample 1" >}}
+</td>
+</tr>
+<tr>
+<th scope="row">Group 2</th>
+<td>
+{{< dangerbutton file="group_2.zip" text="Sample 2" >}}
+</td>
+</tr>
+<tr>
+<th scope="row">Group 3</th>
+<td>
+{{< dangerbutton file="group_3.zip" text="Sample 3" >}}
+</td>
+</tr>
+<tr>
+<th scope="row">Group 4</th>
+<td>
+{{< dangerbutton file="group_4.zip" text="Sample 4" >}}
+</td>
+</tr>
+<tr>
+<th scope="row">Group 5</th>
+<td>
+{{< dangerbutton file="group_5.zip" text="Sample 5" >}}
+</td>
+</tr>
+<tr>
+<th scope="row">Group 6</th>
+<td>
+{{< dangerbutton file="group_6.zip" text="Sample 6" >}}
+</td>
+</tr>
+<tr>
+<th scope="row">Group 7</th>
+<td>
+{{< dangerbutton file="group_7.zip" text="Sample 7" >}}
+</td>
+<!-- Extra sample if necessary.
+</tr>
+<tr>
+<th scope="row">Group 8</th>
+<td>
+{{< dangerbutton file="group_8.zip" text="Sample 8" >}}
+</td>
+</tr>
+-->
+</tbody>
+</table>
+
 ## Presentation
 
-Prepare a 10-minute presentation with your group about your sample. It should
-summarize your analysis, with any background information necessary to help the
-class understand your analysis. At a minimum, it should answer the following
-questions.
+Prepare a 10-15 minute presentation with your group about your sample. It should
+summarize your analysis, with any background information and context necessary
+to help the class understand your results. At a minimum, it should answer the
+following questions (does not need to be in this order):
+
+#### Research Previous Work
+
+- Look for information about this malware type from other researchers and give a
+  summary in your presentation.
+  - You may use VirusTotal to get you started.
+- What type of malware is it and what family does it belong to?
+- What indicators of compromise (IOCs) are there for this sample?
+
+#### Initial Triage
+
+- Explain high level details about this sample from binaryninja's triage
+  summary.
+- What imports, exports, and strings does the malware contain?
+  - Does anything seem interesting or malicious?
+- Provide hashes (MD5 and SHA256) of the file and ways to potentially identify
+  this type of malware.
+- Provide a time frame for when this malware was active based on when this
+  binary was compiled.
+  - Is it still active?
+
+#### Network & System Analysis
+
+- How does this sample interact with the network?
+  - Can you find hard coded URLs or IP addresses?
+  - Monitor for suspicious requests with Wireshark.
+- How does this sample interact with the operating system?
+  - Does it look for specific files or access Windows registry keys?
+  - Does the behavior include additional payloads, process injection or
+    persistence mechanisms?
+
+#### Demonstrate Reversing Skills
+
+- Demonstrate use of reversing tools learned in class (such as `binaryninja` and
+  `windbg`) to understand what this sample does.
+  - We do not expect you to completely reverse the entire program. Try to focus
+    on an interesting function or two and explain why you chose them in your
+    presentation.
+- Do you see evidence of any indicators you found in your initial research?
+  - If not explain how your sample is different or what you might have expected
+    to see.
+- Show static and dynamic analysis workflows for understanding your sample's
+  behavior.
+  - If you encountered any challenges explain how you addressed them or how you
+    might overcome them with more time/resources.
 
 ## Rubric (`20 pts`)
 
-1. Conduct Research (`5 pts`)
-   - What type of malware is it and what family does it belong to?
-   - Look for information about this malware type from other researchers and
-     give a summary in your presentation.
-   - What indicators of compromise (IOCs) are there for this sample?
-
-2. Initial Triage (`3 pts`)
-   - What kind of file is the malware?
-   - What interest imports, exports, and strings does the malware contain?
-
-3. Demonstrate Reversing Skills (`7 pts`)
-   - Demonstrate use of reversing tools learned in class (such as binaryninja)
-     to understand what this binary does.
-   - Does it match what you found in your initial research? If not show how it
-     is different.
-   - Show both static and dynamic analysis workflows. If you encountered any
-     challenges explain how you addressed (successfully or not) them.
-
-4. Network & System Analysis (`5 pts`)
-   - Does it interact with the network?
-   - Does the behavior include file modifications, additional payloads, process
-     injection, registry modifications, or persistence mechanisms?
-   - What is the overall purpose of this sample?
+| Item                         | Points  | Percentage | Description                                                                                    |
+| :--------------------------- | :------ | :--------: | :--------------------------------------------------------------------------------------------- |
+| Research Previous Work       | `2 pts` |   `10 %`   | Research information about your sample online.                                                 |
+| Initial Triage               | `3 pts` |   `15 %`   | Provide an overview of your malware sample and indicators of compromise (IOCs).                |
+| Network & System Analysis    | `6 pts` |   `30 %`   | Show a high level understanding of this sample and how it interacts with the operating system. |
+| Demonstrate Reversing Skills | `6 pts` |   `30 %`   | Show a deeper analysis of your sample by reverse engineering it.                               |
+| Presentation Quality         | `3 pts` |   `15 %`   | Clarity and comprehensiveness of your presentation.                                            |
 
 ## Submission
 

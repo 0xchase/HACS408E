@@ -9,6 +9,10 @@ draft: false
 
 {{< slides-preview week="week-05" >}}
 
+### Walkthroughs
+
+- [Wireshark Tutorial](walkthrough/)
+
 ### Labs
 
 - [Lab 1](lab-1/)
