@@ -1,5 +1,5 @@
 ---
-title: "07: Malware II"
+title: "07: Malware Analysis II"
 prev: labs/week-06
 next: labs/week-08
 draft: true

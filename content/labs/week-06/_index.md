@@ -1,5 +1,5 @@
 ---
-title: "06: Malware I"
+title: "06: Malware Analysis I"
 prev: labs/week-05
 next: labs/week-07
 draft: false
@@ -9,8 +9,11 @@ draft: false
 
 {{< slides-preview week="week-06" >}}
 
+### Walkthroughs
+
+- [Setting up VM for Malware Analysis](vm-setup/)
+
 ### Labs
 
 - [Lab 1](lab-1/)
 - [Lab 2](lab-2/)
-- [Demo Pcap](http_with_jpeg.pcap)
