@@ -2,12 +2,12 @@
 title: "06: Malware I"
 prev: labs/week-05
 next: labs/week-07
-draft: true
+draft: false
 ---
 
 ### Slides
 
-<iframe src="https://slides.com/chasekanipe/todo" width="576" height="420" title="Week 6" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{{< slides-preview week="week-06" >}}
 
 ### Labs
 
