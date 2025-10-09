@@ -52,20 +52,26 @@ Once you've created the forwarder, a new row will appear in the table:
 
 ### Install and/or run an RDP client based on your operating system.
 
-First you'll need to install one if you don't already have it. It comes built-in
-on windows but on MacOS and Linux you'll need an extra program.
+First you'll need to install one if you don't already have it.
 
 #### Windows Client
+
+An RDP client comes built-in on a default Windows installation:
 
 <img src="./run_rdp_start_menu.png" style="width: 700px" />
 
 #### MacOS Client
+
+For MacOS I recommend using the
+[Windows App](https://apps.apple.com/us/app/windows-app/id1295203466).
 
 <img src="./macos_windows_rdp_app.png" style="width: 700px" />
 
 #### Linux Client
 
 For the Linux folks, I recommend [remmina](https://remmina.org/).
+
+<img src="./remmina_logo.png" style="width: 700px" />
 
 ### Finally, connect to the class VM using the ACES port forwarder you set up earlier.
 
