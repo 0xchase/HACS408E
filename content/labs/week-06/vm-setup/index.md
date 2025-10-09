@@ -26,7 +26,7 @@ snapshot on the class lab infrastructure.
 
 {{% steps %}}
 
-### First navigate to your VM at [`https://labs.aces.umd.edu`](https://labs.aces.umd.edu)
+### First navigate to your VM at [`https://lab.aces.umd.edu`](https://lab.aces.umd.edu)
 
 ### Open the VM settings
 
