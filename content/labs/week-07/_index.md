@@ -2,12 +2,12 @@
 title: "07: Malware Analysis II"
 prev: labs/week-06
 next: labs/week-08
-draft: true
+draft: false
 ---
 
 ### Slides
 
-<iframe src="https://slides.com/chasekanipe/todo" width="576" height="420" title="Week 7" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{{< slides-preview week="week-07" >}}
 
 ### Labs
 
