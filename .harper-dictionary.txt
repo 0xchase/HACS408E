@@ -8,10 +8,12 @@ OpenWRT
 PCAP
 RDNSequence
 SquashFS
+TTD
 UMD's
 VMs
 VirusTotal
 Wi
+WinDbg
 Wireshark
 X11
 binaryninja
