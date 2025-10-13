@@ -29,7 +29,7 @@ imports section of the `PE` headers.
 
 ### Get the example program.
 
-{{< downloadbutton file="program.exe" text="program.exe" >}}
+{{< downloadbutton file="dyn-load-example.exe" text="dyn-load-example.exe" >}}
 
 ### Run the program, then trace it with `procmon`
 
@@ -69,7 +69,7 @@ trace with `procmon`.
 
 ### Download the `hash-example` files
 
-{{< downloadbutton file="hash-example.zip" text="hash-example.zip" >}}
+{{< downloadbutton file="hash-example.exe" text="hash-example.exe" >}}
 
 ### Review the program in Ghidra to get a sense of what it's doing
 
