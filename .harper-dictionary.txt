@@ -2,6 +2,7 @@ DHCP
 Decrpyt
 Fi
 GEF
+HashDB
 MacOS
 OS
 OpenWRT

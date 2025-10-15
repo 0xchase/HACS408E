@@ -72,8 +72,8 @@ What function does this program want call from the `.DLL`?
 {{< downloadbutton file="temp_name.dll" text="temp_name.dll" >}}
 
 Next rename this file to the correct name that you found in your earlier
-analysis and rerun the `dyn-load-example.exe` program. You should notice that
-the behavior changes.
+analysis and run the `dyn-load-example.exe` program again. You should notice
+that the behavior changes.
 
 ### Setup Binary Ninja Debugger
 
@@ -171,14 +171,124 @@ What is the address of the `myputs` function?
 
 {{< downloadbutton file="hash-example.exe" text="hash-example.exe" >}}
 
-### Review the program in Ghidra to get a sense of what it's doing
+### Run the program to see what it does
 
-1. **Describe at a high level what the program does.**
+> [!NOTE]
+> This program was written by the instructors and is safe to run.
 
-### Use `x32-debug` to step through until you get to when it calls the secret function.
+{{< question >}}
 
-1. **What function gets called?**
-1. **Were you able to figure this out in any other ways (context clues, etc.)?**
+Make a hypothesis about the secret function that was called. What do you think
+it does?
+
+{{< /question >}}
+
+### Analyze the program in Binary Ninja
+
+This program uses a malware technique known as function hashing or
+[API hashing](https://www.ired.team/offensive-security/defense-evasion/windows-api-hashing-in-malware)
+in order to hide the names of the library functions that are called. This makes
+it harder for reverse engineers to figure out what a program is doing. Reverse
+the program in Binary Ninja to answer the following questions:
+
+{{< question >}}
+
+Where are the function hashes being calculated?
+
+{{< /question >}}
+
+> [!TIP]
+> Often, you will see multiple hashes getting checked all at the same time and
+> put into an array. Then they can be looked up quickly later on in the program.
+> Also note, hashes are usually a 4 or 8 byte number (`0x12345678`) not the
+> result of a hash function like `sha256` or `md5`.
+
+{{< question >}}
+
+What libraries (`.dll` files) is the program using to look up functions? (Hint:
+There are three names)
+
+{{< /question >}}
+
+### Use the Binary Ninja debugger to find the secret function
+
+Rather than trying to completely reverse engineer the hash algorithm, it is
+usually easier to use a debugger to set a breakpoint when the hashed function is
+actually called. Then you can see which function in the loaded library
+corresponds to the hash.
+
+You may need to `rebase` the program in binary ninja if the addresses don't
+match where you set your breakpoint.
+
+![](./copy_base_address.png "")
+
+![](./ctrl_p_command_pallete.png "")
+
+![](./enter_new_base_address.png "")
+
+The debugger console lets you type commands and inspect memory in a text
+interface. This is similar to the `gdb` prompt you've used from earlier in this
+class. Binary Ninja uses a `WinDbg` backend for debugging windows programs. Any
+commands that you enter in the console should be `WinDbg` commands.
+
+- [WinDbg Commands Cheat Sheet](https://blog.lamarranet.com/wp-content/uploads/2021/09/WinDbg-Cheat-Sheet.pdf)
+
+{{< question >}}
+
+Set a breakpoint at the call instruction and determine the name of the secret
+function and what library it comes from.
+
+{{< /question >}}
+
+### Using the HashDB plugin
+
+One of the main reasons to use the paid version of Binary Ninja, is the plugins!
+People from the security community write plugins to extend the functionality of
+Binary Ninja so that certain repetitive or niche problems can be more easily
+solved.
+
+The HashDB plugin is a great example of this! Check out
+[their website](https://hashdb.openanalysis.net/) for more info.
+
+To use the plugin with Binary Ninja, you need to install it:
+
+![](./hashdb_install_plugin.png "")
+
+To use it you need to go through a couple of steps:
+
+1. First you need to `Hunt` for the hash algorithm. To do this you'll right
+   click on a hash value and then use the `Hunt feature to find an algorithm
+   that matches that hash value.
+
+   ![](./hunt_hashes.png "")
+
+   ![](./hash_algorithm_suggestions.png "")
+
+1. Next you'll need to do a `Hash Lookup` which will lookup the function names
+   using the algorithm you selected in the previous step to create an `enum`
+   entry with hash values mapping to function names **for a specific library**.
+   Make sure you select the correct one in the drop-down menu!
+
+   ![](./hash_lookup.png "")
+
+   ![](./choose_the_hash_library.png "")
+
+1. Finally, you can replace the hash value in the Binary Ninja code view using
+   the `Display As > Enum Member` option or by using the `M` shortcut key.
+
+   ![](./display_as_enum.png "")
+
+   ![](./choose_enum_value.png "")
+
+> [!NOTE]
+> Shout out to Anuj Soni for putting together a great
+> [video walkthrough explaining how to use the HashDB plugin](https://youtu.be/FKv7njCmJMU?si=Yqer15Oy4QDcfq93&t=1016).
+
+{{< question >}}
+
+What other functions does this program lookup from common windows libraries?
+
+{{< /question >}}
 
 {{% /steps %}}
 
@@ -186,9 +296,6 @@ What is the address of the `myputs` function?
 >
 > - Don't worry if the Windows API functions don't make a lot of sense. We don't
 >   expect you to become windows experts overnight.
-> - Debugging symbols for windows are stored in `.pdb` files. Ghidra should pick
->   this up automatically if it stored in the same directory as the executable
->   file.
 
 ## Solutions
 
@@ -205,6 +312,26 @@ What is the address of the `myputs` function?
 ![](./step_over_load_library_answer.png "")
 
 ### Function Hashing
+
+#### Static Analysis
+
+![](./hash_function.png "")
+
+![](./dll_string_names.png "")
+
+![](./hash_lookup_and_calculation.png "")
+
+![](./hash_function_marked_up.png "")
+
+#### Debug Console
+
+![](./debugger_console.png "")
+
+![](./backtrace.png "")
+
+#### HashDB
+
+![](./hashes_answer.png "")
 
 {{% /details %}}
 
