@@ -7,7 +7,7 @@ weight: 2
 
 {{< callout emoji="💡" >}}
 
-explaination
+explanation
 
 **Goals:**
 

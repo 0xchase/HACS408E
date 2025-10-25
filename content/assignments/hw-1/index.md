@@ -21,7 +21,7 @@ concepts visually.
 | Item                 | Points  | Description                                                                                       |
 | :------------------- | :------ | :------------------------------------------------------------------------------------------------ |
 | Initial Research     | `3 pts` | Find information about the device this firmware is for and provide an overview in your report.    |
-| Decrpyt Firmware     | `3 pts` | Explain your process for decrypting the firmware. Include references to anything you find online. |
+| Decrypt Firmware     | `3 pts` | Explain your process for decrypting the firmware. Include references to anything you find online. |
 | Extract Firmware     | `4 pts` | Show an overview of the binwalk extraction results.                                               |
 | Analyze Init Scripts | `3 pts` | Give a short analysis of the directory structure and init scripts for the filesystem.             |
 | Analyze Web Pages    | `4 pts` | Try to analyze the web server HTML/Javascript code. This does not need to be extensive.           |

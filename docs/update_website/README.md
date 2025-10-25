@@ -15,19 +15,19 @@ hugo
 
 ![](connect_to_umd.png)
 
-**NOTE:** This step is unecessary if you are connected to the Wi-Fi on campus.
+**NOTE:** This step is unnecessary if you are connected to the Wi-Fi on campus.
 
 ### Step 2 - Connect to Web Hosting Platform
 
 In this example i'll be using Filezilla.
 
 Host: `sftp://sftp.it-prod-webhosting.aws.umd.edu` Username: `<your-username>`
-Port: `22` (I think this is unecessary if you include the `sftp://` at the
+Port: `22` (I think this is unnecessary if you include the `sftp://` at the
 beginning of the hostname)
 
 ![](enter_umd_pass.png)
 
-Navigate to the public directory you genereated files in during `Step 0`.
+Navigate to the public directory you generated files in during `Step 0`.
 
 ![](local_dir.png)
 

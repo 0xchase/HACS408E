@@ -60,7 +60,7 @@ project._
 - Environment setup
 - C review (read encrypted file, xor decrypt flag)
 - Incremental assembly assignments
-- Give them 4-5 binaries to traige strings, readelf
+- Give them 4-5 binaries to triage strings, readelf
 - Intro RE lab 1
 - Intro RE lab 2
 - Homework: CTF-style RE lab

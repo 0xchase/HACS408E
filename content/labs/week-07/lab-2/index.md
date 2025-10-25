@@ -144,7 +144,7 @@ Use the icons in the top of the debugger window to step through the code.
 > seeing what happens in the program. However, the pro is that you can go
 > backwards if you want!
 
-![](./step_over_load_libarary.png "")
+![](./step_over_load_library.png "")
 
 {{< question >}}
 
@@ -222,7 +222,7 @@ match where you set your breakpoint.
 
 ![](./copy_base_address.png "")
 
-![](./ctrl_p_command_pallete.png "")
+![](./ctrl_p_command_palette.png "")
 
 ![](./enter_new_base_address.png "")
 

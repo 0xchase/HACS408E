@@ -163,7 +163,7 @@ regex pattern below to search for all lines with the words `open`, `read` or
 ```sh {filename=Shell}
 # NOTE:
 # In the default shell on your machine, the '()' characters are a special syntax
-# for running sub-commands. It's alwasy good practice to wrap your regex patterns
+# for running sub-commands. It's always good practice to wrap your regex patterns
 # in single quotes to avoid a conflict.
 bat strace_xor_c.log | rg '(open|read|close)'
 ```

@@ -42,7 +42,7 @@ also incredibly dense so we're going to break down some of the pieces you need.
 Lets start with the components of an assembly instruction by looking at page
 `132` of [Vol. 2](https://cdrdv2.intel.com/v1/dl/getContent/671110):
 
-![](./intel_add_instr_breakdown.png "Screenshot of the ADD instruction from the intel sofware developers manual")
+![](./intel_add_instr_breakdown.png "Screenshot of the ADD instruction from the intel software developers manual")
 
 This breakdown shows some important information about the add instruction"
 

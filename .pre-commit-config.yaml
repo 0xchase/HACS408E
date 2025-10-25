@@ -1,0 +1,13 @@
+repos:
+    - repo: https://github.com/crate-ci/typos
+      rev: v1.38.1
+      hooks:
+          - id: typos
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v6.0.0 # Use the ref you want to point at
+      hooks:
+          - id: trailing-whitespace
+    - repo: https://github.com/nozaq/pre-commit-deno
+      rev: 0.1.0 # Use the ref you want to point at
+      hooks:
+          - id: deno-fmt
