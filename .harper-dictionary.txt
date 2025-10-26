@@ -1,5 +1,5 @@
 DHCP
-Decrpyt
+Decrypt
 Fi
 GEF
 HashDB
@@ -24,3 +24,4 @@ downloadbutton
 entrypoint
 gdb
 ip
+shellcode
