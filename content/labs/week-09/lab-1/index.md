@@ -112,7 +112,9 @@ you generate from a password you know.
 > echo "my_super_cool_input" | md5sum
 ```
 
-> [!TIP] HINT: Make sure the hash you calculate uses the same amount of bytes as
+> [!TIP] HINT:
+>
+> Make sure the hash you calculate uses the same amount of bytes as
 > the hash calculation done by the program!
 
 {{< question >}}
@@ -182,7 +184,7 @@ the `secret_function` in your lab guide.
 >   | :------------------------------------- | :---------------------------------------------------------------------------- |
 >   | `gef config context.enable 0`          | Do not show the context window when the debugger breaks. (Use `ctx` instead.) |
 >   | `gef config context.nb_lines_stack 20` | Increase the lines displayed in the stack section of the context window.      |
->   | `dereference --length 8 <addr>`        | Show memory like the stack section, but at the specified `addr`.              |
+>   | `dereference --length 8 <addr>`        | Show 8 lines of memory (8 bytes each) at the specified `addr`.                |
 
 ## Solutions
 
