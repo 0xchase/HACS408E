@@ -122,6 +122,10 @@ type: default
 
 - [Insecure Programming](https://web.archive.org/web/20071022095147/http://community.core-sdi.com/~gera/InsecureProgramming/)
 - [Hacksplaining](https://www.hacksplaining.com/lessons)
+- [Buffer Overflow Attack Explained](https://www.coengoedegebure.com/buffer-overflow-attacks-explained/)
+- [Buffer Overflow Practical Case Study](https://blog.quantumlyconfused.com/reverse-engineering/2019/09/28/buffer-overflow-practical-case-study/)
+  - [Slides](https://blog.quantumlyconfused.com/assets/pdfs/BufferOverflow-Presentation.pdf)
+- [Build Your Own Shellcode](https://rjordaney.is/lectures/build_your_shellcode/)
 
 ## Windows
 
