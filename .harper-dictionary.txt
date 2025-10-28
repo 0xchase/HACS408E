@@ -1,3 +1,4 @@
+DEP
 DHCP
 Decrypt
 Fi
@@ -8,6 +9,7 @@ OS
 OpenWRT
 PCAP
 RDNSequence
+ROP
 SquashFS
 TTD
 UMD's

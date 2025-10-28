@@ -114,8 +114,8 @@ you generate from a password you know.
 
 > [!TIP] HINT:
 >
-> Make sure the hash you calculate uses the same amount of bytes as
-> the hash calculation done by the program!
+> Make sure the hash you calculate uses the same amount of bytes as the hash
+> calculation done by the program!
 
 {{< question >}}
 

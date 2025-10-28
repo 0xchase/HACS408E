@@ -1,7 +1,7 @@
 ---
-title: "HW 4: TODO"
+title: "HW 4: Exploitation - Complete ROP Chain"
 weight: 4
-draft: true
+draft: false
 ---
 
 ## Description
@@ -80,11 +80,12 @@ executing `/bin/sh`. I'd recommend you follow these steps:
    in the payload
 4. **Task 4**: Build a ROP chain and integrate it into your exploit
 
-For full credit you should demonstrate a working ROP chain, but since bypassing
-DEP is difficult, 80% of your grade will be the quality of your report. The
-final 20% will be how much progress you made towards a working solution. If you
-write your payload in assembly but there's a corresponding gadget you can't
-find, just describe that in the report and you'll get most of the credit.
+For full credit you should demonstrate a complete working ROP chain, but since
+bypassing DEP is difficult, 80% of your grade will be the quality of your
+report. The final 20% will be how much progress you made towards a working
+solution. If you write your payload in assembly but there's a corresponding
+gadget you can't find, just describe that in the report and you'll get most of
+the credit.
 
 If you need a certain gadget but can't find it in the homework binary, remember
 that most executables load libraries like `libc` during runtime which contain
@@ -103,26 +104,20 @@ one of these shared objects.
 
 ## Submission
 
-{{< callout emoji="📝" >}}
-
 Submit a markdown (`.md`) or PDF (`.pdf`) file containing a lab report to
 describe what you have done. Your report should include:
 
 - An overview of the shellcode you plan to execute
 - A list of `ROP Gadgets` that match those instructions
-- An explaination of your exploit:
+- An explanation of your exploit:
   - Constructing your input
   - Any debugging/issues you ran into
 
+### Rubric (`20 pts`)
 
-## Submission
-
-### Rubric (`10 pts`)
-
-1. Task 1 (`3 pts`):
-   - Description
-1. Task 2 (`3 pts`):
-   - Description
+1. Overview (`5 pts`):
+1. ROP Gadgets List (`5 pts`):
+1. Exploit Walkthrough (`10 pts`):
 
 {{< callout emoji="📝" >}}
 
