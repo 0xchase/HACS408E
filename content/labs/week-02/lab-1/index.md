@@ -107,7 +107,7 @@ and compare it to the one on your Linux VM.
 
 <!-- deno-fmt-ignore-start -->
 - How do you tell if a Linux user has a password set? Does the root user have a
-  password set? 
+  password set?
 - What other users are part of this system?
 <!--deno-fmt-ignore-end -->
 

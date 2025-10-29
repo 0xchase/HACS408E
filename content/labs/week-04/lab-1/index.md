@@ -95,7 +95,7 @@ execute instructions until the breakpoint you previously set is hit.
 > ```{filename=GDB}
 > Starting program: /home/student/Downloads/xor_c_debug.bin
 > fish: Unknown command. '/home/student/Downloads/xor_c_debug.bin' exists but is not an executable file.
-> -- or -- 
+> -- or --
 > Starting program: /home/student/Downloads/xor_c_debug.bin
 > /bin/sh: 1: exec: /home/student/Downloads/xor_c_debug.bin: Permission denied
 > ```
@@ -207,7 +207,7 @@ First let's see what gdb can tell us about this file and the sections of the
 executable (as well as it's shared libraries):
 
 ```sh
-(gdb) info file 
+(gdb) info file
 # ...
 ```
 
@@ -221,7 +221,7 @@ program?
 Next lets look at the shared libraries a little more:
 
 ```sh
-(gdb) info sharedlibrary 
+(gdb) info sharedlibrary
 # ...
 (gdb) info proc mappings
 # ...
@@ -315,7 +315,7 @@ gef➤  break <address>
 gef➤  break <address_2>
 ```
 
-![](./break_fopen.png "A screenshot of the assembly instructions for main with the calls to fopen oulined by a red box")
+![](./break_fopen.png "A screenshot of the assembly instructions for main with the calls to fopen outlined by a red box")
 
 Then once you have those set, run the program with the two input files it is
 expecting:
@@ -382,7 +382,7 @@ files again and it gdb will start the program over. (`run input.txt output.bin`)
 gef➤  c
 #
 # Continuing.
-# 
+#
 # Breakpoint 3, 0x0000000000401408 in main (argc=<optimized out>, argv=0x7fffffffe208) at main.c:120
 gef➤  stepover
 gef➤  si

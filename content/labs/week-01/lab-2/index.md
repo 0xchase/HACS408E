@@ -80,18 +80,18 @@ we'll learn about next week). For now use the analysis results below:
 --------------------------------------------------------------------------------------------
 DECIMAL           HEXADECIMAL                DESCRIPTION
 --------------------------------------------------------------------------------------------
-22372             0x5764                     U-Boot version string: 1.1.4-g4df6eb16-dirty 
+22372             0x5764                     U-Boot version string: 1.1.4-g4df6eb16-dirty
                                              ...
 
 22436             0x57A4                     CRC32 polynomial table, big endian
 
-23728             0x5CB0                     uImage firmware image, header size: 64 bytes, 
+23728             0x5CB0                     uImage firmware image, header size: 64 bytes,
                                              data size: 40183 bytes, ...
 
-63976             0xF9E8                     uImage firmware image, header size: 64 bytes, 
+63976             0xF9E8                     uImage firmware image, header size: 64 bytes,
                                              data size: 1084249 bytes, ...
 
-1148290           0x118582                   SquashFS file system, little endian, image 
+1148290           0x118582                   SquashFS file system, little endian, image
                                              size: 13908480 bytes ...
 
 15069820          0xE5F27C                   gzip compressed data, ... 10663 bytes

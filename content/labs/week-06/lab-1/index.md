@@ -23,7 +23,9 @@ weight: 2
 
 ### Snapshot your Windows VM
 
-If you haven't already, snapshot your Windows VM. When dealing with malware we want to be able to revert our system to a blank state, to ensure the malware hasn't persisted without our knowledge.
+If you haven't already, snapshot your Windows VM. When dealing with malware we
+want to be able to revert our system to a blank state, to ensure the malware
+hasn't persisted without our knowledge.
 
 ### Download the malware sample
 
@@ -40,25 +42,32 @@ The malware is compressed into an encrypted zip file. The password is
 
 ### Upload the sample to Virus Total
 
-Does Virus Total detect it as malicious? Does it reveal any other useful information?
+Does Virus Total detect it as malicious? Does it reveal any other useful
+information?
 
 ### Examine the strings
 
-First, open the sample in binary ninja. You'll notice this sample is much larger than those we examined in previous labs. It wouldn't be feasible to analyze every function manually, so we need strategies to quickly identify key functionality and locate important code sections.
+First, open the sample in binary ninja. You'll notice this sample is much larger
+than those we examined in previous labs. It wouldn't be feasible to analyze
+every function manually, so we need strategies to quickly identify key
+functionality and locate important code sections.
 
-1. Examine the strings and note any that hint at the sample's behvaior
-2. For strings you identify, find cross references to the functions that use those strings
+1. Examine the strings and note any that hint at the sample's behavior
+2. For strings you identify, find cross references to the functions that use
+   those strings
 3. If you can guess at what a function does, rename it so you can find it later
 
 ### Example the imports
 
-1. Examine the imports and note any that hint at the sample's behvaior
-2. For imports you identify, find cross references to the functions that call the imported functions
+1. Examine the imports and note any that hint at the sample's behavior
+2. For imports you identify, find cross references to the functions that call
+   the imported functions
 3. If you can guess at what a function does, rename it so you can find it later
 
 ### Collect potential signatures
 
-When analyzing malware it's useful to collect signatures unique to the malware that an antivirus might use to recognize it automatically.
+When analyzing malware it's useful to collect signatures unique to the malware
+that an antivirus might use to recognize it automatically.
 
 1. Collect a few potential string or byte signatures for this sample
 

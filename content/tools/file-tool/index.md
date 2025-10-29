@@ -69,7 +69,7 @@ processing is done in your browser, so no files are uploaded to our servers.
   [OOjs UI Team and other contributors](https://phabricator.wikimedia.org/diffusion/GOJU/browse/master/AUTHORS.txt")
   ([MIT license](http://opensource.org/licenses/mit-license.php))
   ([source](https://commons.wikimedia.org/w/index.php?curid=55044854))
-- Insipration - CSS Tricks
+- Inspiration - CSS Tricks
   [Drag & Drop File Uploading](https://css-tricks.com/drag-and-drop-file-uploading/)
 
 <script type="module" src="main.js"></script>

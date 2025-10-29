@@ -45,7 +45,7 @@ networking expert) some packet captures to look over.
 >
 > Here is a list of known indicators of the `lokibot` malware:
 >
-> - HTTP requests to urls ending in `fre.php`
+> - HTTP requests to urls ending in `free.php`
 > - A User Agent string of `Mozilla/4.08`
 > - The string `ckav.ru` as well as the `victim Host Name` in the content of the
 >   HTTP request.
@@ -213,7 +213,7 @@ Expand the dropdowns in the frame details pane until you see the
       - `Certificates (### bytes)`
         - `Certificate`
           - `signedCertificate`
-            - `issuer: rdnSecquence (0)`
+            - `issuer: rdnSequence (0)`
               - `rdnSequence: # items (...)`
 
 Compare this to the RDNSequence for one of the TLS packets coming from a

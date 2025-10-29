@@ -44,7 +44,7 @@ int main() {
     unsigned char *input = NULL;
     size_t input_size = 0;
 
-    printf("Enter the passowrd: ");
+    printf("Enter the password: ");
 
     getline((char **)&input, &input_size, stdin);
     input[strcspn((char *)input, "\r\n")] = 0;

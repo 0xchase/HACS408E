@@ -6,7 +6,8 @@ sidebar:
 type: default
 ---
 
-> See [syllabus_2025.pdf](/syllabus_2025.pdf) for a full documentation of course policies.
+> See [syllabus_2025.pdf](/syllabus_2025.pdf) for a full documentation of course
+> policies.
 
 ## Overview
 
@@ -82,7 +83,7 @@ After successfully completing this course you will be able to:
 Since this is an applied course, it will be very focused on labs modeled after
 real-world reverse engineering tasks. Students are expected to attend class and
 attempt the labs, which are used to introduce the skills necessary to complete
-the homeworks. The in-person nature of this class will push you to take an
+the homework. The in-person nature of this class will push you to take an
 active role in the learning process. You will do this by engaging and
 collaborating with other students and the instructor on a regular basis both, in
 live sessions, as well as through group work and activities.
@@ -133,7 +134,7 @@ follow up with me if you have questions.
 
 ## **Course Guidelines**
 
-### 
+###
 
 ### **Names/Pronouns and Self-Identifications:**
 
@@ -152,7 +153,7 @@ about our experiences and perspectives) and should be self-identified, not
 presumed or imposed. I will do my best to address and refer to all students
 accordingly, and I ask you to do the same for all of your fellow Terps.
 
-### 
+###
 
 ### **Communication with Instructor:**
 
@@ -171,7 +172,7 @@ assignments and/or due dates) are enabled in ELMS so you do not miss any
 messages. You are responsible for checking your email and Canvas/ELMS inbox with
 regular frequency.
 
-### 
+###
 
 ### **Communication with Peers:**
 
@@ -260,7 +261,7 @@ discussion has been in some way hindered by the learning environment.
 | **Final Project**                 | **20%**                                              |
 | **Total**                         | **100%**                                             |
 
-## 
+##
 
 ## **Academic Integrity**
 
@@ -335,7 +336,7 @@ homework assignments, then 120/144 \* 50 \= 41.667 would be how much your
 homework grade contributes to your overall course grade because the homework
 category is worth 50 percent of your total grade.
 
-## 
+##
 
 ## **Course Outline**
 
@@ -349,7 +350,7 @@ based on the duration of the closing and the specific dates missed.
 
 ## **Resources & Accommodations**
 
-### 
+###
 
 ### **Accessibility and Disability Services**
 

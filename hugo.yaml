@@ -39,7 +39,7 @@ menu:
       url: "https://github.com/0xchase/HACS408E"
       params:
         icon: github
-  
+
   # !!! NOTE !!!
   # The links below MUST end with a '/' or the link will break on
   # the production server!

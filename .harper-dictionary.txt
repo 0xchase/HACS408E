@@ -1,5 +1,6 @@
+DEP
 DHCP
-Decrpyt
+Decrypt
 Fi
 GEF
 HashDB
@@ -8,6 +9,7 @@ OS
 OpenWRT
 PCAP
 RDNSequence
+ROP
 SquashFS
 TTD
 UMD's
@@ -24,3 +26,4 @@ downloadbutton
 entrypoint
 gdb
 ip
+shellcode

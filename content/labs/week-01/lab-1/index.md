@@ -188,7 +188,7 @@ these could be worked into discussion posts?
    where a signature may fail.
 
 1. Discuss any discrepancies between the `file` command output and your findings
-   from other methods. Did anything suprise you?
+   from other methods. Did anything surprise you?
 
 1. How effective was the `strings` utility in revealing useful information? What
    limitations did you encounter? -->

@@ -8,7 +8,7 @@ draft: true
 
 {{< callout emoji="💡" >}}
 
-explaination
+explanation
 
 **Goals:**
 
