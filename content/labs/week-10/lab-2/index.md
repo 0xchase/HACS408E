@@ -51,7 +51,7 @@ the `libcapstone` library in order to run them.
 
 {{< downloadbutton file="./libcapstone.so.5" text="libcapstone.so.5" >}}
 
-{{< downloadbutton file="./loose-link-easy" text="loose-link-easy" >}}
+{{< downloadbutton file="./loose-link-easy.bin" text="loose-link-easy.bin" >}}
 
 > [!NOTE]
 >
@@ -235,7 +235,7 @@ registers, set the syscall number in `rax` and then execute the `syscall`
 instruction.
 
 <!-- deno-fmt-ignore-start -->
-{{< downloadbutton file="./stop-pop-and-rop-easy" text="stop-pop-and-rop-easy" >}}
+{{< downloadbutton file="./stop-pop-and-rop-easy.bin" text="stop-pop-and-rop-easy.bin" >}}
 <!-- deno-fmt-ignore-end -->
 
 > [!TIP] Tips
