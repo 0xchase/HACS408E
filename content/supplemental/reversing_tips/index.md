@@ -103,7 +103,8 @@ sidebar:
 
 Jesus Espino |
 [Understanding the Go Runtime](https://golab.io/talks/understanding-the-go-runtime#slides)
-| [Slides](https://www.datocms-assets.com/95170/1712916017-espino_2023.pdf)
+|
+<a href="https://www.datocms-assets.com/95170/1712916017-espino_2023.pdf" target="_blank">Slides</a>
 
 <!-- .element class="r-fit-text" -->
 
