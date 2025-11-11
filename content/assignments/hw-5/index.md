@@ -1,5 +1,5 @@
 ---
-title: "HW 5: TODO"
+title: "HW 5: Android Application Reversing"
 weight: 5
 draft: true
 ---
