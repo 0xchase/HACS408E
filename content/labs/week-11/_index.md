@@ -1,13 +1,13 @@
 ---
-title: "11: Kernel"
+title: "11: Reversing Modern Languages (Go)"
 prev: labs/week-10
 next: labs/week-12
-draft: true
+draft: false
 ---
 
 ### Slides
 
-<iframe src="https://slides.com/chasekanipe/todo" width="576" height="420" title="Week 9" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{{< slides-preview week="week-11" >}}
 
 ### Labs
 
