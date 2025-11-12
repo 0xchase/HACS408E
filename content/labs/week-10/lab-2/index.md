@@ -29,18 +29,6 @@ You can use these ROP gadgets to call functions, mess with registers.
 
 ## Instructions
 
-## Outline
-
-- Download programs
-- Run `loose-link-easy` to understand what it does.
-  - answer questions about the text
-    - where is the win function?
-  - ## Look for a gadget manuall
-  - Install ROP tools
-    - ROPGadget, r++
-
-## Instructions
-
 {{% steps %}}
 
 ### Get the Vulnerable Programs

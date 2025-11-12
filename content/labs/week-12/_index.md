@@ -1,5 +1,5 @@
 ---
-title: "12: Firmware Analysis"
+title: "12: Android Reversing"
 prev: labs/week-11
 next: labs/week-13
 draft: true
@@ -7,7 +7,7 @@ draft: true
 
 ### Slides
 
-<iframe src="https://slides.com/chasekanipe/todo" width="576" height="420" title="Week 9" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{{< slides-preview week="week-12" >}}
 
 ### Labs
 

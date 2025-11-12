@@ -1,5 +1,5 @@
 ---
-title: "13: Modern Applications"
+title: "13: Hardware Hacking / Review?"
 prev: labs/week-12
 next: labs/week-14
 draft: true
@@ -7,7 +7,7 @@ draft: true
 
 ### Slides
 
-<iframe src="https://slides.com/chasekanipe/todo" width="576" height="420" title="Week 9" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{{< slides-preview week="week-13" >}}
 
 ### Labs
 
