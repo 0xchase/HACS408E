@@ -211,12 +211,40 @@ type: default
 
 ## Golang Reversing
 
+- More links from Github Gist's:
+  - [alexander-hanel/GORE.md](https://gist.github.com/alexander-hanel/59af86b0154df44a2c9cebfba4996073)
+  - [emluque/golang-internals-resources](https://github.com/emluque/golang-internals-resources)
+- [Golang Reverse Engineering Tips](https://www.travismathison.com/posts/Golang-Reverse-Engineering-Tips/)
+- Alex Useche: Anatomy of a Gopher
+  - [Ekoparty 2020](https://www.youtube.com/watch?v=fWOZgJOsuaM)
+  - [SANS HackFest Summit 2020](https://www.youtube.com/watch?v=wWNbnEp_4ZE)
+- [Go Internals](https://cmc.gitbook.io/go-internals)
+- [Go Calling Convention x86_64](https://dr-knz.net/go-calling-convention-x86-64.html)
+  (Good reference, but doesn't apply to newer versions of Go)
+- [Interface Method Calls with the Go Register ABI](https://eli.thegreenplace.net/2022/interface-method-calls-with-the-go-register-abi/)
+
+**Go Documentation:**
+
+- [Go Register Calling Convention Proposal](https://go.googlesource.com/proposal/+/master/design/40724-register-calling.md)
+- [Go ABI Internal](https://go.dev/src/cmd/compile/abi-internal)
+- [Go Assembly Quick Guide](https://go.dev/doc/asm)
+
+**Binaryninja Plugins:**
+
+- [Extensions - `?q=go`](https://extensions.binary.ninja/?q=go)
+
+**Ghidra Plugins/Scripts:**
+
 - [Ghostrings](https://github.com/nccgroup/ghostrings)
+- [advanced-thread-research/GhidraScripts](https://github.com/advanced-threat-research/GhidraScripts)
+  - [Referenced Blogpost](https://www.trellix.com/blogs/research/feeding-gophers-to-ghidra/)
+- [getCUJO/ThreatIntel](https://github.com/getCUJO/ThreatIntel)
+  - [Referenced Blogpost](https://cujo.com/blog/reverse-engineering-go-binaries-with-ghidra/)
 
 ## Supplemental Lectures
 
-- [AT&T vs. Intel Assembly](/lectures/supplemental/asm-syntax/)
-- [Reversing Tips + Golang](/lectures/supplemental/reversing_tips/)
+- [AT&T vs. Intel Assembly](/supplemental/asm-syntax/)
+- [Reversing Tips + Golang](/supplemental/reversing_tips/)
 
 ## Site Tools
 
