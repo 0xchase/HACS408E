@@ -63,7 +63,7 @@ import "fmt"
 
 //go:noinline
 //go:nosplit
-sayHello() {
+func sayHello() {
 	fmt.Println("Hello, World!")
 }
 
