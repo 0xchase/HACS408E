@@ -126,7 +126,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        week: [week-01, week-02, week-03, week-04, week-05, week-06, week-07, week-09, week-10]
+        week: [week-01, week-02, week-03, week-04, week-05, week-06, week-07, week-09, week-10, week-11]
 
     steps:
       - name: Checkout
