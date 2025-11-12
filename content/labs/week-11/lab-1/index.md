@@ -1,5 +1,5 @@
 ---
-title: "Lab-1: Go Reversing Example"
+title: "Lab-1: Go Assembly Basics"
 weight: 1
 draft: false
 ---
@@ -10,15 +10,23 @@ draft: false
 
 This lab is to get you practice interacting with Go binaries! Go is a modern
 programming language performance and memory safety in mind. It compiles quickly
-to machine code and has the convience of gargabe collection and powerful runtime
-reflection. However because of this, it can be quite challengeing to reverse
-engineer.
+to machine code and has the convenience of garbage collection and powerful
+runtime reflection. However because of this, it can be quite challenging to
+reverse engineer.
+
+In this lab you will build up your intuition for reversing Go programs by
+analyzing some basic programs. You will apply concepts previously learned in
+class to the assembly code for a go program and see how the code is different
+from a C/C++ based program.
 
 **Goals:**
 
 - Write a simple Go program
 - Practice Reversing Go programs
-- Practice using Ghidra
+  - Understand the Go calling convention
+  - Understand Go's internal assembly code translates to real x86_64 assembly
+    instructions
+- Practice using Binaryninja
 
 **Estimated Time:** `60 Minutes`
 
@@ -330,6 +338,19 @@ Compile this program with `go build` and analyze the `saySomethig()` function
 like we've been doing previously.
 
 > [!NOTE]
+>
+> From the [internal ABI docs]():
+>
+> "Any other interface type (besides the empty interface) is a sequence of:
+>
+> 1. A pointer to the runtime `itab` that gives the method pointers and the type
+>    of the data field
+> 2. An unsafe.Pointer data field
+>
+> An interface can be “direct” or “indirect” depending on the dynamic type: a
+> direct interface stores the value directly in the data field, and an indirect
+> interface stores a pointer to the value in the data field. An interface can
+> only be direct if the value consists of a single pointer word."
 >
 > The Go `interface` type is defined in
 > [`src/internal/abi/iface.go`](https://go.dev/src/internal/abi/iface.go):
