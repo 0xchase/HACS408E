@@ -18,12 +18,12 @@ build_slides:
   set -eu
   mkdir -p ../public/slides
   deno install
-  deno install --allow-scripts=npm:playwright-chromium@1.55.0
+  deno install --allow-scripts=npm:playwright-chromium
   for file in week*.md; do \
     week="${file%.*}"; \
     deno task build --base /slides/$week/ $file; \
     deno task export $file --output ../public/slides/$week.pdf; \
-    rsync -aiz dist/ ../public/slides/$week; \
+    rsync -aiz --exclude='images/' dist/ ../public/slides/$week; \
   done
   rsync -aiz public/images/ ../public/images
 
