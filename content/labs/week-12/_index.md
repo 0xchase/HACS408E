@@ -2,7 +2,7 @@
 title: "12: Android Reversing"
 prev: labs/week-11
 next: labs/week-13
-draft: true
+draft: false
 ---
 
 ### Slides
