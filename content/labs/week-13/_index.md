@@ -1,8 +1,8 @@
 ---
-title: "13: Hardware Hacking / Review?"
+title: "13: Dynamic Instrumentation with Frida"
 prev: labs/week-12
 next: labs/week-14
-draft: true
+draft: false
 ---
 
 ### Slides
