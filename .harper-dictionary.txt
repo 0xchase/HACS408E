@@ -2,6 +2,7 @@ DEP
 DHCP
 Decrypt
 Fi
+Frida
 GEF
 HashDB
 MacOS
