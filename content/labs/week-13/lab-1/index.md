@@ -171,8 +171,8 @@ In this part you'll use Frida to dump the TLS keys associated with an encrypted 
 
 ### Dump TLS keys
 
-One tool that's pretty cool is [`friTap`](https://fkie-cad.github.io/friTap/)
-which is:
+One alternative tool that's pretty cool is
+[`friTap`](https://fkie-cad.github.io/friTap/) which is:
 
 > "... a powerful cybersecurity research tool that simplifies SSL/TLS traffic
 > analysis by automating key extraction and traffic decryption."
