@@ -34,6 +34,36 @@ and then print it to the terminal. For this section you must provide:
 - An analysis of the code related to displaying the flag.
 - A java (or equivalent) program used to generate the flag.
 
+> [!TIP]
+>
+> String resources are accessed from the `strings.xml` file in the `res/` folder
+> of the application. The string is defined as the data between the two XML
+> tags:
+>
+> ```xml {filename="res/values/strings.xml"}
+> <resources>
+>   <string name="app_name">My Application</string>
+> </resources>
+> ```
+>
+> To access it from code it might look something like this:
+>
+> ```kotlin
+> fun Greeting(name: String, modifier: Modifier = Modifier) {
+>     val appName: String = Resources.getSystem().getString(R.string.app_name);
+>     Text(
+>         text = "Hello $name! from $appName",
+>         modifier = modifier
+>     )
+> }
+> ```
+>
+> NOTE: The
+> [`getString()` method](https://developer.android.com/reference/android/content/Context#getString(int))
+> takes an integer id and returns the actual value of the string. Please see the
+> [string resources](https://developer.android.com/guide/topics/resources/string-resource)
+> reference for more info.
+
 ### "Dynamic" Method
 
 The application expects you to enter a pin to unlock and view the flag. It does
@@ -105,10 +135,13 @@ secret! If you figure it out you can get one bonus point.
 | "Dynamic" Method   | `7 pts` | See below   |
 | Successful Results | `2 pts` | See below   |
 
-Choose one of the methods above (no need to do both) and submit a report with
-relevant information to
-[ELMS](https://umd.instructure.com/courses/1374508/assignments). For full credit
-your report should have the following things:
+<div style="color:#4b4b4b">
+
+~~Choose one of the methods above (no need to do both) and submit a report with
+relevant information to ELMS. For full credit your report should have the
+following things:~~
+
+</div>
 
 #### App Triage (`4 pts`):
 
