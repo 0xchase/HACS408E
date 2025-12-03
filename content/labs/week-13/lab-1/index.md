@@ -213,12 +213,13 @@ uv run frida_script.py
 
 > [!TIP]
 >
-> If you have problems attaching to the running `vuln_axum_server` process, try
-> killing it and manually spawning it in the script instead.
+> If you have trouble attaching to the process, it may be due to `ptrace` restrictions in linux. You can lift some restrictions with the following command.
 >
-> - Run in a shell: `killall vuln_axum_server`
+> ```sh {filename=Shell}
+> sudo sysctl kernel.yama.ptrace_scope=0
+> ```
 >
-> You can also use Frida interactively to spawn the process and load your
+> Alternatively, you can also use Frida interactively to spawn the process and load your
 > script:
 >
 > ```sh {filename=Shell}
