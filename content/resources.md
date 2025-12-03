@@ -113,6 +113,12 @@ type: default
 - [More `LD_PRELOAD` Tricks](https://www.goldsborough.me/c/low-level/kernel/2016/08/29/16-48-53-the_-ld_preload-_trick/)
 - [Calling Convention / ABI](https://wiki.osdev.org/System_V_ABI)
 
+## Dynamic Binary Instrumentation
+
+- [Frida](https://frida.re)
+  - [Frida Boot Camp (frida-boot)](https://github.com/leonjza/frida-boot)
+  - [Frida Handbook](https://learnfrida.info/)
+
 ## GDB UI Improvements
 
 - [pwndbg](https://pwndbg.re/)
