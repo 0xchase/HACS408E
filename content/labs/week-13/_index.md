@@ -1,5 +1,5 @@
 ---
-title: "13: Dynamic Instrumentation with Frida"
+title: "13: Binary Instrumentation"
 prev: labs/week-12
 next: labs/week-14
 draft: false

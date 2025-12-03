@@ -1,5 +1,5 @@
 ---
-title: "Lab 2: TODO"
+title: "Lab 2: Symbolic Execution"
 weight: 2
 draft: true
 ---
