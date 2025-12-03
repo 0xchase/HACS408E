@@ -8,7 +8,10 @@ draft: false
 
 {{< callout emoji="💡" >}}
 
-This lab provides an introduction to dynamic instrumentation using Frida, a popular framework for analyzing desktop and mobile applications. There are a variety of alternative frameworks but many of the basic concepts from Frida generalize to other tools.
+This lab provides an introduction to dynamic instrumentation using Frida, a
+popular framework for analyzing desktop and mobile applications. There are a
+variety of alternative frameworks but many of the basic concepts from Frida
+generalize to other tools.
 
 **Goals:**
 
@@ -17,7 +20,7 @@ This lab provides an introduction to dynamic instrumentation using Frida, a popu
 - Apply previously learned triage techniques to scope your traces
 - Practice vulnerability analysis
 
-**Estimated Time:** `45 Minutes`
+**Estimated Time:** `1 Hour 15 Minutes`
 
 {{< /callout >}}
 
@@ -29,8 +32,8 @@ This lab provides an introduction to dynamic instrumentation using Frida, a popu
 
 ![](https://frida.re/img/logotype.svg)
 
-Follow the instructions on `Frida`'s website to install, or use the following
-command:
+Follow the instructions on [`Frida`'s website](https://frida.re) to install, or
+use the following command:
 
 ```sh {filename=Shell}
 uv tool install frida-tools
@@ -38,25 +41,76 @@ uv tool install frida-tools
 
 ### Download and run web server
 
-Today's labs will analyze an unknown web server for functionality and vulnerabilities. Download the web server and run it on your linux virtual machine. Browse to the served content in your web browser. Note how the web server prints corresponding logs.
+Today's labs will analyze an unknown web server for functionality and
+vulnerabilities. Download the web server and run it on your linux virtual
+machine. Browse to the served content in your web browser. Note how the web
+server prints corresponding logs.
 
 {{< downloadbutton file="vuln_axum_server" text="vuln_axum_server" >}}
 
+```sh {filename=Shell}
+# Add execute permissions
+chmod u+x ./vuln_axum_server
+
+# Try running the vulnerable web server
+./vuln_axum_server
+```
+
 ### Triage the binary
 
-Triage the server binary unix utilities we've previously discussed in class like `readelf`, `strings`, and `nm`. Use this information to answer the following:
+Look for symbols in the binary to get a hint about its functionality. The
+standard UNIX utility for this is the `nm` command.
 
-- Many symbol names appear convoluted and illegible. Why is this?
-- What source language was this binary compiled from?
-- What are some public packages linked to this binary?
+```sh {filename=Shell}
+nm ./vuln_axum_server
+```
+
+{{< question >}}
+
+Many symbol names appear convoluted and illegible. Why is this? (HINT: Check out
+[this wikipedia link](https://en.wikipedia.org/wiki/Name_mangling).)
+
+{{< /question >}}
+
+Using the [`nm` man page](https://man7.org/linux/man-pages/man1/nm.1.html) or
+the `nm --help` text, see if there's a way to de-mangle the function names.
+
+{{< question >}}
+
+Google some of the function names that you see. Does this tell you what language
+the binary was originally written in?
+
+{{< /question >}}
+
+{{< question >}}
+
+What are some public packages for the source code language used by to this
+binary?<br></br> Try to find a couple and google them to see what they are used
+for. The function names should from above will follow this structure:
+
+```sh
+# Run the following
+nm -g -C ./vuln_axum_server | rg '::' | rg -v '[T|t] <' | less -S
+
+# The first item before the `::` is usually the library name
+
+# Offset | Symbol Type | Symbol Name
+000000000022ee70 T package_name::module::submodule::function
+```
+
+{{< /question >}}
 
 ### Create your scripts
 
-Frida's most powerful feature is scripting the injected javascript engine to change the state of the running program. We'll develop a basic program to demonstrate function hooking. Below are two skeletons to get you started. Read and understand each of these scripts before continuing.
+Frida's most powerful feature is scripting the injected JavaScript engine to
+change the state of the running program. We'll develop a basic program to
+demonstrate function hooking. Below are two skeletons to get you started. Read
+and understand each of these scripts before continuing.
 
-The first script is a python script used to attach Frida to the target process and load the `hook_commands.js` script into the injected core. 
+The first script is a python script used to attach Frida to the target process
+and load the `hook_commands.js` script into the injected core.
 
-```python
+```python {filename="frida_script.py"}
 import pathlib
 import sys
 import time
@@ -88,7 +142,7 @@ def main():
     device = frida.get_local_device()
     target = find_target(device)
     if not target:
-        print("vuln_axum_server not running. Start it with `cargo run` first.")
+        print("vuln_axum_server not running. Start it with `./vuln_axum_server` first.")
         sys.exit(1)
 
     print(f"Attaching to PID {target.pid} ({target.name})")
@@ -108,34 +162,80 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 ```
 
-The next script runs inside the target process in the Frida `js` interpreter. It attempts to hook a symbol name and print to the console on the callback. Using the information gathered during your triage, try to identify a symbol associated with running a shell command in the source language standard library. Modify this script to hook that symbol and figure out which UI elements in the served web content run shell commands in the background.
+The next script runs inside the target process in the Frida `js` interpreter. It
+attempts to hook a symbol name and print to the console on the callback. Using
+the information gathered during your triage, try to identify a symbol associated
+with running a shell command in the source language standard library. Modify
+this script to hook that symbol and figure out which UI elements in the served
+web content run shell commands in the background.
 
-```js
-'use strict';
+```js {filename="hook_commands.js"}
+"use strict";
 
 // Hook a symbol by name
-const SYMBOL_NAME = ''; // TODO: Put your symbol name here
+const SYMBOL_NAME = ""; // TODO: Put your symbol name here
 
 const module = Process.mainModule;
 const symbols = module.enumerateSymbols();
 const target = symbols.find((sym) => sym.name === SYMBOL_NAME);
 
 if (!target) {
-  console.log(`Symbol ${SYMBOL_NAME} not found in ${module.name}`);
+    console.log(`Symbol ${SYMBOL_NAME} not found in ${module.name}`);
 } else {
-  console.log("Hooking " + SYMBOL_NAME + " @ " + target.address);
-  const hook = {
-    onEnter(args) {
-      console.log(`${SYMBOL_NAME} called`);
-    },
-  };
+    console.log("Hooking " + SYMBOL_NAME + " @ " + target.address);
+    const hook = {
+        onEnter(args) {
+            console.log(`${SYMBOL_NAME} called`);
+        },
+    };
 
-  Interceptor.attach(target.address, hook);
+    Interceptor.attach(target.address, hook);
 }
 ```
+
+To run the script you can crate a virtual python environment and install Frida:
+
+```sh {filename=Shell}
+# Create the virtual environment
+...> uv venv .venv
+
+# Activate it
+...> . .venv/bin/activate.fish
+
+# Install Frida
+(.venv) ...> uv pip install frida
+
+# Run the python script
+uv run frida_script.py
+```
+
+> [!TIP]
+>
+> If you have problems attaching to the running `vuln_axum_server` process, try
+> killing it and manually spawning it in the script instead.
+>
+> - Run in a shell: `killall vuln_axum_server`
+>
+> You can also use Frida interactively to spawn the process and load your
+> script:
+>
+> ```sh {filename=Shell}
+> # Run frida script
+> frida -f vuln_axum_server -l hook_commands.js
+> ```
+>
+> The interactive REPL has tab complete which can help you experiment with what
+> you want to put in the `hook_commands.js` script. Try seeing what the
+> `module.enumerateSymbols()` function does!
+
+{{< question >}}
+
+Spend some time experimenting with Frida and try to hook a function that gets
+called when you interact with the web server at `http://localhost:3000`.
+
+{{< /question >}}
 
 {{% /steps %}}
 
@@ -145,27 +245,77 @@ if (!target) {
 
 ### Faster tracing with `frida-trace`
 
-Scripting is Frida's most powerful feature but for common tasks like tracing Frida distributes prebuilt utilities that can be used without a custom script. We'll experiment with tracing the web server using the `frida-trace` utility. Since crate names are embedded in the mangled symbol names, you can use this to trace specific functionality. For example, examining the symbols indicates that the `reqwest` crate is linked. We can trace related functions by following functions with the package name in the symbol. Try running the following command.
+Scripting is Frida's most powerful feature but for common tasks like tracing
+Frida distributes prebuilt utilities that can be used without a custom script.
+We'll experiment with tracing the web server using the `frida-trace` utility.
+Here are some simple examples using the tool:
 
 ```sh {filename=Shell}
-frida-trace -n vuln_axum_server -i "*reqwest*"
+frida-trace -i 'fstat64' -f $(which ls) /
 ```
 
-This command will attach the tracer to the `vuln_axum_server` process if it is running and trace functions matching the expression following `-i`. Clicking served web content in your browser during a trace should make it easy to discover which user interface elements trigger these functions.
+```sh {filename=Shell}
+frida-trace -i 'strcasecmp' -f $(which curl) -- -o /dev/null https://hacs408e.net
+```
+
+Look at the auto-generated tracing scripts in the `__handlers__` directory and
+answer the following question:
+
+```sh {filename=Shell}
+bat __handlers__/libc.so.6/*
+```
+
+{{< question >}}
+
+Why are the string arguments for `strcasecmp` printed, but the arguments to
+`fstat64` are not?
+
+{{< /question >}}
+
+Lets go back to looking at the `vuln_axum_server` program. Since crate names are
+embedded in the mangled symbol names, you can use this to trace specific
+functionality. For example, examining the symbols indicates that the `reqwest`
+crate is linked. We can trace related functions by following functions with the
+package name in the symbol. Try running the following command.
+
+```sh {filename=Shell}
+killall vuln_axum_server
+frida-trace -f vuln_axum_server -i "*reqwest*"
+```
+
+This command will attach the tracer to the `vuln_axum_server` process if it is
+running and trace functions matching the expression following `-i`. Clicking
+served web content in your browser during a trace should make it easy to
+discover which user interface elements trigger these functions.
 
 ### Trace shell commands
 
-Craft a new Frida trace command to trace symbols related to shell command invocation. To find the right keywords you should look for standard practices for invoking these commands in the target language and how they map to symbols you observed during triage. Use this to verify which UI elements in the served web content trigger shell commands upon interaction. 
+Craft a new Frida trace handler script to trace symbols related to shell command
+invocation. To find the right keywords you should look for standard practices
+for invoking these commands in the target language and how they map to symbols
+you observed during triage. Use this to verify which UI elements in the served
+web content trigger shell commands upon interaction.
 
 ### Identify the command inject
 
-Web severs that trigger shell commands sometimes have [command injection vulnerabilities](https://owasp.org/www-community/attacks/Command_Injection). You've already narrowed down the functionality associated with shell commands. Now experiment with in the browser to identify which one is vulnerable.
+Web severs that trigger shell commands sometimes have
+[command injection vulnerabilities](https://owasp.org/www-community/attacks/Command_Injection).
+You've already narrowed down the functionality associated with shell commands.
+Now experiment with in the browser to identify which one is vulnerable.
 
 {{% /steps %}}
 
 ## Part 3: TLS Keys Dump
 
-In this part you'll use Frida to dump the TLS keys associated with an encrypted web request.
+> [!IMPORTANT] **Disclaimer**
+>
+> We had originally intended for this to cover key extraction using the
+> `vuln_axum_server` from the previous sections but, unfortunately we ran into
+> some issues at the last minute. For now you can just work through the
+> following example.
+
+In this part you'll use Frida to dump the TLS keys associated with an encrypted
+web request.
 
 {{% steps %}}
 
@@ -185,7 +335,9 @@ the target application:
 See [their documentation](https://fkie-cad.github.io/friTap/) for more
 information.
 
-Here's an example of using `fritap` to instrument the `curl` binary to capture TLS session keys and use them to decrypt the traffic in Wireshark. You can apply these instructions to either `curl` or the server binary.
+Here's an example of using `fritap` to instrument the `curl` binary to capture
+TLS session keys and use them to decrypt the traffic in Wireshark. You can apply
+these instructions to either `curl` or the server binary.
 
 ```sh {filename="Shell"}
 # Make a temporary directory and navigate to it
@@ -241,7 +393,11 @@ in your `keys.log` file?
 
 {{% details title="Click to reveal.." closed="true" %}}
 
-#### Wireshark TLS Capture
+#### Web Server Command Injection
+
+Still a work in progress. Check back later.
+
+#### TLS Keys Dump
 
 ![](./wireshark_https_stream.png "Encrypted packet data.")
 

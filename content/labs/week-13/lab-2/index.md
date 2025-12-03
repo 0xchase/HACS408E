@@ -8,7 +8,9 @@ draft: false
 
 {{< callout emoji="💡" >}}
 
-The purpose of this lab is to introduce you to the basics of symbolic execution with Angr. By the end of this lab you should have some familiarity with how its API maps to basic symbolic execution concepts.
+The purpose of this lab is to introduce you to the basics of symbolic execution
+with Angr. By the end of this lab you should have some familiarity with how its
+API maps to basic symbolic execution concepts.
 
 **Goals:**
 
@@ -22,19 +24,33 @@ The purpose of this lab is to introduce you to the basics of symbolic execution 
 
 ## Part 1: Understand an Angr script
 
-This first lab will be focused just on understanding a script conceptually before we develop one of our own. 
+This first lab will be focused just on understanding a script conceptually
+before we develop one of our own.
 
 {{% steps %}}
 
 ### Install Angr
 
-First install the `angr` python package to your linux virtual machine using `uv` or `pip`.
+First install the `angr` python package to your Linux virtual machine using `uv`
+or `pip`. The recommended way is using a virtual environment:
+
+```sh {filename=Shell}
+# Create the virtual environment
+...> uv venv .venv
+
+# Activate it
+...> . .venv/bin/activate.fish
+
+# Install Frida
+(.venv) ...> uv pip install angr
+```
 
 ### Read and compile a C program
 
-The following is source for the program we'll analyze using symbolic execution. Read and understand its contents, then compile it to a binary we'll analyze.
+The following is source for the program we'll analyze using symbolic execution.
+Read and understand its contents, then compile it to a binary we'll analyze.
 
-```c
+```c {filename=fauxware.c}
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -93,11 +109,18 @@ int main(int argc, char **argv)
 }
 ```
 
+Compile with:
+
+```sh {filename=Shell}
+gcc -o fauxware fauxware.c
+```
+
 ### Run an example script
 
-After compiling the target program you can analyze it with an Angr script. Try running the following solution and verify it finds the right solution.
+After compiling the target program you can analyze it with an Angr script. Try
+running the following solution and verify it finds the right solution.
 
-```python
+```python {filename=solve.py}
 #!/usr/bin/env python
 
 import angr
@@ -183,15 +206,32 @@ if __name__ == '__main__':
 # fauxware will authenticate you.
 ```
 
+To run:
+
+```sh {filename=Shell}
+python3 solve.py | fauxware
+```
+
 ### Understand the solution
 
-Symbolic execution can seem like magic! Read the solution comments and search for the API documentation to make sure you understand what each line does. Once you do, write a paragraph in your own words that describes how the script works.
+Symbolic execution can seem like magic! Read the solution comments and search
+for the API documentation to make sure you understand what each line does. Once
+you do:
+
+- [Angr Api Documentation](https://docs.angr.io/en/latest/api.html)
+
+{{< question >}}
+
+Write a paragraph in your own words that describes how the script works.
+
+{{< /question >}}
 
 {{% /steps %}}
 
 ## Part 2: Alter an Angr script
 
-In this part you'll use combine static analysis and symbolic execution to solve a novel reversing challenge.
+In this part you'll use combine static analysis and symbolic execution to solve
+a novel reversing challenge.
 
 {{% steps %}}
 
@@ -203,13 +243,18 @@ Download and run the challenge binary to understand what you're up against.
 
 ### Statically analyze the binary
 
-This binary has specific success and failure conditions. Use static analysis to identify the corresponding branches in the graph view of binary ninja. Note the addresses corresponding to the success and failure branches.
+This binary has specific success and failure conditions. Use static analysis to
+identify the corresponding branches in the graph view of binary ninja. Note the
+addresses corresponding to the success and failure branches.
 
 ### Use `explore` to find the solution
 
-Below is the starting script for your solution. Before making changes, ensure you understand what each existing line does. Then, research the exploration API and add the corresponding line(s) to the skeleton. Running your script should produce a solution you can test on the original file in your terminal.
+Below is the starting script for your solution. Before making changes, ensure
+you understand what each existing line does. Then, research the exploration API
+and add the corresponding line(s) to the skeleton. Running your script should
+produce a solution you can test on the original file in your terminal.
 
-```python
+```python {filename=solve_r100.py}
 import angr
 
 def main():
@@ -223,8 +268,13 @@ def main():
 
 if __name__ == '__main__':
     print(main())
-
 ```
+
+{{< question >}}
+
+Include your python script in your lab submission.
+
+{{< /question >}}
 
 {{% /steps %}}
 
@@ -233,6 +283,16 @@ if __name__ == '__main__':
 > - Review the API documentation
 > - Don't alter anything you don't understand
 > - Ensure you understand symbolic execution conceptually
+
+## Solutions
+
+{{% details title="Click to reveal.." closed="true" %}}
+
+#### Angr `r100` Solution Script
+
+Still a work in progress. Check back later.
+
+{{% /details %}}
 
 ## Submission
 
