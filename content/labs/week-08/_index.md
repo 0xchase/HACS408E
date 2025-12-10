@@ -1,5 +1,5 @@
 ---
-title: "08: Group Presentation"
+title: "08: 📝 Midterm - Malware Presentations"
 prev: labs/week-07
 next: labs/week-09
 ---

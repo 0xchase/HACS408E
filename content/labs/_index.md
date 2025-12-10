@@ -10,8 +10,8 @@ toc: false
 In lieu of a midterm exam students will present their reverse engineering
 efforts against malware samples assigned to each group.
 
-See [the midterm presentation page](/labs/week-08/).
+See [the midterm presentation page](week-08/).
 
 ### Final Project
 
-To be announced.
+See [the Capture the Flag event page](week-14/).

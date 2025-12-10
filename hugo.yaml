@@ -48,18 +48,18 @@ menu:
       params:
         type: separator
       weight: 1
-    - name: Linux VM - SSH Setup
+    - name: 🖥️ Linux VM - SSH Setup
       pageRef: /labs/lab-setup/ssh-connection/
       weight: 2
-    - name: Windows VM - RDP Setup
+    - name: 🖥️ Windows VM - RDP Setup
       pageRef: /labs/lab-setup/rdp-connection/
       weight: 3
-    - name: Midterm Group Presentations
+    - name: 📝 Midterm - Group Presentations
       pageRef: /labs/week-08/
       weight: 4
-    # - name: Final
-    #   pageRef: /labs/final-project/
-    #   weight: 5
+    - name: 🏁 Final - Capture the Flag
+      pageRef: /labs/week-14/
+      weight: 5
 
 params:
   navbar:

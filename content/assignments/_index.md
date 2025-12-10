@@ -19,10 +19,18 @@ screenshots or images you use are rendered properly.
 <p></p>
 {{< schedule "schedule.md" >}}
 
-### Assignment Links
+### Homework
 
 - Homework 1: [Firmware Analysis](hw-1/)
 - Homework 2: [Binary Bomb](hw-2/)
 - Homework 3: [Analyze Packet Capture + Artifacts](hw-3/)
 - Homework 4: [Exploitation - Complete ROP Chain](hw-4/)
 - Homework 5: [Android Application Reversing](hw-5/)
+
+### Midterm
+
+- [📝 Malware Presentation](/labs/week-08/)
+
+### Final
+
+- [🏁 Capture the Flag Event](/labs/week-14)
